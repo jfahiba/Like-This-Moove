@@ -1,0 +1,114 @@
+
+{% extends 'PortailBundle::layouttuto.html.twig' %}
+
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row-fluid margin-bottom-10">
+        <div style="display: none;" class="bb-alert alert alert-info pull-right">
+            <span>Callback</span>
+        </div>
+
+        <div class="reg-page">
+            {% if slug == null %}
+                <h1>{{ 'tuto.add'|trans}}</h1>
+            {% else %}
+                <h1>{{ 'tuto.edit'|trans}}</h1>
+            {% endif %}
+
+            {% if message %}
+                <p>{{ message }}</p>
+            {% endif %}
+
+            <form action="" method="post" {{ form_enctype(form) }} >
+
+                {{ form_widget(form) }}
+
+                <br>
+
+                <input id="soumettre" type="submit" class="btn btn-success pull-right" value="   {{ 'save'|trans}}   "/>
+                {% if slug != null %}
+                    <a class="btn btn-primary"  href="{{ path('ltm_video_tuto_afficher', {'slug': slug,  'id' : id | urlencrypt}) }}"> {{ 'tuto.see'|trans}}</a>
+                    <a class="btn btn-danger pull-left"  href="#" onclick='return confirmSupprimer()'> {{ 'delete'|trans}}</a>
+
+                {% endif %}
+
+            </form>
+            <br><br><br><br>
+            <center>
+                <a href="{{ path('ltm_video_tuto_gallery') }}">{{ 'tuto.see.all.my'|trans}}</a>
+            </center>
+            {% if slug != null %}
+                <a class="supprimer_item invisible" href="{{ path('ltm_video_tuto_supprimer', {'slug' : slug}) }}"> </a>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/bootbox.min.js')}}"></script>
+
+
+    <script>
+
+        var LTMAlert = (function() {
+            "use strict";
+            var elem,
+                    hideHandler,
+                    that = {};
+            that.init = function(options) {
+                elem = $(options.selector);
+            };
+            that.show = function(text) {
+                clearTimeout(hideHandler);
+                elem.find("span").html(text);
+                elem.fadeIn();
+                hideHandler = setTimeout(function() {
+                    that.hide();
+                }, 4000);
+            };
+            that.hide = function() {
+                elem.fadeOut();
+            };
+            return that;
+        }());
+
+        LTMAlert.init({
+            "selector": ".bb-alert"
+        });
+
+
+        function confirmSupprimer()
+        {
+
+            bootbox.dialog("{{ 'delete.are.you.sure'|trans}}", [{
+                label: "{{ 'delete.sure'|trans}}",
+                className: "btn-danger",
+                callback: function() {
+                    window.location.href = $("a.supprimer_item" ).attr('href');
+
+                }
+            }, {
+                "label" : "{{ 'delete.cancel'|trans}}",
+                "class" : "btn-success",
+                "callback": function() {
+                    LTMAlert.show("Item {{ 'delete.not.performed'|trans}}");
+                }
+            }
+            ]);
+
+        }
+
+    </script>
+
+    {% endblock %}
+
+{% block footer %}
+{% endblock %}

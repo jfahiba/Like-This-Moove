@@ -1,0 +1,35 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: jfahiba
+ * Date: 21/07/2014
+ * Time: 21:56
+ */
+
+namespace LTM\PortailBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Sylius\Component\Order\Model\Order as BaseOrder;
+use Sylius\Component\Order\Model\OrderItemInterface;
+/**
+ * @ORM\Entity(repositoryClass="LTM\PortailBundle\Entity\OrderRepository")
+ * @ORM\Table(name="app_order")
+ */
+class Order extends BaseOrder
+{
+
+    /**
+     * @ORM\OneToMany(targetEntity="Sylius\Component\Order\Model\OrderItemInterface", mappedBy="order", orphanRemoval=true, cascade={"all"})
+     */
+    protected $items;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Sylius\Component\Order\Model\AdjustmentInterface", mappedBy="order", orphanRemoval=true, cascade={"all"})
+     */
+    protected $adjustments;
+    /**
+     * Constructor
+     */
+    
+}

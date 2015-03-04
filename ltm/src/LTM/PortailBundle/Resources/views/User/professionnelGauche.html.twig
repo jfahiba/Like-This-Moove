@@ -1,0 +1,106 @@
+
+<div class="who margin-bottom-30">
+    <div class="headline">
+        <h3>{% if user.gender == '6'%} {{ 'recruiting.agency'|trans }}
+            {% elseif user.gender == '5'%} {{ 'recruiter.f'|trans }}
+            {% elseif user.gender == '4'%} {{ 'recruiter.m'|trans }}
+            {% elseif user.gender == '3'%} {{ 'association'|trans }}
+            {% elseif user.gender == '2'%} {{ 'dancing.school'|trans }}
+            {% elseif user.gender == '1'%} {{ 'dancer.f'|trans }}
+            {% else %}{{ 'dancer.m'|trans }} {%endif%}
+        </h3>
+    </div>
+
+    <ul class="unstyled">
+        <li><a href="#"><i class="icon-bar-chart"></i>
+            {%  if user.top500 == null or user.top500 == "" %}
+                {{ 'not.member.top500'|trans}}
+                {% else %}
+                {{ user.top500 }}
+            {% endif %}
+
+            </a></li>
+
+        {% if user.firstName != null or  user.lastName != null %}
+        <li><i class="icon-chevron-sign-right"></i> {{ user.firstName }} {{ user.lastName }}</li>
+        {% endif %}
+        {%  if user.showPersonalInformation %}
+		
+		{% if user.height != null %}
+        <li><i class="icon-chevron-sign-right"></i>{{ user.height }}</li>
+		{% endif %}
+		
+		{% if user.birthDate != null %}
+        <li><i class="icon-chevron-sign-right"></i><span>
+                {% if user.gender == '6'%} {{ 'recruiting.agency.creation'|trans }}
+                {% elseif user.gender == '5'%} {{ 'recruiter.creation'|trans }}
+                {% elseif user.gender == '4'%} {{ 'recruiter.creation'|trans }}
+                {% elseif user.gender == '3'%} {{ 'association.creation'|trans }}
+                {% elseif user.gender == '2'%} {{ 'dancing.school.creation'|trans }}
+                {% elseif user.gender == '1'%} {{ 'dancer.f.birth'|trans }}
+                {% else %}{{ 'dancer.m.birth'|trans }} {%endif%}
+                {{ ' ' ~ user.birthDate|ago }}</span></li>
+        {% endif %}
+		{% endif %}
+        {% if user.biographie != null %}
+        {%  set bio = 'biography'|trans ~ ' ' ~ 'of'|trans ~ ' ' ~ user.username  %}
+        <li><a  style="cursor: pointer" onclick="openInfo( '{{ bio }}' ,'{{ user.biographie|nl2br|url_encode  }}', {{ imPro }})"><i class="icon-chevron-sign-right"></i>{{ 'biography'|trans }}</a></li>
+        {% endif %}
+        {% if user.awards != null %}
+        {%  set awards = 'awards'|trans ~ ' ' ~ 'of'|trans ~ ' ' ~ user.username  %}
+        <li><a style="cursor: pointer" onclick="openInfo( '{{ awards }}' ,'{{ user.awards|nl2br|url_encode  }}', {{ imPro }})"><i class="icon-chevron-sign-right"></i>{{  'awards'|trans }}</a></li>
+        {% endif %}
+        {% if user.contrats != null %}
+        {%  set contracts = 'last.contracts'|trans ~ ' ' ~ 'of'|trans ~ ' ' ~ user.username  %}
+        <li><a style="cursor: pointer" onclick="openInfo( '{{ contracts}}' ,'{{ user.contrats|nl2br|url_encode  }}', {{ imPro }})"><i class="icon-chevron-sign-right"></i>{{ 'last.contracts'|trans }}</a></li>
+        {% endif %}
+        <li><a href="{{path('ltm_video_tuto_filtrer', {'slug' : user.slug})}}"><i class="icon-chevron-sign-right"></i>
+                {{ 'my.tutos'|trans ~ ' (' ~ countTutos({'slug' : user.slug}) }})</a></li>
+
+        <li><i class="icon-stack-base"></i>
+                {%  if user.status()|length == 0 %}
+                <span class="label label-grey arrowed  arrowed-in-right">Rien à signaler</span>
+                {% else %}
+                {% for status in user.status() %}
+                    {% if status.nom == 'En tournée' %}
+                        <span class="label label-yellow arrowed  arrowed-in-right">{{ status.nom }}</span>
+                    {% endif %}
+                    {% if status.nom == 'En recherche d\'opportunité' %}
+                        <span class="label label-info arrowed arrowed-in-right">{{ status.nom }}</span>
+                    {% endif %}
+                    {% if status.nom == 'Ne pas déranger' %}
+                        <span class="label label-warning arrowed arrowed-in-right">{{ status.nom }}</span>
+                    {% endif %}
+                    {% if status.nom == 'Nouveau' %}
+                        <span class="label label-grey arrowed arrowed-in-right">{{ status.nom }}</span>
+                    {% endif %}
+
+                {% endfor %}
+                {% endif %}
+
+            </li>
+    </ul>
+</div>
+
+<script src='{{ asset('bundles/portail/js/jquery-1.10.2.min.js')}}'></script>
+<script>
+    $(document).ready(function(){
+
+        $(".age").each(function() {
+            $(this).html(getAge($(this).html()))
+        });
+
+        function getAge(dateString)
+        {
+            var today = new Date();
+            var birthDate = new Date(dateString);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
+            {
+                age--;
+            }
+            return age;
+        }})
+
+</script>

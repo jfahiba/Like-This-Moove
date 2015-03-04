@@ -1,0 +1,312 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
+framework:
+    #esi:             ~
+    translator:      { fallback: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+        cookie_lifetime: 31536000  #time in seconds  	
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        paypal_usd_testuser_login: %paypal.express_checkout.usd_testuser_login%
+        paypal_usd_testuser_password: %paypal.express_checkout.usd_testuser_password%
+
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles: [ "FOSCommentBundle", "PortailBundle"]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
+        #yui_css:
+        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        connections:
+            default:
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+                # if using pdo_sqlite as your database driver, add the path in parameters.yml
+                # e.g. database_path: "%kernel.root_dir%/data/data.db3"
+                # path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        default_entity_manager: default
+        entity_managers:
+                    default:
+                        connection:   default
+                        mappings:
+                            PortailBundle: ~
+                            FOSCommentBundle: ~
+                            #CunningsoftChatBundle: ~
+                            payum:
+                                is_bundle: false
+                                type: xml
+                                dir: %kernel.root_dir%/../vendor/payum/core/Payum/Core/Bridge/Doctrine/Resources/mapping
+
+                                # set this dir instead if you use `payum/payum` library
+                                #dir: %kernel.root_dir%/../vendor/payum/payum/src/Payum/Core/Bridge/Doctrine/Resources/mapping
+
+                                prefix: Payum\Core\Model
+        resolve_target_entities:
+                    Cunningsoft\ChatBundle\Entity\AuthorInterface: LTM\PortailBundle\Entity\User
+
+# Swiftmailer Configuration
+swiftmailer:
+    encryption: ssl
+    auth_mode:  login
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+ornicar_akismet:
+    api_key:    c4adc4ee161e
+    url:        http://xyzxyz
+
+fos_message:
+    db_driver: orm
+    thread_class: LTM\PortailBundle\Entity\Thread
+    message_class: LTM\PortailBundle\Entity\Message
+    new_thread_form:
+        type: fos_message.new_thread_multiple_form.type
+        handler:  fos_message.new_thread_multiple_form.handler
+        model: FOS\MessageBundle\FormModel\NewThreadMultipleMessage
+        name: message
+    spam_detector:        fos_message.noop_spam_detector
+    authorizer: ltm_message.authorizer
+#cunningsoft_chat:
+    # refresh interval in milliseconds
+#    update_interval: 5000
+    # messages to be shown in chat
+#    number_of_messages: 10
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: LTM\PortailBundle\Entity\Comment
+            thread: LTM\PortailBundle\Entity\CommentThread
+            vote: LTM\PortailBundle\Entity\CommentVote
+
+knp_menu:
+    providers:
+
+        builder_alias:        true
+
+        container_aware:      true
+
+    twig:
+
+        template:             knp_menu.html.twig
+
+    templating:           false
+
+    default_renderer:     twig
+
+nzo_url_encryptor:
+    secret: xyzxyz
+
+payum:
+    security:
+        token_storage:
+            LTM\PortailBundle\Entity\PayumSecurityToken:
+                doctrine:
+                    driver: orm
+
+    storages:
+        LTM\PortailBundle\Entity\PaymentDetails:
+            payment:
+                all: true
+            doctrine: orm
+
+        LTM\PortailBundle\Entity\AgreementDetails:
+            payment:
+                contexts:
+                    - ltm_paypal_express_checkout_recurring_payment_and_doctrine_orm
+            doctrine: orm
+        LTM\PortailBundle\Entity\RecurringPaymentDetails:
+            payment:
+                contexts:
+                    - paypal_express_checkout_recurring_payment_and_doctrine_orm
+            doctrine: orm
+    contexts:
+        ltm_credit_payment:
+            paypal_express_checkout_nvp:
+                username:  %paypal.express_checkout.username%
+                password:  %paypal.express_checkout.password%
+                signature: %paypal.express_checkout.signature%
+                sandbox: true
+ 
+        paypal_express_checkout_recurring_payment_and_doctrine_orm:
+            paypal_express_checkout_nvp:
+                username:  %paypal.express_checkout.username%
+                password:  %paypal.express_checkout.password%
+                signature: %paypal.express_checkout.signature%
+                sandbox: true
+
+knp_gaufrette:
+    adapters:
+        video:
+            local:
+                directory: %kernel.root_dir%/../web/bundles/portail/uploads/videos
+                create: true
+        tuto:
+            local:
+                directory: %kernel.root_dir%/../web/bundles/portail/uploads/tutos
+                create: true
+        image:
+            local:
+                directory: %kernel.root_dir%/../web/bundles/portail/uploads/images
+                create: true
+        annonce:
+            local:
+                directory: %kernel.root_dir%/../web/bundles/portail/uploads/annonces
+                create: true
+    filesystems:
+        video:
+            adapter: video
+        tuto:
+            adapter: tuto
+        image:
+            adapter: image
+        annonce:
+            adapter: annonce
+
+oneup_uploader:
+    mappings:
+        videos:
+            frontend: dropzone # or any uploader you use in the frontend
+            storage:
+                type: gaufrette
+                filesystem: gaufrette.video_filesystem
+                sync_buffer_size: 5000K
+            namer: ltm.custom_namer
+            max_size: 9223372036854775807
+        tutos:
+            frontend: dropzone # or any uploader you use in the frontend
+            storage:
+                type: gaufrette
+                filesystem: gaufrette.tuto_filesystem
+                sync_buffer_size: 5000K
+            namer: ltm.custom_namer
+            max_size: 9223372036854775807
+
+        images:
+            frontend: dropzone # or any uploader you use in the frontend
+            storage:
+                type: gaufrette
+                filesystem: gaufrette.image_filesystem
+                sync_buffer_size: 5000K
+            namer: ltm.custom_namer
+            max_size: 9223372036854775807
+        annonces:
+            frontend: dropzone # or any uploader you use in the frontend
+            storage:
+                type: gaufrette
+                filesystem: gaufrette.annonce_filesystem
+                sync_buffer_size: 5000K
+            namer: ltm.custom_namer
+            max_size: 9223372036854775807			
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_pagination.html.twig     # sliding pagination controls template
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+
+knp_time: ~
+
+spy_timeline:
+    drivers:
+        orm:
+            object_manager: doctrine.orm.entity_manager
+            classes:
+                query_builder: ~ # Spy\TimelineBundle\Driver\ORM\QueryBuilder\QueryBuilder
+                timeline:  LTM\PortailBundle\Entity\Timeline
+                action:    LTM\PortailBundle\Entity\Action
+                component: LTM\PortailBundle\Entity\Component
+                action_component: LTM\PortailBundle\Entity\ActionComponent
+    timeline_manager: ~ # use custom or let it.
+    action_manager:   ~ #  use custom or let it.
+
+    notifiers:
+          - spy_timeline.unread_notifications
+    query_builder:
+          classes:
+              factory:   Spy\Timeline\Driver\QueryBuilder\QueryBuilderFactory
+              asserter:  Spy\Timeline\Driver\QueryBuilder\Criteria\Asserter
+    paginator: spy_timeline.paginator.knp
+    filters:
+          duplicate_key:
+              service:              spy_timeline.filter.duplicate_key
+              priority:             10
+          data_hydrator:
+              priority:             20
+              service:              spy_timeline.filter.data_hydrator
+              filter_unresolved:    false
+              locators:
+                  - spy_timeline.filter.data_hydrator.locator.doctrine_orm
+                  - spy_timeline.filter.data_hydrator.locator.doctrine_odm
+    spread:
+          on_subject: true          # Spread each action on subject too
+          on_global_context: true   # Spread automatically on global context
+          batch_size: 50 # How many persist before flush operation.
+          delivery: immediate
+    render:
+          path:     'PortailBundle:Timeline'
+          fallback: 'PortailBundle:Timeline:default.html.twig'
+          i18n: #Do you want to use i18n when rendering ? if not, remove this node.
+              fallback: en
+          resources: []    # Always prepends 'SpyTimelineBundle:Action:components.html.twig'
+jms_i18n_routing:
+    default_locale: fr
+    locales: [en, de,fr, es,it]
+    strategy: prefix_except_default
+jms_translation:
+    configs:
+        app:
+            dirs: [%kernel.root_dir%, %kernel.root_dir%/../src]
+            output_dir: %kernel.root_dir%/Resources/translations
+            ignored_domains: []
+            excluded_names: []
+            excluded_dirs: [cache, data, logs]
+            extractors: []

@@ -1,0 +1,56 @@
+
+home_tuto:
+    pattern: /tuto
+    defaults: { _controller: PortailBundle:Default:indextuto }
+
+
+# Video Tuto
+ltm_video_tuto_lister:
+  pattern: /video/tuto/
+  defaults: { _controller: PortailBundle:VideoTuto:lister }
+ltm_video_tuto_filtrer:
+  pattern: /video/tuto/filtrer/{slug}
+  defaults: { _controller: PortailBundle:VideoTuto:lister }
+
+ltm_video_tuto_styled:
+  pattern: /tuto/styled/{styled}
+  defaults: { _controller: PortailBundle:VideoTuto:lister }
+ltm_video_tuto_ajouter:
+  pattern: /private/video/tuto/ajouter
+  defaults: { _controller: PortailBundle:VideoTuto:editer }
+ltm_video_tuto_modifier:
+  pattern: /private/video/tuto/modifier/{slug}
+  defaults: { _controller: PortailBundle:VideoTuto:editer }
+ltm_video_tuto_supprimer:
+  pattern: /private/video/tuto/supprimer/{slug}
+  defaults: { _controller: PortailBundle:VideoTuto:supprimer }
+ltm_video_tuto_top:
+  pattern: /video/tuto/top/{idUser}
+  defaults: { _controller: PortailBundle:VideoTuto:top }
+ltm_video_tuto_afficher:
+  pattern: /video/tuto/{slug}/{id}
+  defaults: { _controller: PortailBundle:VideoTuto:afficher }
+ltm_video_tuto_afficher_extrait:
+  pattern: /video/tuto/extrait/{slug}/{id}
+  defaults: { _controller: PortailBundle:VideoTuto:afficherExtrait }
+  
+  
+ltm_video_tuto_dropzone:
+  pattern: /private/video/tuto/dropzone
+  defaults: { _controller: PortailBundle:VideoTuto:dropzone }
+
+ltm_video_tuto_gallery:
+  pattern: /private/video/tuto/gallery
+  defaults: { _controller: PortailBundle:VideoTuto:gallery }
+
+#professeur:
+ltm_professeur_lister:
+  pattern: /private/professeur/
+  defaults: { _controller: PortailBundle:User:listerprofesseur }
+ltm_professeur_styled:
+  pattern: /private/professeur/styled/{styled}
+  defaults: { _controller: PortailBundle:User:listerprofesseur }
+
+ltm_professeur_public:
+  pattern: /professeur/{slug}
+  defaults: { _controller: PortailBundle:User:afficherpublicprofesseur }

@@ -1,0 +1,143 @@
+{% extends 'PortailBundle::layouttuto.html.twig' %}
+
+{% block javascripts %}
+
+
+    <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/modernizr.custom.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/back-to-top.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/flexslider/jquery.flexslider-min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+
+
+    <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js')}}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    <!--script type="text/javascript" src=".{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js')}}"></script-->
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/fullcalendar.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/plugins/bxslider/jquery.bxslider.js')}}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/app.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/pages/index.js')}}"></script>
+
+    
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery.colorbox-min.js')}}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+            App.initSliders();
+            Index.initRevolutionSlider();
+        });
+    </script>
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/portail/js/respond.js')}}"></script>
+    <![endif]-->
+
+
+{% endblock %}
+
+{% block content %}
+
+    <!--=== Slider ===-->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/revolution_slider/css/rs-style.css')}}" media="screen">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/revolution_slider/rs-plugin/css/settings.css')}}" media="screen">
+    {% include 'PortailBundle:Default:revolutionslider.html.twig' %}
+    <!--=== End Slider ===-->
+
+    <!--=== Purchase Block ===-->
+    <div class="row-fluid purchase margin-bottom-30">
+		{% if app.user == null or app.user.id == null%}
+        <div class="container">
+            <div class="span12">
+                <span>{{ 'tuto.purchase.container.span12.span'|trans}}</span>
+                <p>{{ 'tuto.purchase.container.span12.p'|trans}}</p>
+            </div>
+            <a href="{{ path('ltm_usr_ajouter_by_choice', {'accounttype' : 'Amateur', 'moovertype' : 'dancer', 'duration' : 'duration12', 'frequency' : 'freq12'}) }}" class="btn-buy hover-effect">{{ 'free.try'|trans}}</a>
+        </div>
+		{% endif %}
+    </div><!--/row-fluid-->
+    <!-- End Purchase Block -->
+
+    <!--=== Content Part ===-->
+    <div class="container">
+
+        <!-- Recent Works -->
+        <div class="headline">
+            <h3>{{ 'last.tutos'|trans}}</h3>
+        </div>
+        {%  render(controller('PortailBundle:VideoTuto:top', { 'max': 6, 'idUser' : null, 'style':'carousel'})) %}
+		<br/><br/>
+        <a class="btn-u btn-u-large btn-u-green  one-page-btn pull-right" href="{{ path('ltm_video_tuto_lister') }}"><i class="icon-facetime-video"></i> {{ 'more.tutos'|trans}}</a>
+
+
+        <!-- //End Recent Works -->
+
+        <!-- Information Blokcs -->
+        <div class="container-fluid one-page">
+            <div class="one-page-inner one-default">
+                <div class="container">
+                    <h1>{{ 'information.container1.h1'|trans}}</h1>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <p>{{ 'information.container1.div.span61.p'|trans}}</p>
+                            <a class="btn-u btn-u-large btn-u-green one-page-btn"><i class="icon-bolt"></i> {{ 'information.container1.div.span61.a'|trans}}</a>
+                        </div>
+                        <div class="span6">
+                            <img src="{{ asset('information.container1.div.span62.img'|trans )}}" class="margin-bottom-10" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="one-page-inner one-blue">
+                <div class="container">
+                    <h1>{{ 'information.container2.h1'|trans}}</h1>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <img src="{{ asset('information.container2.div.span61.img'|trans )}}" class="margin-bottom-10" alt="">
+                        </div>
+                        <div class="span6">
+                            <p>{{ 'information.container2.div.span62.p'|trans}}</p>
+                          <a class="btn-u btn-u-large btn-u-green  one-page-btn"><i class="icon-bell"></i> {{ 'information.container2.div.span62.a'|trans}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="one-page-inner one-default">
+                <div class="container">
+                    <h1>{{ 'information.container3.h1'|trans}}</h1>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <img src="{{ asset('information.container3.div.span61.img'|trans)}}" class="margin-bottom-10" alt="">
+                        </div>
+                        <div class="span6">
+                            <p>{{ 'information.container3.div.span62.p1'|trans}}</p>
+                            <p>{{ 'information.container3.div.span62.p2'|trans}}</p>
+                            {%  render(controller('PortailBundle:Image:listecarousel', { 'max': 10})) %}
+                            <a href="{{ path('ltm_image_lister') }}" class="btn-u btn-u-large btn-u-green one-page-btn pull-right"><i class="icon-thumbs-up"></i> {{ 'information.container3.div.span62.a'|trans}}</a>
+                        </div>
+                    </div>
+                    <hr>
+
+                </div>
+            </div>
+
+        </div><!--/row-fluid-->
+        <!-- //End Information Blokcs -->
+
+        <!-- Our Clients -->
+        {%  render(controller('PortailBundle:User:listerdanseursltm', {'title' : 'they.trust.us'|trans })) %}
+        <!--/flexslider-->
+        <!-- //End Our Clients -->
+    </div><!--/container-->
+    <!-- End Content Part -->
+
+	<!-- Important garder cette declaration ici pour Video Tuto et les menus-->
+	<script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,14 @@
+<ul id="chat" style="margin: 0">
+{% for message in messages %}
+    <li style="display: in">
+        <div class="author"><span>
+                <a href="{{ path("ltm_usr_public" , {'id' : message.author.id}) }}">
+                    <i class="icon-user"></i>
+                    <span class="menu-text">{{ message.author | raw }}</span>
+                </a>
+                </span> <span class="date">({{ message.insertDate | ago}})</span></div>
+        <div class="message">{{ message.message }}</div>
+    </li>
+{% endfor %}
+</ul>
+

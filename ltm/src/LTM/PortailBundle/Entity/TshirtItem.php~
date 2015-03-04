@@ -1,0 +1,110 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: jfahiba
+ * Date: 22/07/2014
+ * Time: 00:21
+ */
+
+namespace LTM\PortailBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use LTM\PortailBundle\Entity\Item as BaseItem;
+
+/**
+ * @ORM\Table(name="cart_item_tshirt")
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
+ */
+class TshirtItem extends BaseItem
+{
+    /**
+     * @var string $color
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $color;
+
+    /**
+     * @var string $sku
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $sku;
+
+    /**
+     * @var integer $quantity
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $quantity;
+
+    /**
+     * @var \LTM\PortailBundle\Entity\TshirtProduct $product
+     * @ORM\ManyToOne(targetEntity="TshirtProduct")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     */
+    protected $product;
+
+    /**
+     * @param string $color
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param \LTM\PortailBundle\Entity\TshirtProduct $product
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
+    }
+
+    /**
+     * @return \LTM\PortailBundle\Entity\TshirtProduct
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param int $quantity
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param string $sku
+     */
+    public function setSku($sku)
+    {
+        $this->sku = $sku;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSku()
+    {
+        return $this->sku;
+    }
+
+}

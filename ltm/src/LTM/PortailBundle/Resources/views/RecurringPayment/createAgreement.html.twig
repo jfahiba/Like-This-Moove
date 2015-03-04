@@ -1,0 +1,46 @@
+{% extends 'PortailBundle::layout.html.twig' %}
+
+
+
+{% block title "Paypal express checkout demo- Create billing agreement" %}
+
+
+
+{% block content %}
+    <div class="reg-page">
+        <!--p>
+            Utiliser ces identifiants:
+            <strong>{{ paypal_usd_testuser_login }}</strong>
+            <strong>{{ paypal_usd_testuser_password }}</strong> pour vous connecter à paypal.
+
+        </p-->
+        <hr />
+         {{ subscription.description }}
+        <hr />
+        <strong>{{ 'ltm.will.receive'|trans ~ ' ' ~ 'during'|trans ~ ' ' ~ ('forfaits.' ~ period)|trans}} :</strong>
+        <ul>
+            <li>{{ cadCredit |number_format(2, '.')  }} CAD / {{ frequencytext|trans }}</li>
+            <li>{{ usdCredit |number_format(2, '.')  }} USD / {{ frequencytext|trans }}</li>
+            <li>{{ eurCredit |number_format(2, '.') }} EUR / {{ frequencytext|trans }}</li>
+        </ul>
+
+
+        <hr />
+        {% if errors %}
+            <p>{{ errors }}</p>
+            <hr />
+        {% endif %}
+
+
+
+        <form method="POST">
+
+            <input type="submit" class="btn btn-info" value="{{ 'accept'|trans }}" />
+        </form>
+
+        <!--p><a href="{{ path('ltm_usr_credit_historique') }}">Voir mon historique de crédit</a></p-->
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

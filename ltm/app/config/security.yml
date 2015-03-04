@@ -1,0 +1,68 @@
+security:
+    encoders:
+        LTM\PortailBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        main:
+            entity:
+                class: LTM\PortailBundle\Entity\User
+                property: username
+
+    firewalls:
+        login_firewall:
+            pattern:   ^/login$
+            anonymous: ~
+            remember_me:
+                key: "%secret%"
+                remember_me_parameter: 'login[remember_me]'
+                lifetime: 31536000 # 365 days in seconds
+                path:     /
+                domain:   ~ # Defaults to the current domain from $_SERVER
+                always_remember_me : true
+                user_providers : main
+ 
+        private:
+            pattern:   ^/
+            anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login_check
+                success_handler: authentication_handler
+            logout:
+                path:   /logout
+                target: /
+                success_handler: logout_handler
+            remember_me:
+                key: "%secret%"
+                remember_me_parameter: 'login[remember_me]'
+                lifetime: 31536000 # 365 days in seconds
+                path:     /
+                domain:   ~ # Defaults to the current domain from $_SERVER
+                always_remember_me : true
+                user_providers : main
+        main:
+            form_login:
+                login_path: login
+                check_path: login_check
+                success_handler: authentication_handler
+            logout:
+                path:   /logout
+                target: /
+                success_handler: logout_handler
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000 # 365 jours en secondes
+                path:     /
+                domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
+    access_control:
+        - { path: ^/private, roles: ROLE_ADMIN }
+        - { path: ^/fr/private, roles: ROLE_ADMIN }
+        - { path: ^/es/private, roles: ROLE_ADMIN }
+        - { path: ^/de/private, roles: ROLE_ADMIN }
+        - { path: ^/en/private, roles: ROLE_ADMIN }

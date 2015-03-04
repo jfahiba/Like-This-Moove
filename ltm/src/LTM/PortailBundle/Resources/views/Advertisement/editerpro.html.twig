@@ -1,0 +1,204 @@
+
+{% extends 'PortailBundle::layout.html.twig' %}
+
+{% form_theme form _self %}
+
+{% block datetime_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %}
+            {{ block('form_widget_simple') }}
+        {% else %}
+			
+            <div {{ block('widget_container_attributes') }}>
+                {{ form_errors(form.date) }}
+                {{ form_errors(form.time) }}
+                {{ form_widget(form.date, { 'datetime': true } ) }}&nbsp;
+                {{ form_widget(form.time, { 'datetime': true } ) }}
+            </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock datetime_widget %}
+
+
+{% block date_widget %}
+   
+        {% if widget == 'single_text' %}
+            {{ block('field_widget') }}
+        {% elseif app.user.category.nom == 'Pro' or app.user.category.nom ==  'Pro (Essai gratuit 14 jours)'%}
+			
+			<label>{{ 'ad.pro.until'|trans}}</label><small class="color-green">{{ 'ad.pro.create.pay'|trans}}</small>
+			<br/>
+			{% set annee = 'year'|trans ~ ' :' %}
+			{% set mois = 'month'|trans ~ ' :' %}
+			{% set jour = 'day'|trans ~ ' :' %}
+            {{ date_pattern|replace({
+            '{{ year }}':  annee ~  form_widget(form.year),
+            '{{ month }}': mois ~ form_widget(form.month),
+            '{{ day }}':   jour ~ form_widget(form.day),
+            })|raw }}
+			
+        {% endif %}
+
+{% endblock date_widget %}
+
+{% block time_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %}
+            {{ block('field_widget') }}
+        {% else %}
+            {{ form_widget(form.hour, { 'attr': { 'size': '1' } }) }}:{{ form_widget(form.minute, { 'attr': { 'size': '1' } }) }}{% if with_seconds %}:{{ form_widget(form.second, { 'attr': { 'size': '1' } }) }}{% endif %}
+        {% endif %}
+    {% endspaceless %}
+{% endblock time_widget %}
+
+
+{% block content %}
+    <div class="container">
+    <div class="row-fluid margin-bottom-10">
+        <div class="reg-page">
+            <div style="display: none;" class="bb-alert alert alert-info pull-right">
+                <span>Callback</span>
+            </div>
+
+            <h3>{{ 'ad.pro.add'|trans}}</h3>
+
+            {% if message %}
+                <p>{{ message }}</p>
+            {% endif %}
+
+            <form action="" method="post" {{ form_enctype(form) }}>
+                {{ form_widget(form) }}
+				
+				{% if slug != null %}
+
+					{% if app.user.category.nom == 'Pro' or app.user.category.nom ==  'Pro (Essai gratuit 14 jours)'%} 
+					<input style="display:none" id="soumettre" type="submit" class="btn btn-info pull-right" value="{{ 'ad.modify'|trans}}"/>
+					{% else %}
+					<input style="display:block" id="soumettre" type="submit" class="btn btn-info pull-right" value="{{ 'ad.modify'|trans}}"/>
+					{% endif %}
+				
+                    <a class="btn btn-danger pull-left"  href="#" onclick='return confirmSupprimer()'> {{ 'delete'|trans}}</a>
+
+                {% else %}
+				
+					{% if app.user.category.nom == 'Pro' or app.user.category.nom ==  'Pro (Essai gratuit 14 jours)'%} 
+					<input style="display:none" id="soumettre" type="submit" class="btn btn-info pull-right" value="{{ 'ad.create'|trans}}"/>
+					{% else %}
+					<input style="display:block" id="soumettre" type="submit" class="btn btn-info pull-right" value="{{ 'ad.create'|trans}}"/>
+					{% endif %}
+				 
+				{% endif %}
+				 
+                
+
+            </form>
+			{% if (app.user.category.nom == 'Pro' or app.user.category.nom ==  'Pro (Essai gratuit 14 jours)') %}
+			<br><br>
+			<button id="devis" onclick='devis({{ app.user.getCredit() == null or app.user.getCredit().getBalance() == null ? 0 : app.user.getCredit().getBalance() }})' class="btn btn-warning pull-left"> {{ 'ad.check.price'|trans}}</button>
+			
+			<label><br/><br/><br/><div id="devisValue">   
+			{% endif %}
+			</div></label>
+
+            <br><br><br><br>
+            <center>
+                <a href="{{ path('ltm_advertisement_gallery') }}">{{ 'ad.see.all.my'|trans}}</a>
+            </center>
+            {% if slug != null %}
+                <a class="supprimer_item invisible" href="{{ path('ltm_advertisement_supprimer', {'slug' : slug}) }}"> </a>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/bootbox.min.js')}}"></script>
+
+
+  
+
+{% endblock %}
+
+{% block footer %}
+  <script>
+
+        var LTMAlert = (function() {
+            "use strict";
+            var elem,
+                    hideHandler,
+                    that = {};
+            that.init = function(options) {
+                elem = $(options.selector);
+            };
+            that.show = function(text) {
+                clearTimeout(hideHandler);
+                elem.find("span").html(text);
+                elem.fadeIn();
+                hideHandler = setTimeout(function() {
+                    that.hide();
+                }, 4000);
+            };
+            that.hide = function() {
+                elem.fadeOut();
+            };
+            return that;
+        }());
+
+        LTMAlert.init({
+            "selector": ".bb-alert"
+        });
+
+
+        function confirmSupprimer()
+        {
+
+            bootbox.dialog("{{ 'delete.are.you.sure'|trans}}", [{
+                label: "{{ 'delete.sure'|trans}}",
+                className: "btn-danger",
+                callback: function() {
+                    window.location.href = $("a.supprimer_item" ).attr('href');
+
+                }
+            }, {
+                "label" : "{{ 'delete.cancel'|trans}}",
+                "class" : "btn-success",
+                "callback": function() {
+                    LTMAlert.show("{{ 'delete.not.performed'|trans}}");
+                }
+            }
+            ]);
+
+        }
+	  
+		function devis(myBalance) {			
+			var diff = cout();
+			document.getElementById("devisValue").innerHTML = "{{'ad.will.cost'|trans}}: " +
+			(diff > 35? diff + " {{ 'of.your'|trans}} " + myBalance +" {{ 'ad.create.confirm'|trans}}"  :  "{{ 'ad.create.free'|trans}}");
+		    document.getElementById("soumettre").style.display = "inline-block";
+		}
+		 
+		
+		function cout()
+		{
+			var day = document.getElementById("advertisement_proUntil_day");
+			var month = document.getElementById("advertisement_proUntil_month");
+			var year = document.getElementById("advertisement_proUntil_year");
+			var proUntil = new Date(year.value, month.value -1, day.value);
+			var today = new Date();
+			var diff  = Math.round(daydiff(today, proUntil)*35);
+			return diff;
+		}
+		
+		
+		
+		 
+		function daydiff(first, second) {
+			return (second-first)/(1000*60*60*24);
+		}
+		
+		 
+
+    </script>
+{% endblock %}

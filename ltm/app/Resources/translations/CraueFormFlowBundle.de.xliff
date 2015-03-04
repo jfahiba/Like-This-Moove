@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2014-10-02T03:00:39Z" source-language="en" target-language="de" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="4251065f15a4369d370a78863d79ef9e8051ee73" resname="Fin">
+        <source>Fin</source>
+        <target state="new">Fin</target>
+        <jms:reference-file line="12">views/User/buttons.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b962f0ffdefee46040cee3df23f5d041ed8fb33e" resname="Precedent">
+        <source>Precedent</source>
+        <target state="new">Precedent</target>
+        <jms:reference-file line="19">views/User/buttons.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="fa6243a445ed3579d546b6da746f8b619f11d1fd" resname="Reinitialiser">
+        <source>Reinitialiser</source>
+        <target state="new">Reinitialiser</target>
+        <jms:reference-file line="24">views/User/buttons.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="596d29a7e33c76b4b50008ae021664e434c68e53" resname="Suivant">
+        <source>Suivant</source>
+        <target state="new">Suivant</target>
+        <jms:reference-file line="10">views/User/buttons.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,120 @@
+
+{% extends 'PortailBundle:User:afficher.html.twig' %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/default.css')}}" id="style_color">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/headers/default.css')}}" id="style_color-header-1">
+
+
+    <!--[if IE lt 9]>
+    <link href="{{ asset('bundles/portail/css/youtube-video-gallery-legacy-ie.css')}}" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/portfolioSorting/css/sorting.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/colorbox.css')}}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/youtube-video-gallery.css')}}" type="text/css" rel="stylesheet">
+
+
+
+{% endblock %}
+
+{% block title %}{{ 'pending.relations'|trans }}{% endblock %}
+
+
+
+{% block body %}
+    <div class="main-container container-fluid">
+        {% block sidebar %}
+            {% include 'PortailBundle:User:sidebar.html.twig' %}
+        {% endblock %}
+
+
+        {% block content %}
+
+            <div class="main-content">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                    </script>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home home-icon"></i>
+                            <a href="{{ path('home') }}">{{ 'home'|trans }}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('ltm_usr_lister') }}">{{ 'profile.see.all'|trans }}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+                        <li>
+                            <a href="{{ path('ltm_usr_afficher') }}">{{ 'profile.admin'|trans}}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+                        <li class="active">{{ 'pending.relations'|trans }}</li>
+                    </ul><!--.breadcrumb-->
+
+                    <!--div class="nav-search" id="nav-search">
+                        <form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="icon-search nav-search-icon"></i>
+							</span>
+                        </form>
+                    </div--><!--#nav-search-->
+                </div>
+
+                <div class="page-content">
+
+
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <!--PAGE CONTENT BEGINS-->
+
+                            <div class="container">
+
+                                {% if app.user != null and app.user.id != null %}
+                                    <h1> {{ 'pending.relations.friends'|trans }}</h1>
+                                    {%  render(controller('PortailBundle:Relation:listerfriendaccept')) %}
+                                    <h1> {{ 'pending.relations.recommandation'|trans }}</h1>
+                                    {%  render(controller('PortailBundle:Relation:listerrecommandationaccept')) %}
+
+                                {% endif %}
+                            </div>
+
+
+                            <!--PAGE CONTENT ENDS-->
+                        </div><!--/.span-->
+                    </div>
+
+                </div><!--/.page-content-->
+            </div><!--/.main-content-->
+
+        {% endblock %}
+
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+
+{% endblock %}

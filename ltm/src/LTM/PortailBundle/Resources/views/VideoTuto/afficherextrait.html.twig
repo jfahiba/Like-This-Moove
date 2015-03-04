@@ -1,0 +1,80 @@
+
+        <!-- Our Services -->
+        <div class="row-fluid">
+            <div class="headline">
+                <h3>{{ video.title }} <small> - {{video.vues ~ ' ' ~ (video.vues > 1? 'views'|trans  : 'view'|trans )}}</small>
+                    {% if (app != null and app.user != null and (app.user.id == video.author.id or (app.user.id == 50 or app.user.id == 54) ))%}
+                        <a href="{{ path('ltm_video_tuto_modifier', {'slug': video.slug} ) }}"><i class="icon-edit"> </i></a>
+                    {% endif %}
+                </h3>
+            </div>
+            <div class="row-fluid servive-block servive-block-in">
+                <div>
+                    <script type='text/javascript' src="{{ asset('bundles/portail/js/jwplayer.js')}}"></script>
+                    <center>
+                        <div id='mediaspace2'>This text will be replaced</div>
+                        <script type='text/javascript'>
+                            function getId(href){
+                                var id = '';
+                                if (!!href && href.indexOf('www.youtube.com/v/') > 0) {
+                                    id = getBefore(href.split('www.youtube.com/v/')[1], '?')
+                                } else if (!!href && href.indexOf('/embed/') > 0){
+                                    id = getBefore(href.split('/embed/')[1], '?');
+                                } else if (!!href && href.indexOf('?v=') > 0){// this could be version if API call!!
+                                    id = getBefore(href.split('?v=')[1],'&');
+                                } else if (!!href && href.indexOf('video:') > 0){
+                                    id = getBefore(href.split('video:')[1], ':');
+                                } else if (!!href){
+                                    id = href;
+                                }
+                                return id;
+                            }
+
+                            function getBefore(str, before){
+                                if (!!str && str.indexOf(before)){
+                                    str = str.split(before)[0];
+                                }
+                                return str;
+                            }
+
+                            jwplayer('mediaspace2').setup({
+                                'flashplayer': "{{ asset('bundles/portail/js/player.swf')}}",
+                                {% if video.pathExtrait == null %}
+                                'file':  'http://www.youtube.com/v/' + getId("{{ video.url }}") ,
+									{% if video.pathImage != null %}
+										'image': '{{ asset('bundles/portail/uploads/tutos/images/' ~ video.pathImage)}}',
+									{% endif %}
+                                {% else %}
+                                'file': '{{ asset('bundles/portail/uploads/tutos/extraits/' ~ video.pathExtrait )}}'  ,
+									{% if video.pathImage != null %}
+										'image': '{{ asset('bundles/portail/uploads/videos/images/' ~ video.pathImage)}}',
+									{% else %}
+										'image': 'http://placehold.it/700x700&text={{video.author.username}}',
+									{% endif %}
+                                {% endif %}
+                                
+                                'controlbar': 'bottom',
+                                'width': '100%',
+                                'height': '360'
+                            });
+                        </script>
+                    </center>
+                    <br>
+                    <div style="display:inline-flex">
+                        {%  set share = 'share.page'|trans  %}
+                        {%  set team = 'team.ltm'|trans  %}
+                        {{ socialButtons(
+                        {
+                        'facebook': { 'send':true, 'showFaces' : true} ,
+                        'twitter': { 'message':share,'tag':'ltmEvents','via':team } ,
+                        'googleplus': {} } ) }}
+                    </div>
+                </div>
+
+            </div><!--/welcome-block-->
+        </div><!--/row-fluid-->
+		 
+        <!-- Recent Works -->
+         
+
+    </div><!--/span9-->

@@ -1,0 +1,12 @@
+
+<a class="user" href="{{ path('ltm_usr_public' , {'slug' : user.slug}) }}">
+    {% if avatar %}
+        <img class="pull-left" alt="Avatar de {{ user.username }}" id="activityAvatar" src="/{{  user.getAbsolutePath() }}" />
+    {% endif %}
+
+    {#{ (user.firstName == null and  user.lastName == null) ?  user.username :
+    user.firstName ~ ' ' ~ user.lastName }#}{{  user.username }}
+    {% if not avatar %}
+        <img class="" alt="Avatar de {{ user.username }}" id="activityAvatar" src="/{{  user.getAbsolutePath() }}" />
+    {% endif %}
+</a>

@@ -1,0 +1,10 @@
+
+{% extends 'PortailBundle::layout.html.twig' %}
+
+{% block title %}Liste des acteurs{% endblock %}
+
+{% block content %}
+    {% include 'PortailBundle:Acteur:liste.html.twig' with {'acteurs' : acteurs}  %}
+
+    <p><a href="{{ path('myapp_acteur_ajouter') }}">Ajouter un acteur</a><p>
+{% endblock %}

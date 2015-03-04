@@ -1,0 +1,40 @@
+
+{% extends tuto? 'PortailBundle::layouttuto.html.twig' : 'PortailBundle::layout.html.twig' %}
+
+
+{% block title  'payment.title'|trans %}
+
+{% block content %}
+    <div class="reg-page">
+        <!--p>
+            Utiliser ces identifiants:
+            <strong>{{ paypal_usd_testuser_login }}</strong>
+            <strong>{{ paypal_usd_testuser_password }}</strong> pour vous connecter à paypal.
+
+        </p-->
+        <hr />
+        {{ 'for.your.info'|trans }},
+        <ul>
+            <li>1 CAD = {{ cadCredit |number_format(1, '.')  }} {{ 'credits'|trans }} </li>
+            <li>1 USD = {{ usdCredit|number_format(1, '.')  }} {{ 'credits'|trans }} </li>
+            <li>1 EUR = {{ eurCredit |number_format(1, '.') }} {{ 'credits'|trans }} </li>
+        </ul>
+        <hr />
+        {% if errors %}
+            <p>{{ errors }}</p>
+            <hr />
+        {% endif %}
+
+
+        <form method="POST">
+            {{ form_widget(form) }}
+
+            <input type="submit" class="btn btn-info" value="{{ 'pay'|trans }}" />
+        </form>
+
+        <p><a href="{{ path('ltm_usr_credit_historique') }}">{{ 'credit.historic.my'|trans }}</a></p>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

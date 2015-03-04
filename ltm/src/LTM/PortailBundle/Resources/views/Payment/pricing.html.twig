@@ -1,0 +1,421 @@
+
+{% extends 'PortailBundle:User:afficher.html.twig' %}
+
+{% block stylesheets %}
+
+     {{ parent() }}
+
+{% endblock %}
+
+{% block title %}{{ 'pricing.title'|trans }}{% endblock %}
+
+
+
+{% block body %}
+    <div class="main-container container-fluid">
+        {% block sidebar %}
+            {% include 'PortailBundle:User:sidebar.html.twig' %}
+        {% endblock %}
+
+
+        {% block content %}
+
+            <div class="main-content">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                    </script>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home home-icon"></i>
+                            <a href="{{ path('home') }}">{{ 'home'|trans }}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('ltm_usr_lister') }}">{{ 'profile.see.all'|trans }}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+                        <li>
+                            <a href="{{ path('ltm_usr_afficher') }}">{{ 'profile.admin'|trans}}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+                        <li class="active">{{ 'pricing.title'|trans }}</li>
+
+                    </ul><!--.breadcrumb-->
+
+                    <!--div class="nav-search" id="nav-search">
+                        <form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="icon-search nav-search-icon"></i>
+							</span>
+                        </form>
+                    </div--><!--#nav-search-->
+                </div>
+
+                <div class="page-content">
+
+                {%  if user.abonnement != null and user.abonnement.aboStatus == 'Active'%}
+                <p> {{ 'your.account.caracteristics'|trans }} :
+                <table class="table">
+
+
+                    <thead>
+                    <tr>
+                        <th style="width: 12%">{{ 'start.date'|trans }}</th>
+                        <th style="width: 12%">{{ 'end.date'|trans }}</th>
+                        <th>{{ 'name'|trans }}</th>
+                        <th>{{ 'price'|trans }}</th>
+                        <th>{{ 'payment.frequency'|trans }}</th>
+                        <th>{{ 'description'|trans }}</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ user.abonnement.aboStartDate |date('d/m/Y') }}</td>
+                        <td>{{ user.abonnement.aboEndDate |date('d/m/Y') }}</td>
+                        <td>{{ user.category.nom }}</td>
+                        <td>{{ user.abonnement.aboPrice   }}{{ user.abonnement.aboCurrency }}</td>
+                        <td> {{ 'all.the'|trans }} {{ user.abonnement.aboFrequency}} {{ 'month'|trans }}</td>
+                        <td>{{ user.abonnement.aboDesc }}</td>
+
+
+                    </tr>
+
+                    </tbody>
+                </table>
+                </p>
+                <p>
+				{% if user.abonnement.aboCancelHash != null %}
+                    {{ 'change.abo.click.here'|trans }} :  <a href="{{ path ("ltm_paypal_express_checkout_cancel_recurring_payment",
+                {'payum_token' : user.abonnement.aboCancelHash})}}"> {{ 'cancel.previous.abo'|trans }}</a>
+                <strong>{{ 'choose.new.abo'|trans }}.
+                </strong>
+				{% else %}
+                    {{ 'you.can.choose.new.abo'|trans }}.
+				{% endif %}
+				<p>
+                
+
+                </p><br><br>
+                {% else %}
+                    <br><center>
+                    <strong>
+                        {{ 'choose.new.abo.and.pay'|trans }}.
+                    </strong>
+                </center>
+                    <br><br>
+                {% endif %}
+
+
+                <!--div class="page-header position-relative">
+                    <h1>
+                        Table de Pricing
+                        <small>
+                            <i class="icon-double-angle-right"></i>
+                            Amateur &amp; Professionnels
+                        </small>
+                    </h1>
+                </div--><!--/.page-header-->
+
+                <div class="row-fluid">
+                <div class="span12">
+                <!--PAGE CONTENT BEGINS-->
+
+                <div class="row-fluid">
+                <div class="span3 pricing-span-header">
+                    <div class="widget-box transparent">
+                        <div class="widget-header">
+                            <h5 class="bigger lighter">{{ 'advantages'|trans }}</h5>
+                        </div>
+
+
+                        <div class="widget-body">
+                            <div class="widget-main no-padding">
+                                <ul class="unstyled list-striped pricing-table-header">
+                                    <!-- Amateur -->
+                                    <li>{{ 'advantages.li1'|trans }}</li>
+                                    <li>{{ 'advantages.li2'|trans }}</li>
+
+                                    <!-- Semi Pro -->
+                                    <li>{{ 'advantages.li3'|trans }}</li>
+                                    <li>{{ 'advantages.li4'|trans }}</li>
+
+
+                                    <!-- Pro -->
+                                    <li>{{ 'advantages.li5'|trans }} </li>
+                                    <li>{{ 'advantages.li6'|trans }}</li>
+                                    <li>{{ 'advantages.li7'|trans }}</li>
+                                    <li>{{ 'advantages.li8'|trans }}</li>
+                                    <li>{{ 'advantages.li9'|trans }}</li>
+                                    <li>{{ 'advantages.li10'|trans }}</li>
+
+                                    <li>{{ 'advantages.li11'|trans }}</li>
+                                    <li>{{ 'advantages.li12'|trans }}</li>
+                                    <li>{{ 'advantages.li13'|trans }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="span2 pricing-span">
+                    <div class="widget-box pricing-box-small">
+                        <div class="widget-header header-color-grey">
+                            <h5 class="bigger lighter">{{ 'amateur'|trans }}</h5>
+                        </div>
+
+                        <div class="widget-body">
+                            <div class="widget-main no-padding">
+                                <ul class="unstyled list-striped pricing-table">
+                                    <!-- Amateur -->
+                                    <li><i class="icon-ok green"></i></li>
+                                    <li><i class="icon-ok green"></i></li>
+
+                                    <!-- Semi Pro -->
+                                    <li><i class="icon-remove red"></i></li>
+                                    <li><i class="icon-remove red"></i></li>
+
+                                    <!-- Pro -->
+                                    <li><i class="icon-remove red"></i></li>
+                                    <li><i class="icon-remove red"></i></li>
+                                    <li><i class="icon-remove red"></i></li>
+                                    <li><i class="icon-remove red"></i></li>
+                                    <li><i class="icon-remove red"></i></li>
+                                    <li><i class="icon-remove red"></i></li>
+
+                                    <!-- Ecole/Association -->
+                                    <li><i class="icon-remove red"></i></li>
+                                    <!-- Partenaire -->
+                                    <li><i class="icon-remove red"></i></li>
+                                    <li><i class="icon-remove red"></i></li>
+
+                                </ul>
+
+                                <div class="price">
+													<span class="label label-large label-inverse arrowed-in arrowed-in-right">
+														$0
+														<small>/{{ 'month'|trans }}</small>
+													</span>
+                                </div>
+                            </div>
+
+                            {%  if user.abonnement == null or user.abonnement.aboStatus != 'Active'%}
+                            <div>
+                                <a href="{{ path ("ltm_paypal_express_checkout_prepare_recurring_payment_agreement",
+                                {'accounttype' : 'Amateur', 'moovertype' : 'dancer', 'frequency' : 'freq1', 'duration' : 'duration12'}) }}" class="btn btn-block btn-small btn-grey">
+                                    <span>{{ 'valid'|trans }}</span>
+                                </a>
+                            </div>
+                                {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+
+				{% if user.gender != '7' %}
+                    <div class="span2 pricing-span">
+                        <div class="widget-box pricing-box-small">
+                            <div class="widget-header header-color-red3">
+                                <h5 class="bigger lighter">{{ 'semi_pro'|trans }} 1</h5>
+                            </div>
+
+                            <div class="widget-body">
+                                <div class="widget-main no-padding">
+                                    <ul class="unstyled list-striped pricing-table">
+
+                                        <li><i class="icon-ok green"></i></li>
+                                        <li><i class="icon-ok green"></i></li>
+
+                                        <!-- Semi Pro -->
+                                        <li><i class="icon-ok green"></i>5/{{ 'month'|trans }}</li>
+                                        <li><i class="icon-ok green"></i></li>
+
+
+                                        <!-- Pro -->
+                                        <li><i class="icon-ok green"></i>5/{{ 'month'|trans }}</li>
+                                        <li><i class="icon-ok green"></i>2/{{ 'month'|trans }}</li>
+                                        <li><i class="icon-ok green"></i>2/{{ 'month'|trans }}</li>
+                                        <li><i class="icon-remove red"></i></li>
+                                        <li><i class="icon-ok green"></i>1/{{ 'month'|trans }}</li>
+                                        <li><i class="icon-remove red"></i></li>
+
+                                        <!-- Ecole/Association -->
+                                        <li><i class="icon-remove red"></i></li>
+                                        <!-- Partenaire -->
+                                        <li><i class="icon-remove red"></i></li>
+                                        <li><i class="icon-remove red"></i></li>
+
+                                    </ul>
+
+                                    <div class="price">
+													<span class="label label-large label-inverse arrowed-in arrowed-in-right">
+														$7.99
+														<small>/{{ 'month'|trans }}</small>
+													</span>
+                                    </div>
+                                </div>
+
+                                {%  if user.abonnement == null or user.abonnement.aboStatus != 'Active' or user.abonnement.aboCancelHash == null%}
+                                    <div>
+                                        <a href="{{ path ("ltm_paypal_express_checkout_prepare_recurring_payment_agreement",
+                                        {'accounttype' : 'min',
+                                        'moovertype' : (user.abonnement.moovertype == ""? 'dancer' : user.abonnement.moovertype),
+                                        'frequency' : 'freq3', 'duration' : 'duration12'}) }}" class="btn btn-block btn-small btn-danger">
+                                            <span>{{ 'pay'|trans }}</span>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="span2 pricing-span">
+                        <div class="widget-box pricing-box-small">
+                            <div class="widget-header header-color-red3">
+                                <h5 class="bigger lighter">{{ 'semi_pro'|trans }} 2</h5>
+                            </div>
+
+                            <div class="widget-body">
+                                <div class="widget-main no-padding">
+                                    <ul class="unstyled list-striped pricing-table">
+
+                                        <li><i class="icon-ok green"></i></li>
+                                        <li><i class="icon-ok green"></i></li>
+
+                                        <!-- Semi Pro -->
+                                        <li><i class="icon-ok green"></i>5/{{ 'month'|trans }}</li>
+                                        <li><i class="icon-ok green"></i></li>
+
+
+                                        <!-- Pro -->
+                                        <li><i class="icon-ok green"></i>5/{{ 'month'|trans }}</li>
+                                        <li><i class="icon-ok green"></i>2/{{ 'month'|trans }}</li>
+                                        <li><i class="icon-ok green"></i>2/{{ 'month'|trans }}</li>
+                                        <li><i class="icon-remove red"></i></li>
+                                        <li><i class="icon-ok green"></i>1/{{ 'month'|trans }}</li>
+                                        <li><i class="icon-remove red"></i></li>
+
+                                        <!-- Ecole/Association -->
+                                        <li><i class="icon-remove red"></i></li>
+                                        <!-- Partenaire -->
+                                        <li><i class="icon-remove red"></i></li>
+                                        <li><i class="icon-remove red"></i></li>
+
+                                    </ul>
+
+                                    <div class="price">
+													<span class="label label-large label-inverse arrowed-in arrowed-in-right">
+														$7.99
+														<small>/{{ 'month'|trans }}</small>
+													</span>
+                                    </div>
+                                </div>
+
+                                {%  if user.abonnement == null or user.abonnement.aboStatus != 'Active' or user.abonnement.aboCancelHash == null%}
+                                    <div>
+                                        <a href="{{ path ("ltm_paypal_express_checkout_prepare_recurring_payment_agreement",
+                                        {'accounttype' : 'avg',
+                                        'moovertype' : (user.abonnement.moovertype == ""? 'dancer' : user.abonnement.moovertype),
+                                        'frequency' : 'freq3', 'duration' : 'duration12'}) }}" class="btn btn-block btn-small btn-danger">
+                                            <span>{{ 'pay'|trans }}</span>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="span2 pricing-span">
+                    <div class="widget-box pricing-box-small">
+                        <div class="widget-header header-color-orange">
+                            <h5 class="bigger lighter">{{ 'profesional'|trans }}</h5>
+                        </div>
+
+                        <div class="widget-body">
+                            <div class="widget-main no-padding">
+                                <ul class="unstyled list-striped pricing-table">
+
+                                    <li><i class="icon-ok green"></i></li>
+                                    <li><i class="icon-ok green"></i></li>
+
+                                    <!-- Semi Pro -->
+                                    <li><i class="icon-ok green"></i>{{ 'unlimited'|trans }}</li>
+                                    <li><i class="icon-ok green"></i></li>
+
+                                    <!-- Pro -->
+                                    <li><i class="icon-ok green"></i>20/{{ 'month'|trans }}</li>
+                                    <li><i class="icon-ok green"></i>20/{{ 'month'|trans }}</li>
+                                    <li><i class="icon-ok green"></i>20/{{ 'month'|trans }}</li>
+                                    <li><i class="icon-ok green"></i></li>
+                                    <li><i class="icon-ok green"></i>10/{{ 'month'|trans }}</li>
+                                    <li><i class="icon-ok green"></i></li>
+
+                                    <!-- Ecole/Association -->
+                                    <li><i class="icon-remove red"></i></li>
+                                    <!-- Partenaire -->
+                                    <li><i class="icon-ok green"></i>6{{ 'hour'|trans }}</li>
+                                    <li><i class="icon-ok green"></i>2/{{ 'year'|trans }}</li>
+
+                                </ul>
+
+                                <div class="price">
+													<span class="label label-large label-inverse arrowed-in arrowed-in-right">
+														$12.99
+														<small>/{{ 'month'|trans }}</small>
+													</span>
+                                </div>
+                            </div>
+
+            {%  if user.abonnement == null or user.abonnement.aboStatus != 'Active' or user.abonnement.aboCancelHash == null%}
+                            <div>
+                                <a href="{{ path ("ltm_paypal_express_checkout_prepare_recurring_payment_agreement",
+                                {'accounttype' : 'max',
+                                'moovertype' : (user.abonnement.moovertype == ""? 'dancer' : user.abonnement.moovertype),
+                                'frequency' : 'freq3', 'duration' : 'duration12'}) }}" class="btn btn-block btn-small btn-warning">
+                                    <span>{{ 'pay'|trans }}</span>
+                                </a>
+                            </div>
+                {% endif %}
+                        </div>
+                    </div>
+                </div>
+				{% endif  %}
+
+
+                </div><!--PAGE CONTENT ENDS-->
+                </div><!--/.span-->
+                </div><!--/.row-fluid-->
+
+
+                </div><!--/.page-content-->
+            </div><!--/.main-content-->
+
+        {% endblock %}
+
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}
+{% block javascripts %}
+ {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+
+{% endblock %}

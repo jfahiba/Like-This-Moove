@@ -1,0 +1,190 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: jfahiba
+ * Date: 25/06/2014
+ * Time: 23:31
+ */
+
+namespace LTM\PortailBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ */
+class RelationShip
+{
+
+    /**
+     * @ORM\GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="LTM\PortailBundle\Entity\CRelation")
+     * @Assert\NotBlank()
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="LTM\PortailBundle\Entity\User")
+     */
+    private $star;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="LTM\PortailBundle\Entity\User")
+     */
+    private $follower;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $creationDate;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->star = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->follower = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return Relation
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * Add category
+     *
+     * @param \LTM\PortailBundle\Entity\CRelation $category
+     * @return Relation
+     */
+    public function addCategory(\LTM\PortailBundle\Entity\CRelation $category)
+    {
+        $this->category[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \LTM\PortailBundle\Entity\CRelation $category
+     */
+    public function removeCategory(\LTM\PortailBundle\Entity\CRelation $category)
+    {
+        $this->category->removeElement($category);
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Add star
+     *
+     * @param \LTM\PortailBundle\Entity\User $star
+     * @return Relation
+     */
+    public function addStar(\LTM\PortailBundle\Entity\User $star)
+    {
+        $this->star[] = $star;
+
+        return $this;
+    }
+
+    /**
+     * Remove star
+     *
+     * @param \LTM\PortailBundle\Entity\User $star
+     */
+    public function removeStar(\LTM\PortailBundle\Entity\User $star)
+    {
+        $this->star->removeElement($star);
+    }
+
+    /**
+     * Get star
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStar()
+    {
+        return $this->star;
+    }
+
+    /**
+     * Add follower
+     *
+     * @param \LTM\PortailBundle\Entity\User $follower
+     * @return Relation
+     */
+    public function addFollower(\LTM\PortailBundle\Entity\User $follower)
+    {
+        $this->follower[] = $follower;
+
+        return $this;
+    }
+
+    /**
+     * Remove follower
+     *
+     * @param \LTM\PortailBundle\Entity\User $follower
+     */
+    public function removeFollower(\LTM\PortailBundle\Entity\User $follower)
+    {
+        $this->follower->removeElement($follower);
+    }
+
+    /**
+     * Get follower
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFollower()
+    {
+        return $this->follower;
+    }
+}

@@ -1,0 +1,71 @@
+{% extends 'PortailBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+
+    <!-- CSS Global Compulsory-->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/bootstrap/css/bootstrap.min.css')}}" type='text/css'>
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/style.css')}}" type='text/css'>
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/headers/header1.css')}}" type='text/css'>
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/bootstrap/css/bootstrap-responsive.min.css')}}" type='text/css'>
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/style_responsive.css')}}" type='text/css'>
+
+    <!-- CSS Implementing Plugins -->
+    <link href="{{ asset('bundles/portail/plugins/fancybox/source/jquery.fancybox.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/portail/plugins/bxslider/jquery.bxslider.css')}}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/font-awesome/css/font-awesome.css')}}" type='text/css'>
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/flexslider/flexslider.css')}}" type="text/css" media="screen">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/parallax-slider/css/parallax-slider.css')}}" type="text/css">
+
+
+
+    <!-- CSS Theme -->
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/default.css')}}" id="style_color" type='text/css'>
+
+
+
+{% endblock %}
+{% block favicon %}
+    <link rel="shortcut icon" href="{{ asset('bundles/portail/favicon.ico')}}">
+
+{% endblock %}
+
+
+{% block header %}
+    <!--=== Header ===-->
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="{{ path('home_tuto') }}"><img id="logo-header" src="{{ asset('bundles/portail/img/logo1-default.png')}}" alt="Logo"></a>
+            </div><!-- /logo -->
+
+            <!-- Menu -->
+            <div class="navbar">
+                <div class="navbar-inner">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a><!-- /nav-collapse -->
+
+                    <div class="nav-collapse collapse">
+                        {{ knp_menu_render('PortailBundle:MenuBuilder:tutoMenu', {'currentClass': 'active', 'template': 'PortailBundle:Menu:knp_menu.html.twig'}) }}
+
+                        <div class="search-open">
+                            <div class="input-append">
+                                <form>
+                                    <input type="text" class="span3" placeholder="Search" />
+                                    <button type="submit" class="btn-u">Go</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- /nav-collapse -->
+                </div><!-- /navbar-inner -->
+            </div><!-- /navbar -->
+        </div><!-- /container -->
+    </div><!--/header -->
+    <!--=== End Header ===-->
+{% endblock %}
+

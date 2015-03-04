@@ -1,0 +1,103 @@
+
+{% extends 'PortailBundle:User:afficher.html.twig' %}
+
+{% block stylesheets %}
+
+     {{ parent() }}
+
+{% endblock %}
+
+{% block title %}{{ 'tuto.dropzone'|trans}}{% endblock %}
+
+
+
+{% block body %}
+    <div class="main-container container-fluid">
+        {% block sidebar %}
+            {% include 'PortailBundle:User:sidebar.html.twig' %}
+        {% endblock %}
+
+
+        {% block content %}
+
+            <div class="main-content">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                    </script>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home home-icon"></i>
+                            <a href="{{ path('home') }}">{{ 'back.to.ltm'|trans}}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('ltm_usr_lister') }}">{{ 'profile.see.all'|trans}}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+						<li>
+                            <a href="{{ path('ltm_usr_afficher') }}">{{ 'profile.admin'|trans}}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+                        <li class="active">{{ 'tuto.dropzone'|trans}}</li>
+                    </ul><!--.breadcrumb-->
+
+                    <!--div class="nav-search" id="nav-search">
+                        <form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="icon-search nav-search-icon"></i>
+							</span>
+                        </form>
+                    </div--><!--#nav-search-->
+                </div>
+
+                <div class="page-content">
+
+                    <script type="text/javascript" src="https://rawgithub.com/enyo/dropzone/master/downloads/dropzone.js"></script>
+
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <!--PAGE CONTENT BEGINS-->
+
+                            <div id="dropzone">
+                                <form class="dropzone dz-clickable" action="{{ oneup_uploader_endpoint('tutos') }}">
+
+                                    <div class="dz-default dz-message">
+                                        <span>
+                                            <span class="bigger-150 bolder">
+                                                <i class="icon-caret-right red"></i>
+                                                {{ 'drop.tuto'|trans}} <br></span> {{ 'to.upload.them'|trans}} 				<br>
+                                            <span class="smaller-80 grey">{{ 'or.click.here'|trans}}</span> <br>
+                                            <i class="upload-icon icon-cloud-upload blue icon-3x"></i></span></div></form>
+                            </div><!--PAGE CONTENT ENDS-->
+                        </div><!--/.span-->
+                    </div>
+
+                </div><!--/.page-content-->
+            </div><!--/.main-content-->
+
+        {% endblock %}
+
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}
+{% block javascripts %}
+ {{ parent() }}
+
+{% endblock %}

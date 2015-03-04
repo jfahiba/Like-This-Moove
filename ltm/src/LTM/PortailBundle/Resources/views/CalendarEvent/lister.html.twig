@@ -1,0 +1,251 @@
+
+{% extends 'PortailBundle:Default:index.html.twig' %}
+
+{% block stylesheets %}
+
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/default.css')}}" id="style_color">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/headers/default.css')}}" id="style_color-header-1">
+
+
+
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/portfolioSorting/css/sorting.css')}}">
+
+    {{ parent() }}
+
+{% endblock %}
+
+
+
+{% block title %}{{ 'events.list'|trans}}{% endblock %}
+{% block meta_d %}{{ 'events.list'|trans}}{% endblock %}
+{% block meta_k %}{{ 'events.list'|trans|replace({' ' : ', ' }) }}{% endblock %}
+
+{% block content %}
+    {% block content_breadcrumbs %}
+        <div class="breadcrumbs margin-bottom-20">
+            <div class="container">
+                <h1 class="color-red pull-left"><a href="#">{{ 'events.list'|trans}} </a></h1><br>
+
+                <ul class="pull-right breadcrumb">
+                    <li><a href="{{ path('home_tuto') }}">{{ 'home'|trans}}</a> <span class="divider">/</span></li>
+
+                    <h1 class="color-red pull-left"></h1>
+                    <li class="active">{{ 'events.all'|trans}}</li>
+                </ul>
+            </div><!--/container-->
+
+            <div class="container">
+
+                <form id="user-form" class="form-horizontal" name="filterusers" method="post"  enctype="multipart/form-data">
+
+                    <div class="row">
+
+                        <div class="control-group span4">
+                            <label class="control-label" for="form-field-username">{{ 'keyword'|trans}}</label>
+
+                            <div class="controls">
+                                <input type="text" class="form-control" id="form-field-username" placeholder="{{ 'title.or.description'|trans}}" value="{{ title }}" name="title"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group span4">
+                            <label class="control-label" for="form-field-username">{{ 'author'|trans}}</label>
+
+                            <div class="controls">
+                                <input type="text" {{ slug != null? 'readonly' : '' }} class="form-control" id="form-field-username" placeholder="{{ 'first.last.alias'|trans}}" value="{{ username }}" name="username"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group span4">
+                            <label class="control-label" for="form-field-username">{{ 'style'|trans}}</label>
+
+                            <div class="controls ">
+
+                                <select name="styledanse" class="form-control" {{ styled != null? 'disabled' : '' }}>
+                                    <option value=""></option>
+                                    {% for style in allstyles %}
+                                        <option {{ styledanse == style.nom ? 'selected="selected"' : '' }}>{{ style.nom }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="control-group span4">
+
+                            <label class="control-label" for="form-field-superior-date">{{ 'starts.after'|trans}}</label>
+
+                            <div class="controls">
+                                <div class="input-append">
+                                    <input class="input-small date-picker-2 form-control"
+                                           id="form-field-superior-date"
+                                           type="text"
+                                           data-date-format="dd/mm/yyyy"
+                                           placeholder="{{ 'day.month.year'|trans}}"
+                                           value="{{ startDateSuperior }}" name="startDateSuperior"/>
+                        <span class="add-on">
+                            <i class="icon-calendar"></i>
+                        </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- div class="control-group span4">
+
+                            <label class="control-label" for="form-field-inferior-date">{{ 'ends.before'|trans}}</label>
+
+                            <div class="controls">
+                                <div class="input-append">
+                                    <input class="input-small date-picker-3 form-control"
+                                           id="form-field-inferior-date"
+                                           type="text"
+                                           data-date-format="dd/mm/yyyy"
+                                           placeholder="{{ 'day.month.year'|trans}}"
+                                           value="{{ endDateInferior }}" name="endDateInferior"/>
+                        <span class="add-on">
+                            <i class="icon-calendar"></i>
+                        </span>
+                                </div>
+                            </div>
+
+                        </div-->
+
+                        <!--div class="control-group span4">
+                            <label class="control-label" for="form-field-username">{{ 'category'|trans}}</label>
+
+                            <div class="controls ">
+
+                                <select name="categoryevent" class="form-control" {{ categoryev != null? 'disabled' : '' }}>
+                                    <option value=""></option>
+                                    {% for eventC in allcategoryevents %}
+                                        <option {{ categoryevent == eventC.nom ? 'selected="selected"' : '' }}">{{ eventC.nom }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div>
+                        </div-->
+						<div class="control-group span4">
+							<label class="control-label" for="form-field-username">{{ 'localisation'|trans}}</label>
+
+							<div class="controls">
+                                    <input type="text" class="form-control" id="form-field-username" placeholder="{{ 'address.city.country'|trans}}" value="{{ place }}" name="place"/>
+							</div>
+						</div>
+						
+						
+
+                    </div>
+
+
+                    <center>
+                        <input class="btn btn-danger" type="submit" name="submit" value="{{ 'search'|trans}}">
+
+                        &nbsp; &nbsp; &nbsp;
+                        <a class="btn" href="{{ path('ltm_calendarevent_lister') }}" onclick="#">
+                            <i class="icon-undo bigger-110"></i>
+                            {{ 'delete.all.fields'|trans}}
+                        </a>
+
+                    </center>
+                </form></div>
+
+        </div>
+    {% endblock %}
+
+    <div class="container">
+        <div class="row-fluid gallery">
+
+            <div id="w">
+                <!--div id="sort" class="sort">
+                    <ul class="unstyled inline">
+                        <li><a class="all selected" href="#">Toutes</a></li>
+                        {% set authors = [] %}
+                        {% for v in calendarevents %}
+                            {% set author = v.author == null? "" : v.author.getUserName()  %}
+
+                            {% if  v.author != null and author not in authors  %}
+                                <li><a class="{{author}}" href="#">{{author}}</a></li>
+                                {% set authors = [author]|merge(authors) %}
+
+                            {% endif %}
+
+                        {% endfor %}
+                    </ul>
+                </div-->
+
+                <center>
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination, null, {
+                        'title' : title ,
+                        'categoryevent' : categoryevent ,
+                        'username' : username ,
+                        'endDateInferior' : endDateInferior,
+                        'startDateSuperior' : startDateSuperior,
+                        'styledanse' : styledanse}
+                        ) }}
+                    </div>
+                </center>
+
+                {% include 'PortailBundle:CalendarEvent:listeportfolio.html.twig' with {'calendarevents' : calendarevents, 'pagination' : pagination}  %}
+
+                <center>
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination, null, {
+                        'title' : title ,
+                        'categoryevent' : categoryevent ,
+                        'username' : username ,
+                        'endDateInferior' : endDateInferior,
+                        'startDateSuperior' : startDateSuperior,
+                        'styledanse' : styledanse}
+                        ) }}
+                    </div>
+                </center>
+
+                {% if app.user != null and app.user.id != null%}
+				{% if (app.user.category.nom == 'Semi Pro' or app.user.category.nom == 'Pro' or app.user.category.nom ==  'Pro (Essai gratuit 14 jours)' ) and app.user.gender != '7' %}
+                    <center>
+                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                            {{ 'event.add'|trans}}
+                        </button>
+
+                        <div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" style="display: none;">
+
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="w">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ 'close'|trans}}</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">{{ 'event.add'|trans}}</h4>
+                                    </div>
+
+                                    <iframe src="{{ path('ltm_calendarevent_ajouter') }}" style="overflow-x: hidden;" width="570" height="680" marginwidth="5" marginheight="5" ></iframe>
+
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+					{% endif %}
+                    {% endif %}
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+

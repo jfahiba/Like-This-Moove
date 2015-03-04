@@ -1,0 +1,87 @@
+parameters:
+#    blog.example.class: LTM\PortailBundle\Example
+
+
+services:
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+    authentication_handler:
+        class: LTM\PortailBundle\Handler\AuthenticationHandler
+        calls:
+            - [ setContainer, [ @service_container ] ]
+    logout_handler:
+        class: LTM\PortailBundle\Handler\LogoutHandler
+        arguments:  [@security.context]
+        calls:
+            - [ setContainer, [ @service_container ] ]
+    ltm.socialBarHelper:
+        class : LTM\PortailBundle\Templating\Helper\SocialBarHelper
+        tags :
+            - {name : 'templating.helper', alias : 'social-buttons'}
+        arguments : [ @templating ]
+
+    twig.extension.ltm_pending_info:
+        class: LTM\PortailBundle\Twig\Extensions\LTMPendingInfo
+        tags:
+            - { name: 'twig.extension' }
+        arguments : [ @service_container, @security.context ]
+    twig.extension.acme_social_bar:
+        class: LTM\PortailBundle\Twig\Extensions\LTMTwigSocialBar
+        tags:
+            - { name: 'twig.extension' }
+        arguments : [ @service_container ]
+    ltm.upload_listener:
+        class: LTM\PortailBundle\EventListener\UploadListener
+        arguments : [@security.context, @doctrine, @spy_timeline.action_manager]
+        tags:
+            - { name : 'kernel.event_listener', event : 'oneup_uploader.post_persist', method : 'onUpload' }
+    ltm.custom_namer:
+        class: LTM\PortailBundle\EventListener\LTMOneupNamer
+
+    ltm.payment.payum.extension.store_notification:
+        class: LTM\PortailBundle\Payum\Extension\StoreNotificationExtension
+        arguments:
+            - @doctrine
+
+    ltm.payment.payum.action.store_notification:
+        class: LTM\PortailBundle\Payum\Action\StoreNotificationAction
+        arguments:
+            - @doctrine
+
+    ltm.payment.payum.api.factory:
+        class: LTM\PortailBundle\Payum\Api\Factory
+        arguments:
+            - @service_container
+
+    ltm.payment.payum.paypal_express_checkout_api:
+        class: Payum\Paypal\ExpressCheckout\Nvp\Api
+        factory_service: ltm.payment.payum.api.factory
+        factory_method: createPaypalExpressCheckoutApi
+    ltm.form.flow.createUser:
+        class: LTM\PortailBundle\Form\CreateUserFlow
+        parent: craue.form.flow
+        scope: request
+        calls:
+            - [ setFormType, [ @ltm.form.createUser ] ]
+    ltm.form.createUser:
+        class: LTM\PortailBundle\Form\UserForm
+        tag:
+          - {name : 'form.type', alias : 'user' }
+    ltm.action_spread:
+        class: LTM\PortailBundle\EventListener\LTMSpread
+        arguments : [@security.context, @doctrine]
+        tags:
+            - { name : 'spy_timeline.spread' }
+    ltm.calendar_listener:
+        class: LTM\PortailBundle\EventListener\CalendarEventListener
+        arguments :  [@doctrine.orm.entity_manager, @service_container, @security.context]
+        tags :
+            - { name : 'kernel.event_listener',  event: 'calendar.load_events', method: 'loadEvents'}
+
+    ltm_message.authorizer:
+        class: LTM\PortailBundle\Handler\MessageAuthorizer
+    fos_user.user_to_username_transformer:
+        class: LTM\PortailBundle\Handler\LTMUserToUsernameTransformer
+        arguments :  [@doctrine.orm.entity_manager]

@@ -1,0 +1,169 @@
+ <style>			  
+.profile-activity {
+	padding: 10px 4px;
+	border-bottom: 1px dotted #d0d8e0;
+	position: relative;
+	border-left: 1px dotted #FFF;
+	border-right: 1px dotted #FFF
+}
+.profile-activity:first-child {
+	border-top: 1px dotted transparent
+}
+.profile-activity: first-child: hover {
+	border-top-color: #d0d8e0
+}
+.profile-activity:hover {
+	background-color: #f4f9fd;
+	border-left: 1px dotted #d0d8e0;
+	border-right: 1px dotted #d0d8e0
+}
+.profile-activity img {
+	border: 2px solid #c9d6e5;
+	border-radius: 100%;
+	max-width: 36px;
+	margin-right: 10px;
+	margin-left: 0;
+	box-shadow: none
+}
+.profile-activity .thumbicon {
+	background-color: #74abd7;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	color: #FFF;
+	font-size: 18px;
+	text-align: center;
+	line-height: 40px;
+	margin-right: 10px;
+	margin-left: 0;
+	text-shadow: none!important
+}
+.profile-activity .time {
+	display: block;
+	margin-top: 4px;
+	color: #777
+}
+.profile-activity a.user {
+	font-weight: bold;
+	color: #9585bf
+}
+.profile-activity .tools {
+	position: absolute;
+	right: 12px;
+	bottom: 8px;
+	display: none
+}
+.profile-activity:hover .tools {
+	display: block
+}
+.bigger-125 {
+    font-size: 125%;
+}
+[class*=" icon-"], [class^="icon-"] {
+    display: inline-block;
+    text-align: center;
+}
+.red {
+    color: #dd5a43 !important;
+}
+.action-buttons a {
+    display: inline-block;
+    margin: 0 2px;
+    opacity: 0.85;
+    transition: all 0.1s ease 0s;	
+    color: #08c;
+    text-decoration: none;
+}
+</style>
+				  
+{% for action in timelines %}
+
+    <div class="profile-activity">
+        <div>
+
+            {% set subject = action.getComponent('subject') %}
+            {% set directComplement = action.getComponent('directComplement') %}
+            {% set inverse = action.getComponent('inverse') %}
+            {% set payante = action.getComponent('payante') %}                        
+            {% set slug = action.getComponent('slug') %}
+
+            {%  render(controller('PortailBundle:Activity:userActivityDetails', {'slug' : subject.identifier, 'avatar' : true})) %}
+
+            {% if action.verb == 'Recommandation' %}
+                {{ inverse? ' ' ~ 'accepted.recommandation.of'|trans  ~ ' ' :
+                            ' ' ~ 'sent.recommandation.to'|trans ~ ' '}} {%  render(controller('PortailBundle:Activity:userActivityDetails', {'slug' : slug})) %}.
+            {% elseif action.verb == 'Amitie'%}
+                {{ inverse?
+                ' ' ~ 'accepted.friendask.of'|trans ~ ' ' :
+                ' ' ~ 'sent.friendask.to'|trans ~' '  }} {%  render(controller('PortailBundle:Activity:userActivityDetails', {'slug' : slug})) %}.
+            {% elseif action.verb == 'Fan'%}
+                {{ ' ' ~ 'is.following'|trans ~ ' '  }} {%  render(controller('PortailBundle:Activity:userActivityDetails', {'slug' : slug})) %}.
+            {% elseif action.verb == 'ajouter une image'%}
+                {{ ' ' ~ 'added.new.image'|trans ~ ' '  }}  <img  alt="image" src="/{{  directComplement}}"/>
+			{% elseif action.verb == 'ajouter une annonce' %}
+                {{ ' ' ~ 'added.new.ad'|trans ~ ' '  }}
+                <a  href="{{ path('ltm_advertisement_afficher', {'slug': slug} ) }}">
+                    {{ 'ad.see'|trans }}
+                    <img   alt="image" src="/{{  directComplement}}"/>
+                </a>
+            {% elseif action.verb == 'ajouter une video'%}
+
+                {% if payante %}
+                    {{ ' ' ~ 'added.new.tuto'|trans ~ ' : '  }}<a  href="{{ path('ltm_video_tuto_afficher', {'slug' : slug, 'id': directComplement | urlencrypt} ) }}">
+                    {{ 'click.pay.see'|trans}}
+                    <img  alt="image" src="http://img.youtube.com/vi/x/0.jpg"/>
+                </a>
+				{% else %}
+                    {{ ' ' ~ 'added.new.video'|trans ~ ' : '  }}<a  href="{{ path('ltm_video_afficher', {'slug' : slug, 'id': directComplement | urlencrypt} ) }}">
+                    {{ 'video.see'|trans}}
+                    <img  alt="image" src="http://img.youtube.com/vi/x/0.jpg"/>
+                </a>
+				{% endif %}
+				
+            {% elseif action.verb == 'achete une video'%}
+
+                {{ ' ' ~ 'bought.new.tuto'|trans ~ ' : '  }}
+                <a  href="{{ path('ltm_video_tuto_afficher', {'slug' : slug, 'id': directComplement | urlencrypt} ) }}">
+                    {{ payante? 'click.pay.see'|trans : 'video.see'|trans }}
+                    <img  alt="image" src="http://img.youtube.com/vi/x/0.jpg"/>
+                </a>
+            {% elseif action.verb == 'a cree un evenement'%}
+                {{ ' ' ~ 'created.event'|trans ~ ': ' }}
+                <a  href="{{ path('ltm_calendarevent_afficher', {'slug': slug} ) }}">
+                    {{ 'event.see'|trans }}
+                    <img  alt="image" src="/{{ directComplement }}"/>
+                </a>
+            {% elseif  action.verb == 'participe a un evenement'%}
+                {{ ' ' ~ 'take.part.event'|trans ~ ': ' }}
+                <a  href="{{ path('ltm_calendarevent_afficher', {'slug': slug} ) }}">
+                    {{ 'event.see'|trans }}
+                    <img  alt="image" src="/{{ directComplement }}"/>
+                </a>
+            {% endif%}
+             <div class="time">
+                <i class="icon-time bigger-110"></i>
+                {{ action.createdAt| date ('d/m/Y H:i') }}
+            </div>
+        </div>
+		{% if (app != null and app.user != null and app.user.id == user.id)%}
+        <div class="tools action-buttons" style="cursor: pointer">
+            <a class="invisible {{ action.id }}" href="{{ path ('ltm_activity_supprimer' , {'slug' : user.slug, 'idAction' : action.id}) }}"></a>
+            <a id="removeLink" class="red"
+                    onclick="callAjax({{ action.id }});">
+                <i class="icon-remove bigger-125" ></i>
+            </a>
+        </div>
+		{% endif %}
+    </div>
+
+
+{% endfor %}
+<script type="application/javascript">
+    function callAjax(id) {
+        action = $('.invisible.'+id);
+        action.parent().parent().hide();
+        $.get(action.attr('href'), function (data) { /*alert(data.message)*/})
+    }
+</script>
+

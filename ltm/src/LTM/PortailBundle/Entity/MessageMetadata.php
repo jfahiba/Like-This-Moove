@@ -1,0 +1,129 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ralphjohnson
+ * Date: 8/29/14
+ * Time: 2:20 PM
+ */
+
+namespace LTM\PortailBundle\Entity;
+
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\MessageBundle\Entity\MessageMetadata as BaseMessageMetadata;
+use FOS\MessageBundle\Model\MessageInterface;
+use FOS\MessageBundle\Model\ParticipantInterface;
+
+/**
+ * @ORM\Entity
+ */
+class MessageMetadata extends BaseMessageMetadata
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(
+     *   targetEntity="LTM\PortailBundle\Entity\Message",
+     *   inversedBy="metadata"
+     * )
+     * @var \FOS\MessageBundle\Model\MessageInterface
+     */
+    protected $message;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="LTM\PortailBundle\Entity\User")
+     * @var \FOS\MessageBundle\Model\ParticipantInterface
+     */
+    protected $participant;
+
+     
+
+    /**
+     * @ORM\Column(name="is_read", type="boolean")
+     */
+    protected $isRead = false;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set message
+     *
+     * @param \LTM\PortailBundle\Entity\Message $message
+     * @return MessageMetadata
+     */
+    public function setMessage(MessageInterface $message = null)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return \LTM\PortailBundle\Entity\Message 
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set participant
+     *
+     * @param \LTM\PortailBundle\Entity\User $participant
+     * @return MessageMetadata
+     */
+    public function setParticipant(ParticipantInterface $participant = null)
+    {
+        $this->participant = $participant;
+
+        return $this;
+    }
+
+    /**
+     * Get participant
+     *
+     * @return \LTM\PortailBundle\Entity\User 
+     */
+    public function getParticipant()
+    {
+        return $this->participant;
+    }
+
+    /**
+     * Set isRead
+     *
+     * @param boolean $isRead
+     * @return MessageMetadata
+     */
+    public function setIsRead($isRead)
+    {
+        $this->isRead = $isRead;
+
+        return $this;
+    }
+
+    /**
+     * Get isRead
+     *
+     * @return boolean 
+     */
+    public function getIsRead()
+    {
+        return $this->isRead;
+    }
+}

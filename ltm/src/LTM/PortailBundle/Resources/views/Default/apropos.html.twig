@@ -1,0 +1,105 @@
+{% extends 'PortailBundle::layout.html.twig' %}
+
+{% block javascripts %}
+
+
+    <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/modernizr.custom.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/back-to-top.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/flexslider/jquery.flexslider-min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+
+
+    <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js')}}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    <!--script type="text/javascript" src=".{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js')}}"></script-->
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/fullcalendar.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/plugins/bxslider/jquery.bxslider.js')}}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/app.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/pages/index.js')}}"></script>
+
+    
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery.colorbox-min.js')}}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+            App.initSliders();
+            Index.initRevolutionSlider();
+        });
+    </script>
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/portail/js/respond.js')}}"></script>
+    <![endif]-->
+
+
+{% endblock %}
+
+{% block content %}
+
+
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs margin-bottom-40">
+        <div class="container">
+            <h1 class="color-green pull-left">{{ 'ltm'|trans}}</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="{{ path('home') }}">{{ 'home'|trans}}</a> <span class="divider">/</span></li>
+                <li class="active">{{ 'About'|trans}}</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+
+
+
+
+    <!--=== Content Part ===-->
+    <div class="container">
+
+
+        <div class="row-fluid margin-bottom-30">
+            <div class="span6">
+                <p>Fondé en 2008, Likethismoove est le réseau social en ligne de la communauté de la danse tant en Amérique du nord, qu’à l’international. Il regroupe en un seul site danseurs, chorégraphes, professeurs de danse, agences de casting, écoles de danse, et passionnés de la danse. Le site héberge plus de 2000 vidéo illustrant les danseurs à l’œuvre.</p>
+                <p> Likethismoove offre une vitrine aux artistes pour se faire connaître, échanger avec d’autres membres et se tenir à l’affût des événements de la communauté. En rejoignant Likethismoove, il est possible de créer son profil, de diffuser ses vidéo, de mettre en ligne des tutoriels, de repérer les écoles de danse selon la région et d’entrer en contact avec des agences de casting du milieu. Likethismoove offre différents forfaits à ses membres, veuillez cliquer ici pour plus de détails.            </p>
+                <p>Le site offre aux agences de casting une vitrine pour diffuser des offres d’emploi/casting et une plate-forme pour entrer en contact avec un vaste répertoire de danseurs professionnels. Likethismoove offre aux écoles de danse la possibilité d’annoncer leur offre de cours en ligne, en plus de louer leurs locaux aux membres de la communauté à des tarifs préférentiels. De plus, le site permettra sous peu aux écoles de gérer de façon simple et directe leurs communications avec leurs élèves.
+
+                    Likethismoove est le premier site à offrir à ses membres une plate-forme de diffusion de leurs tutoriels de danse. Ainsi, peu importe l’endroit de résidence du danseur, les apprentis peuvent acheter à un coût minime un tutoriel de danse. </p>
+                <p>Tout danseur expérimenté est éligible à diffuser ses tutoriels, et tout membre du site Likethismoove a la possibilité de les acheter. Un extrait du tutoriel est disponible à l’acheteur avant l’achat.
+
+                    Likethismoove organise à chaque année des événements permettant aux artistes du milieu de performer et d’accroître leur visibilité au sein de la communauté. Lors de ces événements, des danseurs professionnels de différents pays sont invités, favorisant ainsi un réseautage international.</p>
+                <p> Likethismoove offre également sa collection de vêtements et accessoires de danse, en vente sur son site.
+
+
+                    Une large de gamme de services est offerte sur Likethismoove.com : </p>
+                <ul class="unstyled">
+                    <li><i class="icon-ok color-green"></i> Répertoire d’artistes professionnel et semi-professionnel (chorégraphe, danseurs, promoteurs, agence de placement, école de danse) </li>
+                    <li><i class="icon-ok color-green"></i> Banque de tutoriels professionnels </li>
+                    <li><i class="icon-ok color-green"></i> Offre d’emploi et d’auditions </li>
+                    <li><i class="icon-ok color-green"></i> Publicité ciblée </li>
+                    <li><i class="icon-ok color-green"></i> Vente de vêtements et d’accessoires de danse spécialisés </li>
+                </ul><br />
+
+                <!-- Blockquotes -->
+                <blockquote>
+                    <p>Avoir tous les outils pour mieux réussir.</p>
+                    <small>Team Likethismoover</small>            </blockquote>
+            </div>
+            <div class="span6">
+                <iframe src="http://player.vimeo.com/video/26318144" width="100%" height="327" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            </div>
+        </div><!--/row-fluid-->
+
+        <!-- //End Recent Works -->
+
+
+    </div><!--/container-->
+    <!-- End Content Part -->
+
+	<!-- Important garder cette declaration ici pour Video Tuto et les menus-->
+	<script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+{% endblock %}

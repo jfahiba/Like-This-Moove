@@ -1,0 +1,111 @@
+{% extends 'PortailBundle:Message:afficher.html.twig' %}
+
+{% block fos_message_content %}
+
+{% for message in thread.messages %}
+
+    {%  if loop.index  == 1 %}
+        <br><span class="blue bigger-200">{{ 'subject'|trans}}: {{ thread.subject }}</span><br>
+    {% endif %}
+    <div class="space-4"></div>
+
+    <div class="message-content" id="id-message-content">
+        <div class="message-header clearfix">
+            <div class="pull-left">
+
+                <a href="{{ path ('ltm_usr_public', { 'slug' : message.sender.slug}) }}">
+                <img class="middle" alt="Avatar de {{ message.sender.username }}" src="/{{  message.sender.getAbsolutePath() }}" width="32" />
+                </a>
+                &nbsp;
+                <a href="#" class="sender">{{ message.sender.username}}</a>
+                &nbsp;
+                <i class="icon-time bigger-110 orange middle"></i>
+                <span class="time">{{ message.createdAt|date}}</span>
+            </div>
+            <div class="action-buttons pull-right">
+
+
+                {% if fos_message_can_delete_thread(thread) %}
+                    {% if fos_message_deleted_by_participant(thread) %}
+                        {% set formAction %}{{ url('ltm_message_thread_undelete', {'threadId':thread.id, 'slug': thread.slug}) }}{% endset %}
+                        {% set submitValue %}{% trans from 'FOSMessageBundle' %}undelete{% endtrans %}{% endset %}
+
+                         <form action="{{ formAction }}" method="post">
+                        <button type="submit"  style="background: none; border: none;" >
+                            <span> {{ 'restore'|trans}}</span>
+                            <i class="icon-reply green icon-only bigger-130"></i>
+                        </button>
+                         </form>
+                    {% else %}
+                        {% set formAction %}{{ url('ltm_message_thread_delete', {'threadId':thread.id, 'slug': thread.slug}) }}{% endset %}
+                        {% set submitValue %}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}{% endset %}
+
+                        <form action="{{ formAction }}" method="post">
+                        <button type="submit"  style="background: none; border: none;" >
+                            <i class="icon-trash red icon-only bigger-130"></i>
+                        </button>
+                        </form>
+                    {% endif %}
+
+
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="hr hr-double"></div>
+        <div class="message-body">
+            <p>
+                {{ message.body }}
+            </p>
+        </div>
+
+    </div><!--/.message-content-->
+
+{% endfor %}
+
+<!--h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3-->
+
+<form action="{{ url('ltm_message_thread_view', {'threadId':thread.id, 'slug': thread.slug}) }}" method="post" class="form-horizontal message-form" >
+    <div class="control-group">
+        <label class="control-label required" for="message_body" >
+            <span class="inline space-16 hidden-480"></span>
+            {{ 'reply'|trans}}:
+        </label>
+
+        <div class="controls">
+            <textarea id="message_body" name="message[body]" required="required"  rows="5" style="width: 100%;"></textarea>
+
+        </div>
+    </div>
+    <div id="id-message-new-navbar" class="message-navbar align-center clearfix">
+        <div class="message-bar">
+            <div class="message-toolbar">
+
+                {{ form_widget(form._token) }}
+            </div>
+        </div>
+
+        <div class="message-item-bar">
+            <div class="messagebar-item-left">
+                <a onclick="window.history.back()" class=" no-hover-underline">
+                    <i class="icon-arrow-left blue bigger-110 middle"></i>
+                    <b class="middle bigger-110">{{ 'back'|trans}}</b>
+                </a>
+            </div>
+
+
+
+            <span class="inline messagebar-item-right">
+
+                    <button type="submit" class="btn btn-small btn-primary no-border">
+                        <span class="bigger-110">{{ 'send'|trans}}</span>
+
+                        <i class="icon-arrow-right icon-on-right"></i>
+                    </button>
+                </span>
+
+        </div>
+    </div>
+</form>
+
+{% endblock %}

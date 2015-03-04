@@ -1,0 +1,281 @@
+<div class="">
+
+{% if (user.category.nom == 'Semi Pro' or user.category.nom == 'Pro' or user.category.nom ==  'Pro (Essai gratuit 14 jours)' ) and user.gender != '7' %}
+<div class="center">
+											<span class="btn btn-app btn-small btn-light no-hover">
+												<span class="bigger-150 blue"> {{ user.vues }} </span>
+
+												<br />
+												<span class="smaller-90"> {{ 'views'|trans }} </span>
+											</span>
+
+											<span class="btn btn-app btn-small btn-yellow no-hover">
+												<span class="bigger-175"> {{ fans }} </span>
+
+												<br />
+												<span class="smaller-90"> {{ 'fans'|trans }}</span>
+											</span>
+
+											<span class="btn btn-app btn-small btn-grey no-hover">
+												<span class="bigger-175"> {{ supports }} </span>
+
+												<br />
+												<span class="smaller-90"> {{ 'supports'|trans }}</span>
+											</span>
+
+                                            <span class="btn btn-app btn-small btn-pink no-hover">
+												<span class="bigger-175"> {{ tutos }} </span>
+
+												<br />
+												<span class="smaller-90"> {{ 'tutos'|trans }}</span>
+											</span>
+
+    <!--span class="btn btn-app btn-small btn-success no-hover">
+        <span class="bigger-175"> 7 </span>
+
+        <br />
+        <span class="smaller-90"> Albums </span>
+    </span-->
+
+											<span class="btn btn-app btn-small btn-primary no-hover">
+												<span class="bigger-175"> {{ amis }} </span>
+
+												<br />
+												<span class="smaller-90"> {{ 'friends'|trans }}</span>
+											</span>
+</div>
+{% endif %}
+
+<div id="user-profile-1" class="user-profile row-fluid">
+<div class="tabbable">
+<ul class="nav nav-tabs padding-18">
+	
+	<li class="active">
+        <a data-toggle="tab" href="#feed">
+            <i class="orange icon-rss bigger-120"></i>
+            {{ 'my.wall'|trans }}
+        </a>
+    </li>
+	
+    <li>
+        <a data-toggle="tab" href="#home">
+            <i class="green icon-user bigger-120"></i>
+            {{ 'my.profile'|trans }}
+        </a>
+    </li>
+
+
+    <li>
+        <a data-toggle="tab" href="#friends">
+            <i class="blue icon-group bigger-120"></i>
+            {{ 'friends'|trans }}
+        </a>
+    </li>
+</ul>
+
+<div class="tab-content no-border padding-24">
+
+
+<div id="feed" class="tab-pane  in active">
+
+    {%  render(controller('PortailBundle:Activity:activity', {'slug' : user.slug})) %}
+
+</div><!--/#feed-->
+
+<div id="home" class="tab-pane">
+    <div class="row-fluid">
+        <div class="span3 center">
+            <span class="profile-picture">
+                <img class="editable" alt="Avatar de {{ user.username }}" id="avatar2" src="/{{  user.getAbsolutePath() }}" />
+            </span>
+
+
+        </div><!--/span-->
+
+        <div class="span9">
+            <h4 class="blue">
+                <span class="middle">{{ user.firstName }} {{ user.lastName }}</span><br>
+                {% for status in user.status() %}
+                    {% if status.nom == 'Connecté' %}
+                        <span class="label label-success arrowed arrowed-in-right">{{ status.nom }}</span>
+                    {% endif %}
+                    {% if status.nom == 'Déconnecté' %}
+                        <span class="label label-purple arrowed  arrowed-in-right">{{ status.nom }}</span>
+                    {% endif %}
+                    {% if status.nom == 'En tournée' %}
+                        <span class="label label-yellow arrowed  arrowed-in-right">{{ status.nom }}</span>
+                    {% endif %}
+                    {% if status.nom == 'En recherche d\'opportunité' %}
+                        <span class="label label-info arrowed arrowed-in-right">{{ status.nom }}</span>
+                    {% endif %}
+                    {% if status.nom == 'Ne pas déranger' %}
+                        <span class="label label-warning arrowed arrowed-in-right">{{ status.nom }}</span>
+                    {% endif %}
+                    {% if status.nom == 'Nouveau' %}
+                        <span class="label label-grey arrowed arrowed-in-right">{{ status.nom }}</span>
+                    {% endif %}
+
+                {% endfor %}
+            </h4>
+
+
+            <div class="profile-user-info">
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> {{ 'alias'|trans }} </div>
+
+                    <div class="profile-info-value">
+                        <span>{{ user.username }}</span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> {{ 'where.i.live'|trans }} </div>
+
+                    <div class="profile-info-value">
+                        <i class="icon-map-marker light-orange bigger-110"></i>
+                        <span>{{ user.country }}</span>
+                        <span>{{ user.city }}</span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> {{ 'birth.or.creation.date'|trans }} </div>
+
+                    <div class="profile-info-value" >
+                        <span class="age">{{ user.birthDate|date('d/m/Y') }}</span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> {{ 'moover.since'|trans }} </div>
+
+                    <div class="profile-info-value">
+                        <span>{{ user.mooverDate|date('d/m/Y') }}</span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> {{ 'last.login'|trans }} </div>
+
+                    <div class="profile-info-value">
+                        <span>{{ user.lastLoginDate| ago }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hr hr-8 dotted"></div>
+
+            <div class="profile-user-info">
+                {%  if user.webSite  != null %}
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> {{ 'website'|trans }} </div>
+
+                    <div class="profile-info-value">
+                        <a href="#" target="_blank">{{ user.webSite }}</a>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name">
+                        <i class="middle icon-facebook-sign bigger-150 blue"></i>
+                    </div>
+
+                    <div class="profile-info-value">
+                        <a target="_blank" href="{{ ('http' in user.facebook|lower)?  user.facebook : ( 'facebook' in user.facebook|lower ? 'https://' ~ user.facebook :'https://www.facebook.com/' ~ user.facebook|replace({' ' : '-'})) }}" data-original-title="Facebook" >
+                            {{ 'find.me.facebook'|trans }}
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name">
+                        <i class="middle icon-twitter-sign bigger-150 light-blue"></i>
+                    </div>
+
+                    <div class="profile-info-value">
+                        <a target="_blank" href="{{ ('http' in user.twitter|lower)? user.twitter : ( 'twitter' in user.twitter|lower ? 'https://' ~ user.twitter : 'https://twitter.com/' ~ user.twitter|replace({' ' : '-'}) ) }}" data-original-title="Twitter"
+                                >{{ 'find.me.twitter'|trans }}</a>
+
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name">
+                        <i class="middle icon-google-plus-sign bigger-150 grey"></i>
+                    </div>
+
+                    <div class="profile-info-value">
+
+                        <a target="_blank" href="{{ ('http' in user.googleplus|lower)? user.googleplus : ( 'google' in user.googleplus|lower ? 'https://' ~ user.googleplus : 'https://plus.google.com/' ~ user.googleplus|replace({' ' : '-'}))  }}" data-original-title="Googleplus"
+                                >{{ 'find.me.googleplus'|trans }}</a>
+
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name">
+                        <i class="middle icon-google-plus-sign bigger-150 grey"></i>
+                    </div>
+
+                    <div class="profile-info-value">
+                        <a target="_blank" href="{{ user.skype }}" data-original-title="Skype" >{{ 'find.me.skype'|trans }}</a>
+                    </div>
+                </div>
+
+            </div>
+        </div><!--/span-->
+    </div><!--/row-fluid-->
+
+    <div class="space-20"></div>
+    <div class="row-fluid">
+        <span class="profile-picture" style="width: 100%; max-height: 240px; overflow: hidden;">
+            <img class="editable " style="width: 100%; " alt="Avatar de {{ user.username }}" id="avatar3" src="/{{  user.getAbsolutePathCover() }}" />
+        </span>
+    </div>
+    <div class="space-20"></div>
+
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-small">
+                    <h4 class="smaller"> <i class="icon-check bigger-110"></i> {{ 'about.me'|trans }}  </h4>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <p>
+                            {{ user.aPropos }}
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--#home-->
+
+
+
+
+
+<div id="friends" class="tab-pane">
+    {% include 'PortailBundle:User:listefriends.html.twig' with {'activeFriends' : activeFriends} %}
+
+    <div class="hr hr10 hr-double"></div>
+
+    <!--ul class="pager pull-right">
+        <li class="previous disabled">
+            <a href="#">&larr; Prev</a>
+        </li>
+
+        <li class="next">
+            <a href="#">Next &rarr;</a>
+        </li>
+    </ul-->
+</div><!--/#friends-->
+</div>
+</div>
+</div>
+</div>

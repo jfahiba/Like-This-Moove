@@ -1,0 +1,10 @@
+<html>
+<body>
+<h1>Liste des auteur</h1>
+{% for aut in auteurs %}
+    <p>{{ aut.nom }}</p>
+{% else %}
+    <p>Aucun auteur n'a été trouvé.</p>
+{% endfor %}
+</body>
+</html>

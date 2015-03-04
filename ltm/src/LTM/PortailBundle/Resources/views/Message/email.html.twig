@@ -1,0 +1,20 @@
+
+{% block body_html %}
+    {{ 'hello'|trans}} {{participant.username}},
+
+    {{ 'message.from'|trans}} {{sender.username}}.
+	<br/><br/>
+    <strong>{{ 'subject'|trans}}</strong> : {{subject}}<br/>
+	"{{body}}"
+	<br/><br/>
+    {{ 'connect.to'|trans}} <a href="http://likethismoove.com{{path('ltm_usr_afficher')}}">{{ 'your.account'|trans}}</a> {{ 'to.answer.this'|trans}}
+	<br/><br/>
+	<small> {{ 'message.footer.small'|trans}} </small>
+
+	<div class="logo">
+		<a href="http://likethismoove.com">
+			<img alt="Logo" src="{{ 'message.footer.img'|trans}}"
+			id="logo-header" style="background-color: #000; padding:11px 5px 5px 15px">
+		</a>
+	</div>
+{% endblock %}

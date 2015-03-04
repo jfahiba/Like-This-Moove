@@ -1,0 +1,53 @@
+
+{% extends 'PortailBundle:Default:index.html.twig' %}
+
+
+{% block title %}{{ 'profile.admin'|trans }}{% endblock %}
+
+{% block content %}
+
+
+    <!--=== Content Part ===-->
+    <div class="container">
+
+            <div class="row-fluid purchase margin-bottom-30">
+                <div class="container">
+                    <div class="span12">
+                        <center>
+                            <span>{{ ('forfaits.' ~ moovertype ~ '.container.span12.span')|trans}}</span>
+                            <p>{{ 'forfaits.container.span12.p'|trans}}</p>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-fluid servive-block">
+                <a class="span4" style="text-decoration: none;" href="{{ path('ltm_usr_forfaits_duration', {'accounttype' : 'min', 'moovertype' : moovertype}) }}" >
+                    <h4>{{ ('forfaits.' ~ moovertype ~ '.container.span4.1.h4')|trans}}</h4>
+                    <p><i class="{{ ('forfaits.'~ moovertype ~ '.container.span4.1.icon')|trans}}"></i></p>
+                    <p style="min-height: 100px">{{ ('forfaits.' ~ moovertype ~ '.container.span4.1.p')|trans}}</p>
+                    <h3>{{ ('forfaits.' ~ moovertype ~ '.container.span4.min.h3')|trans}}</h3>
+                </a>
+                <a class="span4" style="text-decoration: none;" href="{{ path('ltm_usr_forfaits_duration', {'accounttype' : 'avg', 'moovertype' : moovertype}) }}">
+                    <h4>{{ ('forfaits.'~ moovertype ~ '.container.span4.2.h4')|trans}}</h4>
+                    <p><i class="{{ ('forfaits.'~ moovertype ~'.container.span4.2.icon')|trans}}"></i></p>
+                    <p style="min-height: 100px">{{ ('forfaits.'~ moovertype ~'.container.span4.2.p')|trans}}</p>
+                    <h3>{{ ('forfaits.' ~ moovertype ~ '.container.span4.avg.h3')|trans}}</h3>
+                </a>
+                <a class="span4" style="text-decoration: none;" href="{{ path('ltm_usr_forfaits_duration', {'accounttype' : 'max', 'moovertype' : moovertype}) }}">
+                    <h4>{{ ('forfaits.'~ moovertype ~'.container.span4.3.h4')|trans}}</h4>
+                    <p><i class="{{ ('forfaits.'~ moovertype ~'.container.span4.3.icon')|trans}}"></i></p>
+                    <p style="min-height: 100px">{{ ('forfaits.'~ moovertype ~'.container.span4.3.p')|trans}}</p>
+                    <h3>{{ ('forfaits.' ~ moovertype ~ '.container.span4.max.h3')|trans}}</h3>
+                </a>
+ 
+            </div><!--/row-fluid-->
+
+
+
+    </div><!--/container-->
+    <!-- End Content Part -->
+
+
+
+{% endblock %}

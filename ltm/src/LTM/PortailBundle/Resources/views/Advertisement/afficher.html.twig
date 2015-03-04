@@ -1,0 +1,194 @@
+{% extends 'PortailBundle:User:afficherpublic.html.twig' %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('bundles/portail/css/ace-skins.min.css')}}" />
+
+    {{ parent() }}
+	{% stylesheets '@FOSCommentBundle/Resources/assets/css/comments.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    <style>
+        #fos_comment_comment_body{
+            border-radius: 4px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+            height: auto;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+            width: 98%;
+        }
+        .fos_comment_comment_replies {
+            margin-left: 5%;
+        }
+        .fos_comment_comment_body {
+            background: none repeat scroll 0 0 #e6e6e6;
+            margin-bottom: 1%;
+            padding: 1em 20px;
+            width: 98%;
+        }
+
+        .fos_comment_comment_metas {
+            background: none repeat scroll 0 0 #abcabc;
+            border-radius: 20px;
+            display: inline-block;
+            width: 98%;
+        }
+        .fos_comment_comment_voting {
+            float: right;
+        }
+        .fos_comment_comment_score {
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        .profile_users {
+            float: left;
+        }
+        .profile_users .user img {
+            border: 1px solid #abcabc;
+            border-radius: 100%;
+            max-width: none;
+            padding: 2px;
+            transition: all 0.1s ease 0s;
+            width: 64px;
+        }
+    </style>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content_breadcrumbs %}
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="breadcrumbs margin-bottom-20">
+        <div class="container">
+
+            <ul class="pull-right breadcrumb">
+                <li><a href="{{ path('home') }}">{{ 'home'|trans }}</a> <span class="divider">/</span></li>
+                <li><a href="{{ path('ltm_advertisement_lister_toutes') }}">{{ 'ads.all'|trans }}</a> <span class="divider">/</span></li>
+
+
+                <li class="active">{{ 'ad'|trans }}</li>
+            </ul>
+        </div><!--/container-->
+    </div>
+<div class="container  portfolio-item">
+    <div class="row-fluid">
+
+    <div class="span12">
+        <!-- Our Services -->
+        <div>
+            <div class="headline">
+                <h3>{{ advertisement.title }} <small> {{advertisement.city ~ ' ' ~ advertisement.country}}</small>	<small>- {{advertisement.vues}} {{ 'views'|trans }}</small>
+                    {% if (app != null and app.user != null and (app.user.id == advertisement.author.id  or (app.user.id == 50 or app.user.id == 54)))%}
+                        <a href="{{ path('ltm_advertisement_modifier', {'slug': advertisement.slug} ) }}"><i class="icon-edit"> </i></a>
+                    {% endif %}
+                </h3>
+            </div>
+            <div class="row-fluid servive-block servive-block-in">
+                <div>
+
+                    <div class="span7">
+                        
+						{% if advertisement.getAbsolutePath() == null%}
+						<img style="width:100%" src="http://placehold.it/800x350&text={{ 'published.by'|trans}} {{advertisement.author.username}}" alt="" />
+						{% else%}
+						<img style="width:100%"  src="/{{advertisement.getAbsolutePath() }}" alt="" />
+						{% endif %}
+						
+                        <div class="space margin-bottom-20"></div>
+                        <div style="display:inline-flex">
+                            {%  set share = 'share.page'|trans  %}
+                            {%  set team = 'team.ltm'|trans  %}
+                            {{ socialButtons(
+                            {
+                            'facebook': { 'send':true, 'showFaces' : true} ,
+                            'twitter': { 'message':share,'tag':'ltmEvents','via':team } ,
+                            'googleplus': {} } ) }}
+                        </div>
+						{% if (app != null and app.user != null) %}
+						{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': advertisement.id} %}
+						{% endif %}
+                    </div>
+                    <div class="span5">
+
+
+					 
+                        <ul class="unstyled">
+                            <li><i class="icon-microphone color-red"></i> <a href="{{ path('ltm_usr_public', {'slug': user.slug}) }}">{{ 'published.by'|trans}} {{ user.username }}</a></li>
+
+                        </ul>
+
+                        <div class="space margin-bottom-20"></div>
+
+						<p class="justify aProposMin">{{ advertisement.description|truncate(250,true)|nl2br }}
+							{% if advertisement.description|length > 250 %}
+							<a class="btn-danger btn-u" style="cursor: pointer">{{ 'see.more'|trans}}</a>
+							{% endif %}
+						</p>
+						<p class="justify aProposMax" style="display: none">{{ advertisement.description|nl2br}} <a class="btn-danger btn-u" style="cursor: pointer">{{ 'see.less'|trans}}</a></p>
+
+			
+                    </div>
+                </div>
+
+
+            </div><!--/welcome-block-->
+        </div><!--/row-fluid-->
+
+
+
+
+
+        <!--/row-->
+        <!-- //End Recent Works -->
+
+        <!-- About Us -->
+
+
+
+
+        <!-- Blockquotes -->
+
+    </div><!--/span9-->
+</div>
+</div>
+{% endblock %}
+
+{% block content_recommand %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+	<script type="application/javascript">
+
+        $(document).ready(function() {
+
+            $('.aProposMax').hide();
+            $('.aProposMin a').click(function(){
+                $(".aProposMax").show();
+                $(".aProposMin").hide();
+            });
+            $('.aProposMax a').click(function(){
+                $(".aProposMin").show();
+                $(".aProposMax").hide();
+            });
+
+        });
+    </script>
+{% endblock %}
+
+{% block title %}{{ advertisement.title}}{% endblock %}
+{% block meta_d%}{{ advertisement.description}} {% endblock %}
+{% block meta_k%}{{ advertisement.slug|replace({'-' : ', ' }) }} {% endblock %}
+
+
+{% block meta_img%}  	
+
+	<meta content="{{ advertisement.title}}" property="og:title" >
+	<meta content="activity" property="og:type">
+	<meta content="{{'http://www.likethismoove.com' ~ path('ltm_advertisement_afficher', {'slug' : advertisement.slug})}}" property="og:url"> 
+	<meta content="{{'http://likethismoove.com/' ~ advertisement.getAbsolutePath()}}" property="og:image" >
+	<meta content="{{ advertisement.description|truncate(250,true)|nl2br}}"  property="og:description" >  
+	<!--link rel="image_src" href="{{'http://www.likethismoove.com/' ~ advertisement.getAbsolutePath()}}" -->
+{% endblock %}

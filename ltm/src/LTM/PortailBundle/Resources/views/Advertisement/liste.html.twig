@@ -1,0 +1,98 @@
+
+	{% if alladvertisements|length > 0 %}
+	<div class="row-fluid search-page">
+        <h2>{{countAnnonces > 1 ? countAnnonces ~ ' ' ~ 'ads.found'|trans : countAnnonces ~ ' ' ~ 'ad.found'|trans }}  ...</h2>
+        
+		 
+		 {% for i in alladvertisements %}
+			{% if loop.index%2 == 0%}
+			<div class="row-fluid">
+			{% endif %}
+			<div class="span6 booking-blocks"  style="min-height:200px">
+             <div class="pull-left booking-img">
+                
+
+				<a href="{{ path('ltm_advertisement_afficher', {'slug' : i.slug}) }}" target="_blank">
+
+                    {% if i.getAbsolutePath() != null %}
+				        <img    alt="{{ i.title }}" src="/{{  i.getAbsolutePath() }}"/>
+                    {% else %}
+                        <img  src="http://placehold.it/700x350&text=Publie par {{i.author.username}}" alt="" />
+                    {% endif %}
+                </a>
+				
+                <ul class="unstyled">
+                   <li><i class="icon-briefcase"></i>{{ i.author }}</li>
+                   <li><i class="icon-map-marker"></i> {{  i.author.city ~ ( i.author.city != null and i.author.country != null? ', ' : '') ~ i.author.country}}</li>
+                </ul>
+             </div>
+             <div style="overflow:hidden;">
+                <h2> 
+
+				<a href="{{ path('ltm_advertisement_afficher', {'slug' : i.slug}) }}" target="_blank">
+				{{ i.title }}<small> {{i.city ~ ' ' ~ i.country}}</small>	
+				</a>
+				</h2> 
+                <p>{{ i.description|truncate(250,false) }} </p>
+             </div>
+			 {% if (app != null and app.user != null and (app.user.id == i.author.id or (app.user.id == 50 or app.user.id == 54)) )%}
+                    {% if i.proUntil != null and ( i.proUntil|date('Y-m-d') >= "now"|date('Y-m-d') ) %}
+						<a href="{{ path('ltm_advertisement_pro_modifier', {'slug': i.slug} ) }}"><i class="pull-right icon-edit"> </i></a>
+					{% else %}
+						<a href="{{ path('ltm_advertisement_modifier', {'slug': i.slug} ) }}"><i class="pull-right icon-edit"> </i></a>
+					{% endif %}
+					
+                {% endif %}
+          </div> 
+		  {% if loop.index%2 == 0 or loop.index == (alladvertisements|length) %}
+		  </div>
+		  {% endif %}
+        {% else %}
+             <li>{{ 'ad.notfound'|trans}}</li>
+        {%  endfor %} 
+		
+              
+    </div>
+ {% endif %}
+ 
+ 
+    <ul class="portfolio recent-work clearfix">
+        {% set index = 0 %}
+        {% for i in advertisements %}
+
+            <li data-id="id-{{loop.index0}}" style="margin-bottom: 20px" class=" span2 {{ i.author == null? "" : i.author.getUserName() }}">
+                {% if i.getUrl() != null %}
+				<a href="{{i.getUrl()}}" target="_blank">
+				{% else %}   
+				<a href="/{{  i.getAbsolutePath() }}" target="_blank">
+				{% endif %}                
+				<em class="overflow-hidden">
+                         
+                        {% if i.getAbsolutePath() != null %}
+                        <img class="span12" style="height: 200px" alt="{{ i.title }}" src="/{{  i.getAbsolutePath() }}"/>
+                        {% else %} 
+                        <img class="span12" style="height: 200px" alt="{{ i.title }}" src="http://placehold.it/800x800&text= {{ 'published.by'|trans}} {{i.author.username}}"/>
+                        {% endif %}
+
+                    </em>
+                        <span>
+                            <strong style="word-wrap: normal">{{ i.title }}</strong>
+                            <i>{{ i.author == null? "" : i.author.getUserName() }} - {{ i.creationDate|date ('d/m/Y') }}</i>
+                        </span>
+                </a>
+            </span>
+                        </strong>
+                    </a>
+                {% if (app != null and app.user != null and (app.user.id == i.author.id or (app.user.id == 50 or app.user.id == 54)) )%}
+                    <a href="{{ path('ltm_advertisement_modifier', {'slug': i.slug} ) }}"><i class="pull-right icon-edit"> </i></a>
+                {% endif %}
+            </li>
+         
+        {%  endfor %}
+    </ul>
+
+
+
+
+
+

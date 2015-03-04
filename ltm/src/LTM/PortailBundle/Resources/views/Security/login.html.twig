@@ -1,0 +1,57 @@
+{% extends 'PortailBundle::layout.html.twig' %}
+
+
+{% block content %}
+
+
+    <!--=== Content Part ===-->
+    <div class="container">
+    <!-- Service Blocks -->
+
+    <div class="row-fluid">
+
+
+        <form method="post" action="{{ path('login_check') }}" class="log-page">
+            {% if error %}
+                <div>{{ error.message }}</div>
+            {% endif %}
+            <h3>{{ 'login.to.your.account'|trans }}</h3>
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="username" placeholder="{{ 'alias'|trans }}"  name="_username" class="input-xlarge" value="{{ last_username }}" />
+            </div>
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-lock"></i></span>
+                <input type="password" id="password" placeholder="{{ 'password'|trans }}" class="input-xlarge" name="_password" />
+            </div>
+            <div class="controls form-inline">
+               
+				<input type="checkbox" id="remember_me" name="_remember_me" checked />
+				<label for="remember_me">{{ 'stay.connected'|trans }}</label>
+
+	
+                <button name="Login" type="submit" class="btn-u pull-right">{{ 'login'|trans }}</button>
+            </div>
+            <input type="hidden" name="_target_path" value="/" />
+
+            <hr>
+            <h4>{{ 'forgot.password'|trans }}</h4>
+            <p>{{ 'no.worry'|trans }}, <a name="forgotpassword" href="{{ path('forgotpassword') }}" class="color-green">{{ 'click.here'|trans }}</a> {{ 'to.reset.password'|trans }}.</p>
+
+			<hr>
+            <h4>{{ 'new.moover'|trans }}</h4>
+            <p><a href="{{ path('ltm_usr_ajouter') }}" class="color-green">{{ 'click.here'|trans }}</a> {{ 'to.register'|trans }}.</p>
+
+        </form>
+
+    </div><!--/row-fluid-->
+
+
+
+    </div><!--/container-->
+    <!-- End Content Part -->
+
+
+
+
+{% endblock %}

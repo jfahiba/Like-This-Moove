@@ -1,0 +1,37 @@
+
+
+{% block content %}
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&appId=1535418623352563&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        function fb_login() {
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    // connected
+                    alert('Already connected, redirect to login page to create token.');
+                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                } else {
+                    // not_authorized
+                    FB.login(function(response) {
+                        if (response.authResponse) {
+                            document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                        } else {
+                            alert('Cancelled.');
+                        }
+                    }, {scope: 'email'});
+                }
+            });
+        }
+    </script>
+
+    <div class="fb-login-button pull-right" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false" onclick="fb_login();">Me connecter avec Facebook</div>
+    <div class="margin-bottom-10"></div>
+    {# Bonus: Show all available login link in HWIOAuthBundle #}
+    {#% render(controller('HWIOAuthBundle:Connect:connect')) %#}
+{% endblock %}

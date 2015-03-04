@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2014-10-02T03:00:39Z" source-language="en" target-language="de" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="da39a3ee5e6b4b0d3255bfef95601890afd80709" resname="">
+        <source></source>
+        <target state="new"></target>
+        <jms:reference-file line="22">PortailBundle/Form/CreateVehicleForm.php</jms:reference-file>
+        <jms:reference-file line="27">PortailBundle/Form/CreateVehicleForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b858cb282617fb0956d960215c8e84d1ccf909c6" resname=" ">
+        <source> </source>
+        <target state="new"> </target>
+        <jms:reference-file line="29">PortailBundle/Form/AdvertisementForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b6589fc6ab0dc82cf12099d1c2d40ab994e8410c" resname="0">
+        <source>0</source>
+        <target state="new">0</target>
+        <jms:reference-file line="32">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="356a192b7913b04c54574d18c28d46e6395428ab" resname="1">
+        <source>1</source>
+        <target state="new">1</target>
+        <jms:reference-file line="32">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b1d5781111d84f7b3fe45a0852e59758cd7a87e5" resname="10">
+        <source>10</source>
+        <target state="new">10</target>
+        <jms:reference-file line="100">PortailBundle/Controller/PaymentController.php</jms:reference-file>
+        <jms:reference-file line="33">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="310b86e0b62b828562fc91c7be5380a992b2786a" resname="100">
+        <source>100</source>
+        <target state="new">100</target>
+        <jms:reference-file line="35">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f1abd670358e036c31296e66b3b66c382ac00812" resname="15">
+        <source>15</source>
+        <target state="new">15</target>
+        <jms:reference-file line="100">PortailBundle/Controller/PaymentController.php</jms:reference-file>
+        <jms:reference-file line="33">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="da4b9237bacccdf19c0760cab7aec4a8359010b0" resname="2">
+        <source>2</source>
+        <target state="new">2</target>
+        <jms:reference-file line="32">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="91032ad7bbcb6cf72875e8e8207dcfba80173f7c" resname="20">
+        <source>20</source>
+        <target state="new">20</target>
+        <jms:reference-file line="100">PortailBundle/Controller/PaymentController.php</jms:reference-file>
+        <jms:reference-file line="34">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="22d200f8670dbdb3e253a90eee5098477c95c23d" resname="30">
+        <source>30</source>
+        <target state="new">30</target>
+        <jms:reference-file line="34">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1b6453892473a467d07372d45eb05abc2031647a" resname="4">
+        <source>4</source>
+        <target state="new">4</target>
+        <jms:reference-file line="32">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="af3e133428b9e25c55bc59fe534248e6a0c0f17b" resname="40">
+        <source>40</source>
+        <target state="new">40</target>
+        <jms:reference-file line="34">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ac3478d69a3c81fa62e60f5c3696165a4e5e6ac4" resname="5">
+        <source>5</source>
+        <target state="new">5</target>
+        <jms:reference-file line="100">PortailBundle/Controller/PaymentController.php</jms:reference-file>
+        <jms:reference-file line="32">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e1822db470e60d090affd0956d743cb0e7cdf113" resname="50">
+        <source>50</source>
+        <target state="new">50</target>
+        <jms:reference-file line="34">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c1dfd96eea8cc2b62785275bca38ac261256e278" resname="6">
+        <source>6</source>
+        <target state="new">6</target>
+        <jms:reference-file line="32">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e6c3dd630428fd54834172b8fd2735fed9416da4" resname="60">
+        <source>60</source>
+        <target state="new">60</target>
+        <jms:reference-file line="34">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="902ba3cda1883801594b6e1b452790cc53948fda" resname="7">
+        <source>7</source>
+        <target state="new">7</target>
+        <jms:reference-file line="32">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b7103ca278a75cad8f7d065acda0c2e80da0b7dc" resname="70">
+        <source>70</source>
+        <target state="new">70</target>
+        <jms:reference-file line="34">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="fe5dbbcea5ce7e2988b8c69bcfdfde8904aabc1f" resname="8">
+        <source>8</source>
+        <target state="new">8</target>
+        <jms:reference-file line="33">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b888b29826bb53dc531437e723738383d8339b56" resname="80">
+        <source>80</source>
+        <target state="new">80</target>
+        <jms:reference-file line="35">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0ade7c2cf97f75d009975f4d720d1fa6c19f4897" resname="9">
+        <source>9</source>
+        <target state="new">9</target>
+        <jms:reference-file line="33">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2d0c8af807ef45ac17cafb2973d866ba8f38caa9" resname="90">
+        <source>90</source>
+        <target state="new">90</target>
+        <jms:reference-file line="35">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="84819f733313762d6d15167417170d815fe44a03" resname="A Propos de moi">
+        <source>A Propos de moi</source>
+        <target state="new">A Propos de moi</target>
+        <jms:reference-file line="41">PortailBundle/Form/CreateUserFlow.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d3aa9f101c3b53e0846e4b1886dbcd3d47075f13" resname="A propos de moi">
+        <source>A propos de moi</source>
+        <target state="new">A propos de moi</target>
+        <jms:reference-file line="57">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="522e146679608203fc36e220c4e176063c0733f2" resname="Adresse">
+        <source>Adresse</source>
+        <target state="new">Adresse</target>
+        <jms:reference-file line="25">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="74ea7af515970154e1c13afe1eebce9f253a320e" resname="Agence de Recrutement">
+        <source>Agence de Recrutement</source>
+        <target state="new">Agence de Recrutement</target>
+        <jms:reference-file line="47">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1948b8a73d1cd0190740c5b39d682043e8e45d4f" resname="Association">
+        <source>Association</source>
+        <target state="new">Association</target>
+        <jms:reference-file line="47">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6a9cba9c1f8803ee2e1e335d46e4d009fb0ab58a" resname="Authentification">
+        <source>Authentification</source>
+        <target state="new">Authentification</target>
+        <jms:reference-file line="33">PortailBundle/Form/CreateUserFlow.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b821b203c038c046376e4b93c2e6663d2c992111" resname="CAD">
+        <source>CAD</source>
+        <target state="new">CAD</target>
+        <jms:reference-file line="114">PortailBundle/Controller/PaymentController.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1d50de996403a61650910f65a8ab7c32f8aa2f68" resname="Charger l'image de l'annonce">
+        <source>Charger l'image de l'annonce</source>
+        <target state="new">Charger l'image de l'annonce</target>
+        <jms:reference-file line="24">PortailBundle/Form/AdvertisementForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6cf690bacf43017c1fce9adb601819934c3794da" resname="Charger la video">
+        <source>Charger la video</source>
+        <target state="new">Charger la video</target>
+        <jms:reference-file line="24">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="95bf90c33ada4e02c0c3a89e9652234197deccae" resname="Charger un extrait du tuto">
+        <source>Charger un extrait du tuto</source>
+        <target state="new">Charger un extrait du tuto</target>
+        <jms:reference-file line="25">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c005c37ace16c0588387909ff12fb7a353361b80" resname="Charger une Image">
+        <source>Charger une Image</source>
+        <target state="new">Charger une Image</target>
+        <jms:reference-file line="24">PortailBundle/Form/ImageForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a912cdb2cfede1c1e3f6f75f3fa87968fff35d00" resname="Charger une video">
+        <source>Charger une video</source>
+        <target state="new">Charger une video</target>
+        <jms:reference-file line="24">PortailBundle/Form/VideoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3424edc2354c7c55f6eb740b673d349b02d27c8d" resname="Confirmation">
+        <source>Confirmation</source>
+        <target state="new">Confirmation</target>
+        <jms:reference-file line="45">PortailBundle/Form/CreateUserFlow.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="73f10bcfec1d2311b6a428adfbf508ba8e18a499" resname="Danseur">
+        <source>Danseur</source>
+        <target state="new">Danseur</target>
+        <jms:reference-file line="47">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ce40048faaa36f351484aa4b42080deb98ab58f3" resname="Danseuse">
+        <source>Danseuse</source>
+        <target state="new">Danseuse</target>
+        <jms:reference-file line="47">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="706438abfdc23361afc186d2599d456a9119fbe5" resname="Date de début">
+        <source>Date de début</source>
+        <target state="new">Date de début</target>
+        <jms:reference-file line="22">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="716a6d8d5e9f62738501fae8464458bce52819c1" resname="Date de fin">
+        <source>Date de fin</source>
+        <target state="new">Date de fin</target>
+        <jms:reference-file line="23">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8851f385b271ba2791c79f1db54ac797860b13a7" resname="Date de naissance">
+        <source>Date de naissance</source>
+        <target state="new">Date de naissance</target>
+        <jms:reference-file line="23">PortailBundle/Form/ActeurForm.php</jms:reference-file>
+        <jms:reference-file line="23">PortailBundle/Form/CategorieProfilForm.php</jms:reference-file>
+        <jms:reference-file line="23">PortailBundle/Form/RelationForm.php</jms:reference-file>
+        <jms:reference-file line="23">PortailBundle/Form/WhatsUpForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="93c06e3472cfbc107ead5a0b6aa030c6ae79fd7d" resname="Date de naissance/de creation">
+        <source>Date de naissance/de creation</source>
+        <target state="new">Date de naissance/de creation</target>
+        <jms:reference-file line="49">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="55f8ebc805e65b5b71ddafdae390e3be2bcd69af" resname="Description">
+        <source>Description</source>
+        <target state="new">Description</target>
+        <jms:reference-file line="29">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+        <jms:reference-file line="22">PortailBundle/Form/FilmForm.php</jms:reference-file>
+        <jms:reference-file line="24">PortailBundle/Form/NewsForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="144ed124050a91ebe2b66f44c1cd23f8321a4495" resname="Description de l'annonce">
+        <source>Description de l'annonce</source>
+        <target state="new">Description de l'annonce</target>
+        <jms:reference-file line="26">PortailBundle/Form/AdvertisementForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d67ea41463358327e2316e8995fd743f98b2e53d" resname="Description de l'image">
+        <source>Description de l'image</source>
+        <target state="new">Description de l'image</target>
+        <jms:reference-file line="26">PortailBundle/Form/ImageForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1ba628223397d86b1715543cf7472ad1b151b993" resname="Description de la vidéo">
+        <source>Description de la vidéo</source>
+        <target state="new">Description de la vidéo</target>
+        <jms:reference-file line="27">PortailBundle/Form/VideoForm.php</jms:reference-file>
+        <jms:reference-file line="38">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="eb2e42c482447b68dc293d762bbac3ec23e98309" resname="Devise">
+        <source>Devise</source>
+        <target state="new">Devise</target>
+        <jms:reference-file line="114">PortailBundle/Controller/PaymentController.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d06e0731df1a4cdf21dfbcfddeb5d1d3cca162cc" resname="EUR">
+        <source>EUR</source>
+        <target state="new">EUR</target>
+        <jms:reference-file line="114">PortailBundle/Controller/PaymentController.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c992d9ea47e7e29a727fd3f9c4f4f103b2588bb4" resname="Ecole">
+        <source>Ecole</source>
+        <target state="new">Ecole</target>
+        <jms:reference-file line="47">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="84add5b2952787581cb9a8851eef63d1ec75d22b" resname="Email">
+        <source>Email</source>
+        <target state="new">Email</target>
+        <jms:reference-file line="52">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d4726bc5870921a11e34042da57b3019afef1a3e" resname="En cochant sur cette case, vous vous engagez à respecter les clauses d'utilisation de LikeThisMoove">
+        <source>En cochant sur cette case, vous vous engagez à respecter les clauses d'utilisation de LikeThisMoove</source>
+        <target state="new">En cochant sur cette case, vous vous engagez à respecter les clauses d'utilisation de LikeThisMoove</target>
+        <jms:reference-file line="25">PortailBundle/Form/RegistrationForm.php</jms:reference-file>
+        <jms:reference-file line="84">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9d2c7063088793c055fe015d3841d0cc2df8e788" resname="Identification">
+        <source>Identification</source>
+        <target state="new">Identification</target>
+        <jms:reference-file line="37">PortailBundle/Form/CreateUserFlow.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d9cd23ba36cdf59524f099731e9f0d8926f53b24" resname="Image de preview">
+        <source>Image de preview</source>
+        <target state="new">Image de preview</target>
+        <jms:reference-file line="25">PortailBundle/Form/VideoForm.php</jms:reference-file>
+        <jms:reference-file line="27">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="48dbbd3a349b5670a8cdcff7dd6bf034d9ef3104" resname="Image de profil">
+        <source>Image de profil</source>
+        <target state="new">Image de profil</target>
+        <jms:reference-file line="77">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="38a67b609c66e9452e408372e28421cd534df001" resname="Lien externe">
+        <source>Lien externe</source>
+        <target state="new">Lien externe</target>
+        <jms:reference-file line="30">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+        <jms:reference-file line="26">PortailBundle/Form/NewsForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4adcd9fc48564fdf9ff289ac816c1fe69b5b5377" resname="Montant">
+        <source>Montant</source>
+        <target state="new">Montant</target>
+        <jms:reference-file line="100">PortailBundle/Controller/PaymentController.php</jms:reference-file>
+        <jms:reference-file line="36">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a30120386ebd00a9f27629fc07cb4925bdea2f48" resname="Nom de famille">
+        <source>Nom de famille</source>
+        <target state="new">Nom de famille</target>
+        <jms:reference-file line="21">PortailBundle/Form/ActeurForm.php</jms:reference-file>
+        <jms:reference-file line="21">PortailBundle/Form/CategorieProfilForm.php</jms:reference-file>
+        <jms:reference-file line="21">PortailBundle/Form/RelationForm.php</jms:reference-file>
+        <jms:reference-file line="43">PortailBundle/Form/UserForm.php</jms:reference-file>
+        <jms:reference-file line="21">PortailBundle/Form/WhatsUpForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2a78f0e9eeb4969ad86a55df617e6bb0373df78f" resname="Pays">
+        <source>Pays</source>
+        <target state="new">Pays</target>
+        <jms:reference-file line="27">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+        <jms:reference-file line="53">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2ecefd2c1fa7b737da568e4a89513c7f56f2adab" resname="Pièce jointe">
+        <source>Pièce jointe</source>
+        <target state="new">Pièce jointe</target>
+        <jms:reference-file line="31">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+        <jms:reference-file line="27">PortailBundle/Form/NewsForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e4387ade0f0eb6dd33cbfd0cd6a5e1944cca7748" resname="Prénom">
+        <source>Prénom</source>
+        <target state="new">Prénom</target>
+        <jms:reference-file line="22">PortailBundle/Form/ActeurForm.php</jms:reference-file>
+        <jms:reference-file line="22">PortailBundle/Form/CategorieProfilForm.php</jms:reference-file>
+        <jms:reference-file line="22">PortailBundle/Form/RelationForm.php</jms:reference-file>
+        <jms:reference-file line="44">PortailBundle/Form/UserForm.php</jms:reference-file>
+        <jms:reference-file line="22">PortailBundle/Form/WhatsUpForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4cf966c06394ceed92635172058bc294bb0f3d2e" resname="Pseudo">
+        <source>Pseudo</source>
+        <target state="new">Pseudo</target>
+        <jms:reference-file line="26">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b732fa329a2c589ec26a9b444ce5da5ba3daf393" resname="Recruteur">
+        <source>Recruteur</source>
+        <target state="new">Recruteur</target>
+        <jms:reference-file line="47">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ebc9f5ea58a36fa280a58dcfc04c658a6db0ba96" resname="Recruteuse">
+        <source>Recruteuse</source>
+        <target state="new">Recruteuse</target>
+        <jms:reference-file line="47">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c72c13ef15ed0615a83bb19f1f91a402b71ab240" resname="Site Web">
+        <source>Site Web</source>
+        <target state="new">Site Web</target>
+        <jms:reference-file line="101">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5597a63dcda9e885a331fb75e2979762a95e48ed" resname="Soumettre">
+        <source>Soumettre</source>
+        <target state="new">Soumettre</target>
+        <jms:reference-file line="27">PortailBundle/Form/RegistrationForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3438e6255bec736fd5713e825288772778af9a88" resname="Styles de danse">
+        <source>Styles de danse</source>
+        <target state="new">Styles de danse</target>
+        <jms:reference-file line="35">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+        <jms:reference-file line="30">PortailBundle/Form/ImageForm.php</jms:reference-file>
+        <jms:reference-file line="31">PortailBundle/Form/NewsForm.php</jms:reference-file>
+        <jms:reference-file line="31">PortailBundle/Form/VideoForm.php</jms:reference-file>
+        <jms:reference-file line="43">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="cc991df876aebae52523f82b1878ecf7479f10b9" resname="Styles préférés">
+        <source>Styles préférés</source>
+        <target state="new">Styles préférés</target>
+        <jms:reference-file line="60">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="322c3b70720a4f3c2fb76365a912026bad964be3" resname="Titre de l'annonce">
+        <source>Titre de l'annonce</source>
+        <target state="new">Titre de l'annonce</target>
+        <jms:reference-file line="22">PortailBundle/Form/AdvertisementForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="136f2814923d7a4ea998061d8c83758d68963f35" resname="Titre de l'image">
+        <source>Titre de l'image</source>
+        <target state="new">Titre de l'image</target>
+        <jms:reference-file line="22">PortailBundle/Form/ImageForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="14def645a2a484dc5dbbd93ac4748cd59de2dc95" resname="Titre de l'évènement">
+        <source>Titre de l'évènement</source>
+        <target state="new">Titre de l'évènement</target>
+        <jms:reference-file line="24">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2d6d932ab7c6e6afe8aabaf14685f5e7509c0ea8" resname="Titre de la nouvelle">
+        <source>Titre de la nouvelle</source>
+        <target state="new">Titre de la nouvelle</target>
+        <jms:reference-file line="22">PortailBundle/Form/NewsForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="305fa11c1c220fc2c1c5fe3b871ae89477e264d2" resname="Titre de la vidéo">
+        <source>Titre de la vidéo</source>
+        <target state="new">Titre de la vidéo</target>
+        <jms:reference-file line="21">PortailBundle/Form/VideoForm.php</jms:reference-file>
+        <jms:reference-file line="22">PortailBundle/Form/VideoTutoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d892ab0bd29cef9c8d41292f69e53ddb7d74f0a8" resname="Titre du film">
+        <source>Titre du film</source>
+        <target state="new">Titre du film</target>
+        <jms:reference-file line="21">PortailBundle/Form/FilmForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c51ef82db9fe189d0d23dced63d5787145b00845" resname="Toute la journée">
+        <source>Toute la journée</source>
+        <target state="new">Toute la journée</target>
+        <jms:reference-file line="21">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c024e1e0c80e2fb10363f5106c8d2e87a970fdbf" resname="Type d'évènement">
+        <source>Type d'évènement</source>
+        <target state="new">Type d'évènement</target>
+        <jms:reference-file line="44">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="11d2ec6cc4349dd5c2a9f8061a4fdc0364f51c57" resname="Type de nouvelle">
+        <source>Type de nouvelle</source>
+        <target state="new">Type de nouvelle</target>
+        <jms:reference-file line="40">PortailBundle/Form/NewsForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="57814cfbae5c6d00f5cab49e34b9aa2ce8269eb9" resname="USD">
+        <source>USD</source>
+        <target state="new">USD</target>
+        <jms:reference-file line="114">PortailBundle/Controller/PaymentController.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2fdfbfe0f98e4074dd451317a71f760bb3f64687" resname="Url Facebook">
+        <source>Url Facebook</source>
+        <target state="new">Url Facebook</target>
+        <jms:reference-file line="102">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6a8632637d56edce7a72bf90d43e9b0ac6297863" resname="Url Twitter">
+        <source>Url Twitter</source>
+        <target state="new">Url Twitter</target>
+        <jms:reference-file line="103">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7939c5204af10689d0e3997e48913c8f23b01b5b" resname="Url externe de l'annonce">
+        <source>Url externe de l'annonce</source>
+        <target state="new">Url externe de l'annonce</target>
+        <jms:reference-file line="23">PortailBundle/Form/AdvertisementForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f80def3519f03bf7b1935a668c3173b633decec6" resname="Url youtube ou Vimeo">
+        <source>Url youtube ou Vimeo</source>
+        <target state="new">Url youtube ou Vimeo</target>
+        <jms:reference-file line="23">PortailBundle/Form/VideoForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="972176113f903c45d3c3ae7331b3178a1f322bf8" resname="Ville">
+        <source>Ville</source>
+        <target state="new">Ville</target>
+        <jms:reference-file line="26">PortailBundle/Form/CalendarEventForm.php</jms:reference-file>
+        <jms:reference-file line="100">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7ca81adcb225b7c67a60d59040f09ae16bcefe61" resname="Vous etes un(e)">
+        <source>Vous etes un(e)</source>
+        <target state="new">Vous etes un(e)</target>
+        <jms:reference-file line="47">PortailBundle/Form/UserForm.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

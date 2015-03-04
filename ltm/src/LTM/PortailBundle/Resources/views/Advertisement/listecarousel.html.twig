@@ -1,0 +1,35 @@
+
+    <div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            {% for i in advertisements %}
+            <div class="item">
+                <a href="{{ path('ltm_advertisement_afficher', {'slug' : i.slug}) }}" target="_blank">
+                {% if i.getAbsolutePath() != null %}
+                    <img class="align-center" style="height: 370px;width: 100%" class="span12" alt="{{ i.title }}" src="/{{  i.getAbsolutePath() }}"/>
+                {% endif %}
+                <div class="carousel-caption">
+                    <p>{{ i.title }} -    <i>{{ i.author == null? "" : i.author.getUserName() }} - {{ i.creationDate|date ('d/m/Y') }}</i>
+                </div>
+                </a>
+            </div>
+
+            {% else %}
+                <div>{{ 'ad.pro.notfound'|trans}}</div>
+            {%  endfor %}
+
+        </div>
+        {% if advertisements|length > 0 %}
+        <div class="carousel-arrow">
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="icon-angle-left"></i></a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="icon-angle-right"></i></a>
+        </div>
+        {% endif %}
+    </div>
+
+
+    <script>
+        $(document).ready(function(){
+            $("#myCarousel .item:first").addClass('active');
+        });
+
+    </script>

@@ -1,0 +1,113 @@
+
+{% extends 'PortailBundle:Default:index.html.twig' %}
+
+
+{% block title %}{{ 'profile.admin'|trans }}{% endblock %}
+
+{% block content %}
+
+    <!--=== Content Part ===-->
+    <div class="container">
+
+        <div class="row-fluid purchase margin-bottom-30">
+            <div class="container">
+                <div class="span12">
+                    <center>
+                        <span>{{ ('forfaits.' ~ moovertype ~ '.container.span12.span')|trans}}</span>
+                        <p>{{ 'forfaits.container.span12.p'|trans}}</p>
+                    </center>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+
+            <!-- Pricing -->
+            <div class="row-fluid margin-bottom-40">
+				<div class="span3 pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3>Visiteur<span>{{'account'|trans}}</span></h3>
+                        <h4><i></i>{{'Free'|trans}}<i></i> <span>{{'Per'|trans ~ ' ' ~'Month'|trans}}</span></h4>
+                    </div> 
+                    <!--ul class="pricing-content unstyled">
+                        <li><i class="icon-tags"></i> Add picture</li>
+                        <li><i class="icon-asterisk"></i> Connexion with basic profile</li>
+                        <li><i class="icon-heart"></i> Fusce condimentum</li>
+                        <li><i class="icon-star"></i> Ut non libero</li>
+                        <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
+                    </ul-->
+                    <div class="pricing-footer">
+                        <!--p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p-->
+                        <a href="{{ path('ltm_usr_ajouter_by_choice', {'accounttype' : 'Visiteur', 'moovertype' : 'dancer', 'duration' : 'duration12', 'frequency' : 'freq12'}) }}" >inscription</a>
+                    </div>
+                </div>
+                <div class="span3 pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3>Amateur<span>{{'account'|trans}}</span></h3>
+                        <h4><i></i>{{'Free'|trans}}<i></i> <span>{{'Per'|trans ~ ' ' ~'Month'|trans}}</span></h4>
+                    </div> 
+                    <!--ul class="pricing-content unstyled">
+                        <li><i class="icon-tags"></i> Add picture</li>
+                        <li><i class="icon-asterisk"></i> Connexion with basic profile</li>
+                        <li><i class="icon-heart"></i> Fusce condimentum</li>
+                        <li><i class="icon-star"></i> Ut non libero</li>
+                        <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
+                    </ul-->
+                    <div class="pricing-footer">
+                        <!--p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p-->
+                        <a href="{{ path('ltm_usr_ajouter_by_choice', {'accounttype' : 'Amateur', 'moovertype' : 'dancer', 'duration' : 'duration12', 'frequency' : 'freq12'}) }}" >inscription</a>
+                    </div>
+                </div>
+				<div class="span3 pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3>Semi Pro  <span>Danseurs semi professionnel</span></h3>
+                        <h4><i>$</i>{{'forfaits.price.dancer.avg'|trans}} <span>{{'Per'|trans ~ ' ' ~'Month'|trans}}</span></h4>
+                    </div>
+					
+                    <ul class="pricing-content unstyled">
+                        <li><i class="icon-tags"></i> {{ ('forfaits.'~ moovertype ~'.container.span4.2.p')|trans}}</li>
+                        <!--li><i class="icon-asterisk"></i> No Support</li>
+                        <li><i class="icon-heart"></i> Fusce condimentum</li>
+                        <li><i class="icon-star"></i> Ut non libero</li>
+                        <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li-->
+                    </ul>
+                    <div class="pricing-footer">
+                        <!-- p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p-->
+                        <a href="{{ path('ltm_usr_forfaits_duration', {'accounttype' : 'avg', 'moovertype' : moovertype}) }}">{{'order.now'|trans}}</a>
+                    </div>
+                </div>
+                <div class="span3 pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3>Pro  <span>Danseurs professionnel</span></h3>
+                        <h4><i>$</i>{{'forfaits.price.dancer.max'|trans}} <span>{{'Per'|trans ~ ' ' ~'Month'|trans}}</span></h4>
+                    </div>
+					
+                    <ul class="pricing-content unstyled">
+                        <li><i class="icon-tags"></i> {{ ('forfaits.'~ moovertype ~'.container.span4.3.p')|trans}}</li>
+                        <!--li><i class="icon-asterisk"></i> No Support</li>
+                        <li><i class="icon-heart"></i> Fusce condimentum</li>
+                        <li><i class="icon-star"></i> Ut non libero</li>
+                        <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li-->
+                    </ul>
+                    <div class="pricing-footer">
+                        <!-- p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p-->
+                        <a href="{{ path('ltm_usr_forfaits_duration', {'accounttype' : 'max', 'moovertype' : moovertype}) }}">{{'order.now'|trans}}</a>
+                    </div>
+                </div>
+            </div>
+            <!--/row-fluid-->
+            <!--//End Pricing -->
+
+
+            <hr class="margin-bottom-60" />
+
+            <!-- Pricing "No Spacing"-->
+            <!--/row-fluid-->
+            <!--//End Pricing "No Spacing" -->
+        </div>
+        <!--/row-fluid-->
+    </div><!--/container-->
+    <!--=== End Content Part ===-->
+
+
+{% endblock %}

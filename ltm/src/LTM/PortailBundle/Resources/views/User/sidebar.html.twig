@@ -1,0 +1,244 @@
+<div class="sidebar" id="sidebar">
+<!--menu-min-->
+<script type="text/javascript">
+    try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+</script>
+
+<!--div class="sidebar-shortcuts" id="sidebar-shortcuts">
+    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+        <button class="btn btn-small btn-success">
+            <i class="icon-signal"></i>
+        </button>
+
+        <button class="btn btn-small btn-info">
+            <i class="icon-pencil"></i>
+        </button>
+
+        <button class="btn btn-small btn-warning">
+            <i class="icon-group"></i>
+        </button>
+
+        <button class="btn btn-small btn-danger">
+            <i class="icon-cogs"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+        <span class="btn btn-success"></span>
+
+        <span class="btn btn-info"></span>
+
+        <span class="btn btn-warning"></span>
+
+        <span class="btn btn-danger"></span>
+    </div>
+</div--><!--#sidebar-shortcuts-->
+
+<ul class="nav nav-list">
+<li>
+    <a href="{{ path('ltm_usr_afficher') }}">
+        <i class="icon-dashboard"></i>
+        <span class="menu-text">{{ 'admin.section'|trans }}</span>
+    </a>
+</li>
+
+
+<li>
+	<a href="{{ path("ltm_message_inbox") }}">
+		<i class="icon-double-angle-right"></i>
+		<span class="menu-text">{{ 'inbox.my'|trans }}</span>
+	</a>
+</li>
+
+<li>
+	<a href="{{ path("ltm_payment_credit_pricing" ) }}">
+		<i class="icon-double-angle-right"></i>
+		<span class="menu-text">{{ 'my.abo'|trans }}</span>
+	</a>
+</li>
+
+<li>
+	<a href="{{ path("ltm_usr_credit_historique" ) }}">
+		<i class="icon-double-angle-right"></i>
+		<span class="menu-text">{{ 'credit.historic'|trans }}</span>
+	</a>
+</li>
+	
+{% if (user.category.nom == 'Pro' or user.category.nom ==  'Pro (Essai gratuit 14 jours)' ) and user.gender != '7' %}
+<li>
+    <a  href="{{ path("ltm_calendarevent_calendar") }}">
+        <i class="icon-calendar"></i>
+
+							<span class="menu-text">
+								{{ 'calendar'|trans }}
+							</span>
+    </a>
+
+</li>
+{% endif %}
+<li>
+    <a href="#" class="dropdown-toggle">
+        <i class="icon-edit"></i>
+        <span class="menu-text"> {{ 'dropzones'|trans }} </span>
+
+        <b class="arrow icon-angle-down"></b>
+    </a>
+
+    <ul class="submenu">
+		
+		<li>
+            <a href="{{ path('ltm_advertisement_dropzone') }}">
+                <i class="icon-double-angle-right"></i>
+                {{ 'ad.dropzone.title'|trans }}
+            </a>
+        </li>
+		
+        <li>
+            <a href="{{ path('ltm_video_dropzone') }}">
+                <i class="icon-double-angle-right"></i>
+                {{ 'video.dropzone'|trans }}
+            </a>
+        </li>
+		{% if (user.category.nom == 'Semi Pro' or user.category.nom == 'Pro' or user.category.nom ==  'Pro (Essai gratuit 14 jours)' ) and user.gender != '7' %}
+        <li>
+            <a href="{{ path('ltm_video_tuto_dropzone') }}">
+                <i class="icon-double-angle-right"></i>
+                {{ 'tuto.dropzone'|trans }}
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            <a href="{{ path('ltm_image_dropzone') }}">
+                <i class="icon-double-angle-right"></i>
+                {{ 'image.dropzone'|trans }}
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li>
+    <a href="{{ path("ltm_advertisement_gallery") }}">
+        <i class="icon-globe"></i>
+        <span class="menu-text"> {{ 'ad.gallery'|trans }}</span>
+    </a>
+</li>
+
+<li>
+    <a href="{{ path("ltm_video_gallery") }}">
+        <i class="icon-facetime-video"></i>
+        <span class="menu-text"> {{ 'video.gallery'|trans }}</span>
+    </a>
+</li>
+{% if (user.category.nom == 'Semi Pro' or user.category.nom == 'Pro' or user.category.nom ==  'Pro (Essai gratuit 14 jours)' ) and user.gender != '7' %}
+<li>
+    <a href="{{ path("ltm_video_tuto_gallery") }}">
+        <i class="icon-ticket"></i>
+        <span class="menu-text"> {{ 'tuto.gallery'|trans }}</span>
+    </a>
+</li>
+{% endif  %}
+<li>
+    <a href="{{ path("ltm_image_gallery") }}">
+        <i class="icon-picture"></i>
+        <span class="menu-text"> {{ 'image.gallery'|trans }}</span>
+    </a>
+</li>
+
+<li>
+    <a href="{{ path("ltm_usr_public" , {'slug' : user.slug}) }}">
+        <i class="icon-user"></i>
+        <span class="menu-text">  {{ 'public.view'|trans }}</span>
+    </a>
+</li>
+
+<li class="">
+    <a href="#" class="dropdown-toggle">
+        <i class="icon-tag"></i>
+        <span class="menu-text"> {{ 'admin.section'|trans }} </span>
+
+        <b class="arrow icon-angle-down"></b>
+    </a>
+
+    <ul class="submenu">
+        <li class="">
+            <a href="{{ path("ltm_usr_afficher") }}">
+                <i class="icon-double-angle-right"></i>
+                {{ 'admin.section'|trans }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ path("ltm_message_inbox") }}">
+                <i class="icon-double-angle-right"></i>
+                {{ 'inbox.my'|trans }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ path("ltm_payment_credit_pricing") }}">
+                <i class="icon-double-angle-right"></i>
+                {{ 'manage.abo'|trans }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ path("ltm_usr_credit_historique") }}">
+                <i class="icon-double-angle-right"></i>
+                {{ 'credit.historic'|trans }}
+            </a>
+        </li>
+
+        <!--li>
+            <a href="#">
+                <i class="icon-double-angle-right"></i>
+                Mon actualité
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="icon-double-angle-right"></i>
+                Gérer mes annonces pro
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="icon-double-angle-right"></i>
+                Gérer mes cours
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="icon-double-angle-right"></i>
+                Gérer mes salles
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="icon-double-angle-right"></i>
+                Gérer mes étudiants
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="icon-double-angle-right"></i>
+                Statisques
+            </a>
+        </li-->
+       
+
+
+    </ul>
+</li>
+
+
+</ul><!--/.nav-list-->
+
+<div class="sidebar-collapse" id="sidebar-collapse">
+    <i class="icon-double-angle-right" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+</div>
+
+<script type="text/javascript">
+    try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+</script>
+</div>

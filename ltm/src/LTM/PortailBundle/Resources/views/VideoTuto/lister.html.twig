@@ -1,0 +1,278 @@
+
+{% extends 'PortailBundle::layouttuto.html.twig' %}
+
+{% block stylesheets %}
+
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/default.css')}}" id="style_color">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/headers/default.css')}}" id="style_color-header-1">
+
+
+    <!--[if IE lt 9]>
+    <link href="{{ asset('bundles/portail/css/youtube-video-gallery-legacy-ie.css')}}" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/portfolioSorting/css/sorting.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/colorbox.css')}}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/youtube-video-gallery.css')}}" type="text/css" rel="stylesheet">
+
+    {{ parent() }}
+
+{% endblock %}
+
+
+ 
+{% block title %}{{ 'tuto.list'|trans}}{% endblock %}
+{% block meta_d %}{{ 'tuto.list'|trans}}{% endblock %}
+{% block meta_k %}{{ 'tuto.list'|trans|replace({' ' : ', ' }) }}{% endblock %}
+
+
+{% block content %}
+    {% block content_breadcrumbs %}
+        <div class="breadcrumbs margin-bottom-20">
+            <div class="container">
+                <h1 class="color-green pull-left"><a href="#">{{ 'tuto.list'|trans }} </a></h1><br>
+
+                <ul class="pull-right breadcrumb">
+                    <li><a href="{{ path('home_tuto') }}">{{ 'home'|trans }}</a> <span class="divider">/</span></li>
+
+                    <h1 class="color-green pull-left"></h1>
+                    <li class="active">{{ 'tuto.see.all'|trans }}</li>
+                </ul>
+            </div><!--/container-->
+
+            <div class="container">
+
+                <form id="user-form" class="form-horizontal" name="filterusers" method="post"  enctype="multipart/form-data">
+
+                    <div class="row">
+
+                        <div class="control-group span4">
+                            <label class="control-label" for="form-field-username">{{ 'keyword'|trans }}</label>
+
+                            <div class="controls">
+                                <input type="text" class="form-control" id="form-field-username" placeholder="{{ 'title.or.description'|trans }}" value="{{ title }}" name="title"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group span4">
+                            <label class="control-label" for="form-field-username">{{ 'author'|trans }}</label>
+
+                            <div class="controls">
+                                <input type="text" {{ slug != null? 'readonly' : '' }} class="form-control" id="form-field-username" placeholder="{{ 'first.last.alias'|trans }}" value="{{ username }}" name="username"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group span4">
+                            <label class="control-label" for="form-field-username">{{ 'style'|trans }}</label>
+
+                            <div class="controls ">
+
+                                <select name="styledanse" class="form-control" {{ styled != null? 'disabled' : '' }}>
+                                    <option value=""></option>
+                                    {% for style in allstyles %}
+                                        <option {{ styledanse == style.nom ? 'selected="selected"' : '' }}">{{ style.nom }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+ 
+                    <div class="row">
+						<div class="control-group span8">
+							<label class="control-label" for="form-field-tri">{{ 'show'|trans }}</label>
+							<div class="controls">				
+								<input type="radio"  id="form-field-recents" name="tri" value="0" {{ tri == '0' ? 'checked' : ''}}/>&nbsp;{{ 'most.recents.m'|trans }}&nbsp;
+								<input type="radio"  id="form-field-views" name="tri" value="1" {{ tri == '1' ? 'checked' : ''}}/>&nbsp;{{ 'most.views.m'|trans }}&nbsp;
+								<input type="radio"  id="form-field-votes" name="tri" value="2" {{ tri == '2' ? 'checked' : ''}}/>&nbsp;{{ 'most.votes.m'|trans }}&nbsp;
+							</div>
+						</div>
+						
+                        <div class="control-group span4">
+                            <label class="control-label" for="form-field-username">{{ 'credits'|trans }} Max</label>
+
+                            <div class="controls ">
+                                <select name="credits" class="form-control">
+                                    <option value=""></option>
+                                    <option {{ credits == '0' ? 'selected="selected"' : '' }}>0</option>
+                                    <option {{ credits == '5' ? 'selected="selected"' : '' }}>5</option>
+                                    <option {{ credits == '10' ? 'selected="selected"' : '' }}>10</option>
+                                    <option {{ credits == '15' ? 'selected="selected"' : '' }}>15</option>
+                                    <option {{ credits == '20' ? 'selected="selected"' : '' }}>20</option>
+                                    <option {{ credits == '100' ? 'selected="selected"' : '' }}>100</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--div class="control-group span4">
+
+                            <label class="control-label" for="form-field-superior-date">Publié après</label>
+
+                            <div class="controls">
+                                <div class="input-append">
+                                    <input class="input-small date-picker-2 form-control"
+                                           id="form-field-superior-date"
+                                           type="text"
+                                           data-date-format="dd/mm/yyyy"
+                                           placeholder="jj/mm/aaaa"
+                                           value="{{ creationDateSuperior }}" name="creationDateSuperior"/>
+                        <span class="add-on">
+                            <i class="icon-calendar"></i>
+                        </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="control-group span4">
+
+                            <label class="control-label" for="form-field-inferior-date">Publié avant</label>
+
+                            <div class="controls">
+                                <div class="input-append">
+                                    <input class="input-small date-picker-3 form-control"
+                                           id="form-field-inferior-date"
+                                           type="text"
+                                           data-date-format="dd/mm/yyyy"
+                                           placeholder="jj/mm/aaaa"
+                                           value="{{ creationDateInferior }}" name="creationDateInferior"/>
+                        <span class="add-on">
+                            <i class="icon-calendar"></i>
+                        </span>
+                                </div>
+                            </div>
+
+                        </div-->
+
+                    </div>
+
+
+                    <center>
+                        <input class="btn btn-success" type="submit" name="submit" value="{{ 'search'|trans }}">
+
+
+                        &nbsp; &nbsp; &nbsp;
+                        <a class="btn" href="{{ path('ltm_video_tuto_lister') }}" onclick="#">
+                            <i class="icon-undo bigger-110"></i>
+                            {{ 'delete.all.fields'|trans }}
+                        </a>
+
+                    </center>
+                </form></div>
+
+        </div>
+    {% endblock %}
+
+    <div class="container">
+        <div class="row-fluid gallery">
+
+            <div id="w">
+                <!--div id="sort" class="sort">
+                    <ul class="unstyled inline">
+                        <li><a class="all selected" href="#">Toutes</a></li>
+                        {% set authors = [] %}
+                        {% for v in videos %}
+                            {% set author = v.author == null? "" : v.author.getUserName()  %}
+
+                            {% if  v.author != null and author not in authors  %}
+                                <li><a class="{{author}}" href="#">{{author}}</a></li>
+                                {% set authors = [author]|merge(authors) %}
+
+                            {% endif %}
+
+                        {% endfor %}
+                    </ul>
+                </div-->
+
+                <center>
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination, null, {
+                        'title' : title ,
+                        'credits' : credits ,
+                        'username' : username ,
+                        'creationDateInferior' : creationDateInferior,
+                        'creationDateSuperior' : creationDateSuperior,
+						'tri' : tri,
+                        'styledanse' : styledanse}
+                        ) }}
+                    </div>
+                </center>
+
+                {% include 'PortailBundle:VideoTuto:listecarousel.html.twig' with {'videos' : videos, 'pagination' : pagination}  %}
+
+                <center>
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination, null, {
+                        'title' : title ,
+                        'credits' : credits ,
+                        'username' : username ,
+                        'creationDateInferior' : creationDateInferior,
+                        'creationDateSuperior' : creationDateSuperior,
+						'tri' : tri,
+                        'styledanse' : styledanse}
+                        ) }}
+                    </div>
+                </center>
+
+                {% if app.user != null and app.user.id != null%}
+				{% if (app.user.category.nom == 'Semi Pro' or app.user.category.nom == 'Pro' or app.user.category.nom ==  'Pro (Essai gratuit 14 jours)' ) and app.user.gender != '7' %}
+                <p><a class="btn" href="{{ path('ltm_video_tuto_ajouter') }}">{{ 'tuto.add'|trans }}</a><p>
+                    {% endif %}{% endif %}
+                    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/portfolioSorting/js/jquery.quicksand.js')}}"></script>
+                    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/portfolioSorting/js/sorting.js')}}"></script>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/modernizr.custom.js')}}"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/flexslider/jquery.flexslider-min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/parallax-slider/js/modernizr.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/parallax-slider/js/jquery.cslider.js')}}"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/gmap/gmap.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/back-to-top.js')}}"></script>
+
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/app.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/pages/index.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/date-time/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/x-editable/bootstrap-editable.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/date-time/locales/bootstrap-datepicker.fr.js')}}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+
+
+            $('.date-picker-2').datepicker({  viewMode: 'years', minViewMode: 'months'});
+            $('.date-picker-3').datepicker({  viewMode: 'years', minViewMode: 'months'});
+
+
+
+        });
+
+    </script>
+
+{% endblock %}
+
+
+
+

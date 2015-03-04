@@ -1,0 +1,22 @@
+
+
+{%  if users|length >= 1 %}
+<div class="flexslider home clients" id="clients-flexslider{{ relationClass }}">
+    <div class="headline"> <h3>{{ relationTitle }}</h3></div>
+
+    <div class="flex-viewport" style="overflow: hidden; position: relative;"></div>
+    <div class="flex-viewport" style="overflow: hidden; position: relative;">
+    <ul class="slides" style="width: 3400%; transition: 0.6s; -webkit-transition: 0.6s; -webkit-transform: translate3d(-260px, 0px, 0px);">
+        {% for u in users %}
+            <li style=" float: left; display: block;">
+                <a href="{{ path( tuto ? 'ltm_professeur_public' : 'ltm_usr_public', { 'slug': u.slug }) }}">
+                    {%  if u.path  != "" %}
+                        <img style="height:100px; width: auto;" src='/{{  u.getAbsolutePath() }}' />
+                    {% endif %}
+                </a>
+            </li>
+        {%  endfor %}
+</ul></div></div>
+{%  endif %}
+
+

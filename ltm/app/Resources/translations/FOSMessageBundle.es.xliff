@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Loco xml export: XLIFF - Localisation Interchange File Format
+ Project: FOSMessageBundle.es.yml conversion
+ Release: Working copy
+ Locales: en_CA, es_ES
+ Exported at: Fri, 03 Oct 2014 06:07:56 +0100
+-->
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en-CA" target-language="es-ES" datatype="" original="FOSMessageBundle.es.yml">
+        <body>
+            <trans-unit id="_0" resname="messenger" datatype="plaintext">
+                <source>messenger</source>
+                <target>Mensajes</target>
+            </trans-unit>
+            <trans-unit id="_1" resname="inbox" datatype="plaintext">
+                <source>inbox</source>
+                <target>Carpeta de entrada</target>
+            </trans-unit>
+            <trans-unit id="_2" resname="sent" datatype="plaintext">
+                <source>sent</source>
+                <target>Enviado</target>
+            </trans-unit>
+            <trans-unit id="_3" resname="send_new" datatype="plaintext">
+                <source>send_new</source>
+                <target>Enviar nuevo mensaje</target>
+            </trans-unit>
+            <trans-unit id="_4" resname="search" datatype="plaintext">
+                <source>search</source>
+                <target>Buscar</target>
+            </trans-unit>
+            <trans-unit id="_5" resname="threads_found" datatype="plaintext">
+                <source>threads_found</source>
+                <target>%num% hilo encontrado | %num% hilos encontrados</target>
+            </trans-unit>
+            <trans-unit id="_6" resname="message_info" datatype="plaintext">
+                <source>message_info</source>
+                <target>Por %sender%, el %date%</target>
+            </trans-unit>
+            <trans-unit id="_7" resname="reply" datatype="plaintext">
+                <source>reply</source>
+                <target>Responder</target>
+            </trans-unit>
+            <trans-unit id="_8" resname="subject" datatype="plaintext">
+                <source>subject</source>
+                <target>Asunto</target>
+            </trans-unit>
+            <trans-unit id="_9" resname="starter" datatype="plaintext">
+                <source>starter</source>
+                <target>Emisor</target>
+            </trans-unit>
+            <trans-unit id="_10" resname="startdate" datatype="plaintext">
+                <source>startdate</source>
+                <target>Fecha de emisión</target>
+            </trans-unit>
+            <trans-unit id="_11" resname="messages" datatype="plaintext">
+                <source>messages</source>
+                <target>Mensajes</target>
+            </trans-unit>
+            <trans-unit id="_12" resname="last_message" datatype="plaintext">
+                <source>last_message</source>
+                <target>Último mensaje</target>
+            </trans-unit>
+            <trans-unit id="_13" resname="actions" datatype="plaintext">
+                <source>actions</source>
+                <target>Acciones</target>
+            </trans-unit>
+            <trans-unit id="_14" resname="new" datatype="plaintext">
+                <source>new</source>
+                <target>Nuevo</target>
+            </trans-unit>
+            <trans-unit id="_15" resname="goto_last" datatype="plaintext">
+                <source>goto_last</source>
+                <target>Ir al último mensaje</target>
+            </trans-unit>
+            <trans-unit id="_16" resname="on" datatype="plaintext">
+                <source>on</source>
+                <target>En %date%</target>
+            </trans-unit>
+            <trans-unit id="_17" resname="by" datatype="plaintext">
+                <source>by</source>
+                <target>Por %sender%</target>
+            </trans-unit>
+            <trans-unit id="_18" resname="no_thread" datatype="plaintext">
+                <source>no_thread</source>
+                <target>No hay hilos que mostrar</target>
+            </trans-unit>
+            <trans-unit id="_19" resname="delete" datatype="plaintext">
+                <source>delete</source>
+                <target>Eliminar</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

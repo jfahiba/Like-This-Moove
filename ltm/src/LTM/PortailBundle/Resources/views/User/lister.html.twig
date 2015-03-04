@@ -1,0 +1,323 @@
+{% extends tuto? 'PortailBundle::layouttuto.html.twig' : 'PortailBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+
+
+    <!-- CSS Global Compulsory-->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/datepicker.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/daterangepicker.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/headers/header1.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/bootstrap/css/bootstrap-responsive.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/style_responsive.css')}}">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/font-awesome/css/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/portfolioSorting/css/sorting.css')}}">
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/default.css')}}" id="style_color">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/headers/default.css')}}" id="style_color-header-1"></head>
+
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}{{ school ? 'dancing.schools'|trans : 'profile.see.all'|trans }}{% endblock %}
+{% block meta_d %}{{ school ? 'dancing.schools'|trans : 'profile.see.all'|trans }}{% endblock %}
+{% block meta_k %}{{ school ? 'dancing.schools'|trans : 'profile.see.all'|trans }}{% endblock %}
+
+{% block content %}
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs margin-bottom-40">
+        <div class="container">
+
+            <div class="headline"> <h3>{{ school  ? 'dancing.schools'|trans :(tuto? 'Teachers'|trans : 'Moovers'|trans) }}</h3> </div>
+
+            <form id="user-form" class="form-horizontal" name="filterusers" method="post"  enctype="multipart/form-data">
+
+            <div class="row">
+            <div class="control-group span4">
+                <label class="control-label" for="form-field-username">{{  school? 'dancing.school'|trans : 'lastName'|trans }}</label>
+
+                <div class="controls">
+                    <input type="text" class="form-control" id="form-field-username" placeholder="{{ 'first.last.alias'|trans }}" value="{{ username }}" name="username"/>
+                </div>
+            </div>
+
+            <div class="control-group span4">
+
+                <label class="control-label" for="form-field-username">{{ 'style'|trans }}</label>
+
+                <div class="controls ">
+                    <select name="styledanse" class="form-control" {{ styled != null? 'disabled' : '' }}>
+                        <option value=""></option>
+                        {% for style in allstyles %}
+                            <option {{ styledanse == style.nom ? 'selected="selected"' : '' }}">{{ style.nom }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+				
+				{% if not school %}
+                <div class="control-group span4">
+                    <label class="control-label" for="form-field-username">{{ 'kind.of'|trans }} {{ tuto? 'Teacher'|trans : 'moover'|trans }}</label>
+
+                    <div class="controls ">
+                        <select name="category" class="form-control">
+                            <option value=""></option>
+                            {% if not tuto %}
+                            <option {{ category == 'Amateur' ? 'selected="selected"' : '' }}>Amateur</option>
+                            {% endif %}
+                            <option {{ category == 'Semi Pro' ? 'selected="selected"' : '' }}>Semi Pro</option>
+                            <option {{ category == 'Professionnel' ? 'selected="selected"' : '' }}>Professionnel</option>
+                        </select>
+                    </div>
+                </div>
+				{% endif %}
+
+
+
+            </div>
+
+			{% if app.user != null and app.user.id != null and app.user.category != null 
+			and app.user.category.getNom() != "Amateur" and app.user.category.getNom() != "Gratuit" %}
+			
+			 
+            <div class="row">
+				{% if not school %}
+                <div class="control-group span4">
+                    <label class="control-label" for="form-field-moover-date">{{tuto? 'Teacher'|trans : 'moover'|trans }} {{ 'since'|trans }}</label>
+
+                    <div class="controls">
+                        <div class="input-append" >
+                            <input class="input-small date-picker-1 form-control"
+                                   id="form-field-moover-date"
+                                   type="text"
+                                   data-date-format="dd/mm/yyyy"
+                                   placeholder="{{ 'day.month.year'|trans }}"
+                                   value="{{ mooverDate }}" name="mooverDate"/>
+                        <span class="add-on">
+                            <i class="icon-calendar"></i>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+				{% endif  %}
+
+                <div class="control-group span4">
+
+                    <label class="control-label" for="form-field-superior-date">{{ 'birth.creation.after'|trans }}</label>
+
+                    <div class="controls">
+                        <div class="input-append">
+                            <input class="input-small date-picker-2 form-control"
+                                   id="form-field-superior-date"
+                                   type="text"
+                                   data-date-format="dd/mm/yyyy"
+                                   placeholder="{{ 'day.month.year'|trans }}"
+                                   value="{{ birthDateSuperior }}" name="birthDateSuperior"/>
+                        <span class="add-on">
+                            <i class="icon-calendar"></i>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="control-group span4">
+
+                <label class="control-label" for="form-field-inferior-date">{{ 'birth.creation.before'|trans }}</label>
+
+					<div class="controls">
+						<div class="input-append">
+							<input class="input-small date-picker-3 form-control"
+								   id="form-field-inferior-date"
+								   type="text"
+								   data-date-format="dd/mm/yyyy"
+								   placeholder="{{ 'day.month.year'|trans }}"
+								   value="{{ birthDateInferior }}" name="birthDateInferior"/>
+							<span class="add-on">
+								<i class="icon-calendar"></i>
+							</span>
+						</div>
+					</div>
+
+                </div>
+				
+				<div class="control-group span4">
+                    <label class="control-label" for="form-field-username">{{ 'localisation'|trans }}</label>
+
+                    <div class="controls">
+                        <input type="text" class="form-control" id="form-field-username" placeholder="{{ 'town.or.country'|trans }}" value="{{ city }}" name="city"/>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                
+
+
+            </div>
+			{% endif %}
+			
+                <center>
+                      <input class="btn {{ tuto? 'btn-success' : 'btn-danger' }}" type="submit" name="submit" value="{{ 'search'|trans }}">
+
+
+                        &nbsp; &nbsp; &nbsp;
+                        <a class="btn" href="{{ path( school? 'ltm_usr_lister_ecoles' : (tuto? 'ltm_professeur_lister' : 'ltm_usr_lister')) }}" onclick="#">
+                            <i class="icon-undo bigger-110"></i>
+                            {{ 'delete.all.fields'|trans }}
+                        </a>
+						
+						 {% if app.user == null or app.user.id == null %}
+						&nbsp; &nbsp; &nbsp;
+                        <a class="btn btn-primary" style="margin:5px" href="{{ path('login') }}" onclick="#">
+                            <i class="icon-rocket bigger-110"></i>
+                             {% if school %}
+							 {{ 'connect.see.all.f'|trans ~ ' ' ~ 'dancing.schools'|trans }}
+							 {% else %}
+							 {{ 'connect.see.all'|trans ~ ' ' ~ (tuto? 'teachers'|trans : 'moovers'|trans) }}
+							 {% endif %}
+                        </a>
+						{% endif%}
+
+                </center>
+            </form></div>
+
+    </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+
+    <!--=== Content Part ===-->
+    <div class="container">
+    <div class="row-fluid">
+    <div id="w">
+
+
+        <center>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination, null, {
+                'username' : username ,
+                'category' : category,
+                'birthDateInferior' : birthDateInferior,
+                'birthDateSuperior' : birthDateSuperior,
+                'mooverDate' : mooverDate,
+                'city' : city,
+                'styledanse' : styledanse}
+                ) }}
+            </div>
+        </center>
+
+    <ul class="portfolio recent-work clearfix">
+        {% for u in pagination %}
+            {% set cat = u.category == null? "" : u.category.getNom()  %}
+            {% if cat == "Pro (Essai gratuit 14 jours)" or category == "Pro" %}
+                {% set cat = "Professionnel" %}
+                {% set categoryStr = "Professionnel" %}
+            {% elseif cat == "Gratuit" %}
+                {% set categoryStr = "Amateur" %}
+            {% elseif cat == "Ecoles, Associations" %}
+                {% set categoryStr = "Ecole" %}
+            {% elseif cat == "Semi Pro" %}
+                {% set categoryStr = "Semi" %}
+            {% else %}
+                {% set categoryStr = "" %}
+            {% endif %}
+
+        <li data-id="id-{{ loop.index }}" class="{{ categoryStr }}" style="width: 150px ;height: 250px">
+            <a href="{{ path(tuto? 'ltm_professeur_public' : 'ltm_usr_public', { 'slug': u.slug  }) }}">
+                <em class="overflow-hidden">
+
+                    <img style="width: 150px ;height: 140px" src='/{{  u.getAbsolutePath() }}' alt="Image de {{ u.username }}" />
+                </em>
+                        <span style="height:90px">
+                            {% if u.firstName != null and u.lastName != null %}
+							{% set names = u.firstName ~ ' ' ~ u.lastName %}
+                            <strong>{{ names|truncate(15,true) }}</strong>
+                            {% else %}
+                                <strong>{{ u.username|truncate(15,true) }}</strong>
+                            {% endif %}
+							
+							{% set styles = cat %}
+							{% for s in u.style %} {% set styles = styles ~ ', ' ~ s.nom %}{% endfor %} 
+							
+                            <i>{{styles|truncate(30,true)}}</i>
+							{% set location = u.city ~ ' ' ~ u.country %}
+                            <strong>{{(u.city == null and u.country == null)? '' :  location|truncate(15,true)}}</strong>
+                        </span>
+            </a>
+
+        </li>
+        {% else %}  
+			<li>{{ school? 'school.notfound'|trans : 'user.notfound'|trans }}</li> 
+		{% endfor %}
+    </ul>
+
+	{% if school and (app == null or app.user == null or app.user.gender != 2) %} 
+	<p><a class="btn btn-danger pull-right" href="{{ path( app != null and app.user != null? 'ltm_usr_afficher' : 'ltm_usr_ajouter' ) }}">{{ 'add.my.school'|trans }}</a><p>
+	<br/><br/>
+	{% endif %}
+	
+        <center>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination, null, {
+                'username' : username ,
+                'category' : category,
+                'birthDateInferior' : birthDateInferior,
+                'birthDateSuperior' : birthDateSuperior,
+                'mooverDate' : mooverDate,
+                'city' : city,
+                'styledanse' : styledanse}
+                ) }}
+            </div>
+        </center>
+		
+		
+    </div>
+    </div><!--/row-fluid-->
+    </div><!--/container-->
+    <!--=== End Content Part ===-->
+
+
+
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('bundles/portail/js/modernizr.custom.js')}}"></script>
+<script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ asset('bundles/portail/plugins/portfolioSorting/js/jquery.quicksand.js')}}"></script>
+<script type="text/javascript" src="{{ asset('bundles/portail/plugins/portfolioSorting/js/sorting.js')}}"></script>
+<script type="text/javascript" src="{{ asset('bundles/portail/plugins/back-to-top.js')}}"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ asset('bundles/portail/js/app.js')}}"></script>
+<script src="{{ asset('bundles/portail/js/date-time/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{ asset('bundles/portail/js/x-editable/bootstrap-editable.min.js')}}"></script>
+<script src="{{ asset('bundles/portail/js/date-time/locales/bootstrap-datepicker.fr.js')}}"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+
+        $('.date-picker-1').datepicker({  viewMode: 'years', minViewMode: 'years'});
+        $('.date-picker-2').datepicker({  viewMode: 'years', minViewMode: 'months'});
+        $('.date-picker-3').datepicker({ viewMode: 'years', minViewMode: 'months'});
+
+        //$('.input-mask-phone').mask('(999) 999-9999');
+
+
+
+    });
+
+</script>
+<!--[if lt IE 9]>
+<script src="{{ asset('bundles/portail/js/respond.js')}}"></script>
+<![endif]-->
+{% endblock %}

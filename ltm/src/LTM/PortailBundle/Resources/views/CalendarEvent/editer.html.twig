@@ -1,0 +1,203 @@
+{% extends 'PortailBundle::layout.html.twig' %}
+
+
+
+{% form_theme form _self %}
+
+{% block form_row %}
+    <div class="form_row">
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+    </div>
+{% endblock form_row %}
+
+
+{% block choice_widget_collapsed %}
+    {% spaceless %}
+        {% if required and empty_value is none and not empty_value_in_choices and not multiple %}
+            {% set required = false %}
+        {% endif %}
+
+        <select
+                class="form-control" {{ block('widget_attributes') }}
+                {% if multiple %} multiple="multiple" {% else %} style="width: {{ id == 'user_category' ? '100%' : '33%'}}; display: inline" {% endif %}>
+            {% if empty_value is not none %}
+                <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ empty_value|trans({}, translation_domain) }}</option>
+            {% endif %}
+            {% if preferred_choices|length > 0 %}
+                {% set options = preferred_choices %}
+                {{ block('choice_widget_options') }}
+                {% if choices|length > 0 and separator is not none %}
+                    <option disabled="disabled">{{ separator }}</option>
+                {% endif %}
+            {% endif %}
+            {% set options = choices %}
+            {{ block('choice_widget_options') }}
+        </select>
+    {% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block datetime_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %}
+            {{ block('form_widget_simple') }}
+        {% else %}
+            <div {{ block('widget_container_attributes') }}>
+                {{ form_errors(form.date) }}
+                {{ form_errors(form.time) }}
+                {{ form_widget(form.date, { 'datetime': true } ) }}&nbsp;
+                {{ form_widget(form.time, { 'datetime': true } ) }}
+            </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock datetime_widget %}
+
+
+{% block date_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %}
+            {{ block('field_widget') }}
+        {% else %}
+            {{ date_pattern|replace({
+            '{{ year }}':  form_widget(form.year),
+            '{{ month }}': form_widget(form.month),
+            '{{ day }}':   form_widget(form.day),
+            })|raw }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock date_widget %}
+
+{% block time_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %}
+            {{ block('field_widget') }}
+        {% else %}
+            {{ form_widget(form.hour, { 'attr': { 'size': '1' } }) }}:{{ form_widget(form.minute, { 'attr': { 'size': '1' } }) }}{% if with_seconds %}:{{ form_widget(form.second, { 'attr': { 'size': '1' } }) }}{% endif %}
+        {% endif %}
+    {% endspaceless %}
+{% endblock time_widget %}
+
+
+{% block form_widget_simple %}
+    {% set type = type|default('text') %}
+
+    <input class="form-control" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock form_widget_simple %}
+{% block textarea_widget %}
+    {% spaceless %}
+        <div class="textarea_widget">
+            <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+        </div>
+    {% endspaceless %}
+{% endblock textarea_widget %}
+
+
+
+
+
+{% block content %}
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/datepicker.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/bootstrap-timepicker.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/daterangepicker.css')}}">
+
+
+    <div class="reg-page"
+            <!--style="
+        max-width: 30%;
+        min-width: 30%;
+        padding: 30px 50px;
+        background: none repeat scroll 0 0 #fcfcfc;
+        border: 1px solid #eee;
+        box-shadow: 0 0 7px #eee;
+        margin: 0 auto;
+        overflow: hidden;"-->
+
+    <form action="" method="post" {{ form_enctype(form) }} class="">
+        <div class="">
+            {% if message %}
+                <p>{{ message }}</p>
+            {% endif %}
+
+                {{ form_widget(form) }}
+
+
+        </div>
+        <div class="modal-footer">
+            <input id="soumettre" type="submit" style="margin-left: 10px" class="btn btn-success pull-right" value="   {{ 'save'|trans}}   "/>
+            {% if slug != null %}
+                <a class="btn btn-primary" style="margin-left: 10px"  href="{{ path('ltm_calendarevent_afficher', {'slug' : slug}) }}"> {{ 'event.see'|trans}}</a>
+
+                <a class="btn btn-danger pull-left" style="margin-left: 10px"  href="#" onclick='return confirmSupprimer()'> {{ 'delete'|trans}}</a>
+                <a class="invisible supprimer_item " href="{{ path('ltm_calendarevent_supprimer', {'slug' : slug}) }}"
+            {% endif %}
+        </div>
+    </form>
+
+    <p>
+
+        <a href="{{ path("ltm_calendarevent_calendar") }}">{{ 'back.to.my.calendar'|trans}}</a>
+        <span> / </span>
+        <a href="{{ path("ltm_calendarevent_filtrer", {'slug' : app.user.slug}) }}">{{ 'back.to.my.events'|trans}}</a>
+
+    </p>
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {#{ parent() }#}
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/date-time/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/date-time/bootstrap-timepicker.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/x-editable/bootstrap-editable.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/date-time/locales/bootstrap-datepicker.fr.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/bootbox.min.js')}}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+
+
+            $('#user_start_date').datepicker({ language  : 'fr', viewMode: 'days', minViewMode: 'days'});
+
+            //$('#user_start_time').timepicker({ language  : 'fr', viewMode: 'days', minViewMode: 'days'});
+
+        });
+
+
+
+        function confirmSupprimer()
+        {
+
+            bootbox.dialog("{{ 'delete.are.you.sure'|trans}}", [{
+                label: "{{ 'delete.sure'|trans}}",
+                className: "btn-danger",
+                callback: function() {
+                    window.location.href = $("a.supprimer_item" ).attr('href');
+                }
+            }, {
+                "label" : "{{ 'delete.cancel'|trans}}",
+                "class" : "btn-success",
+                "callback": function() {
+                    LTMAlert.show("{{ 'delete.not.performed'|trans}}");
+                }
+            }
+            ]);
+
+        }
+
+    </script>
+{% endblock %}
+
+{% block topmenu %}
+
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+{% block footer %}
+
+{% endblock %}

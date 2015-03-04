@@ -1,0 +1,82 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: jfahiba
+ * Date: 21/07/2014
+ * Time: 21:24
+ */
+
+namespace LTM\PortailBundle\Entity;
+
+
+use Sylius\Component\Cart\Model\CartItem as BaseCartItem;
+use Sylius\Component\Product\Model\Product;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="LTM\PortailBundle\Entity\CartItemRepository")
+ * @ORM\Table(name="app_cart_item")
+ */
+class CartItem extends BaseCartItem
+{
+    /**
+     * @ORM\ManyToOne(targetEntity="Sylius\Component\Product\Model\Product")
+     */
+    private $product;
+
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    public function setProduct(Product $product)
+    {
+        $this->product = $product;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    protected $adjustments;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->adjustments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add adjustments
+     *
+     * @param \Sylius\Component\Order\Model\AdjustmentInterface $adjustments
+     * @return CartItem
+     */
+    public function addAdjustment(\Sylius\Component\Order\Model\AdjustmentInterface $adjustments)
+    {
+        $this->adjustments[] = $adjustments;
+
+        return $this;
+    }
+
+    /**
+     * Remove adjustments
+     *
+     * @param \Sylius\Component\Order\Model\AdjustmentInterface $adjustments
+     */
+    public function removeAdjustment(\Sylius\Component\Order\Model\AdjustmentInterface $adjustments)
+    {
+        $this->adjustments->removeElement($adjustments);
+    }
+
+    /**
+     * Get adjustments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdjustments()
+    {
+        return $this->adjustments;
+    }
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Loco xml export: XLIFF - Localisation Interchange File Format
+ Project: FOSMessageBundle.it.yml conversion
+ Release: Working copy
+ Locales: en_CA, it_IT
+ Exported at: Fri, 03 Oct 2014 06:07:23 +0100
+-->
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en-CA" target-language="it-IT" datatype="" original="FOSMessageBundle.it.yml">
+        <body>
+            <trans-unit id="_0" resname="messenger" datatype="plaintext">
+                <source>messenger</source>
+                <target>Messaggi</target>
+            </trans-unit>
+            <trans-unit id="_1" resname="inbox" datatype="plaintext">
+                <source>inbox</source>
+                <target>Posta in arrivo</target>
+            </trans-unit>
+            <trans-unit id="_2" resname="sent" datatype="plaintext">
+                <source>sent</source>
+                <target>Posta inviata</target>
+            </trans-unit>
+            <trans-unit id="_3" resname="deleted" datatype="plaintext">
+                <source>deleted</source>
+                <target>Cestino</target>
+            </trans-unit>
+            <trans-unit id="_4" resname="send_new" datatype="plaintext">
+                <source>send_new</source>
+                <target>Scrivere un nuovo messaggio</target>
+            </trans-unit>
+            <trans-unit id="_5" resname="search" datatype="plaintext">
+                <source>search</source>
+                <target>Cercare</target>
+            </trans-unit>
+            <trans-unit id="_6" resname="threads_found" datatype="plaintext">
+                <source>threads_found</source>
+                <target>%num% conversazione trovata con | %num%  conversazioni trovate con</target>
+            </trans-unit>
+            <trans-unit id="_7" resname="message_info" datatype="plaintext">
+                <source>message_info</source>
+                <target>Di %sender%, il %date%</target>
+            </trans-unit>
+            <trans-unit id="_8" resname="reply" datatype="plaintext">
+                <source>reply</source>
+                <target>Rispondere</target>
+            </trans-unit>
+            <trans-unit id="_9" resname="subject" datatype="plaintext">
+                <source>subject</source>
+                <target>Oggetto</target>
+            </trans-unit>
+            <trans-unit id="_10" resname="starter" datatype="plaintext">
+                <source>starter</source>
+                <target>Iniziato da</target>
+            </trans-unit>
+            <trans-unit id="_11" resname="startdate" datatype="plaintext">
+                <source>startdate</source>
+                <target>Iniziato il</target>
+            </trans-unit>
+            <trans-unit id="_12" resname="messages" datatype="plaintext">
+                <source>messages</source>
+                <target>Messaggi</target>
+            </trans-unit>
+            <trans-unit id="_13" resname="last_message" datatype="plaintext">
+                <source>last_message</source>
+                <target>Ultimo messaggio</target>
+            </trans-unit>
+            <trans-unit id="_14" resname="actions" datatype="plaintext">
+                <source>actions</source>
+                <target>Azioni</target>
+            </trans-unit>
+            <trans-unit id="_15" resname="new" datatype="plaintext">
+                <source>new</source>
+                <target>Nuovo</target>
+            </trans-unit>
+            <trans-unit id="_16" resname="goto_last" datatype="plaintext">
+                <source>goto_last</source>
+                <target>Vedere l’ultimo messaggio</target>
+            </trans-unit>
+            <trans-unit id="_17" resname="on" datatype="plaintext">
+                <source>on</source>
+                <target>Il %date%</target>
+            </trans-unit>
+            <trans-unit id="_18" resname="by" datatype="plaintext">
+                <source>by</source>
+                <target>Di %sender%</target>
+            </trans-unit>
+            <trans-unit id="_19" resname="no_thread" datatype="plaintext">
+                <source>no_thread</source>
+                <target>Nessuna conversazione</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

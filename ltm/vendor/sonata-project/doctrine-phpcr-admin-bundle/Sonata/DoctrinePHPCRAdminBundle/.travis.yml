@@ -1,0 +1,23 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
+env:
+  - SYMFONY_VERSION=2.3.*
+  - SYMFONY_VERSION=2.4.*
+  - SYMFONY_VERSION=dev-master
+
+before_script:
+  - composer self-update
+  - echo 'memory_limit = -1' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - composer require symfony/framework-bundle:${SYMFONY_VERSION} --dev
+  - sudo pip install -r Resources/doc/requirements.txt
+
+script: phpunit --coverage-text && cd Resources/doc && sphinx-build -W -b html -d _build/doctrees . _build/html
+
+matrix:
+  allow_failures:
+    - env: SYMFONY_VERSION=dev-master

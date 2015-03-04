@@ -1,0 +1,48 @@
+<!-- app/Resources/views/base.html.twig -->
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+
+    <meta http-equiv= "content-type" content="text/html;charset=utf-8" />
+	<meta name="robots"              content="all" />
+    <title>Likethismoove Dance Social network - {% block title %}{% endblock %}</title>
+	<meta name="description" content="{% block meta_d%}{% endblock %}" />
+    <meta name="keywords"    content="{% block meta_k%}{% endblock %}" />
+	{% block meta_img%}{% endblock %}
+	
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    {% block stylesheets %}
+        <link href='http://fonts.googleapis.com/css?family=Irish+Grover' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
+        <link href="{{ asset('css/screen.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+    {% block favicon %}
+
+    {% endblock %}
+
+</head>
+ 
+<body>
+
+{% block topmenu %}
+
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+{% block body %}{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

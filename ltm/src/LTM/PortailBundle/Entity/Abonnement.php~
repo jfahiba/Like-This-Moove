@@ -1,0 +1,328 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: jfahiba
+ * Date: 25/06/2014
+ * Time: 23:31
+ */
+
+namespace LTM\PortailBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ */
+class Abonnement
+{
+
+    /**
+     * @ORM\GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $aboPrice;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $aboCurrency;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $aboFrequency;
+
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $aboStartDate;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $aboEndDate;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $aboStatus;
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $aboToken;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $aboCancelHash;
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $aboDesc;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $aboPeriod;
+
+
+    public function __construct()
+    {
+
+    }
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set aboPrice
+     *
+     * @param integer $aboPrice
+     * @return Abonnement
+     */
+    public function setAboPrice($aboPrice)
+    {
+        $this->aboPrice = $aboPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get aboPrice
+     *
+     * @return integer 
+     */
+    public function getAboPrice()
+    {
+        return $this->aboPrice;
+    }
+
+    /**
+     * Set aboCurrency
+     *
+     * @param string $aboCurrency
+     * @return Abonnement
+     */
+    public function setAboCurrency($aboCurrency)
+    {
+        $this->aboCurrency = $aboCurrency;
+
+        return $this;
+    }
+
+    /**
+     * Get aboCurrency
+     *
+     * @return string 
+     */
+    public function getAboCurrency()
+    {
+        return $this->aboCurrency;
+    }
+
+    /**
+     * Set aboFrequency
+     *
+     * @param string $aboFrequency
+     * @return Abonnement
+     */
+    public function setAboFrequency($aboFrequency)
+    {
+        $this->aboFrequency = $aboFrequency;
+
+        return $this;
+    }
+
+    /**
+     * Get aboFrequency
+     *
+     * @return string 
+     */
+    public function getAboFrequency()
+    {
+        return $this->aboFrequency;
+    }
+
+    /**
+     * Set aboStartDate
+     *
+     * @param \DateTime $aboStartDate
+     * @return Abonnement
+     */
+    public function setAboStartDate($aboStartDate)
+    {
+        $this->aboStartDate = $aboStartDate;
+
+        return $this;
+    }
+
+    /**
+     * Get aboStartDate
+     *
+     * @return \DateTime 
+     */
+    public function getAboStartDate()
+    {
+        return $this->aboStartDate;
+    }
+
+    /**
+     * Set aboEndDate
+     *
+     * @param \DateTime $aboEndDate
+     * @return Abonnement
+     */
+    public function setAboEndDate($aboEndDate)
+    {
+        $this->aboEndDate = $aboEndDate;
+
+        return $this;
+    }
+
+    /**
+     * Get aboEndDate
+     *
+     * @return \DateTime 
+     */
+    public function getAboEndDate()
+    {
+        return $this->aboEndDate;
+    }
+
+    /**
+     * Set aboStatus
+     *
+     * @param string $aboStatus
+     * @return Abonnement
+     */
+    public function setAboStatus($aboStatus)
+    {
+        $this->aboStatus = $aboStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get aboStatus
+     *
+     * @return string 
+     */
+    public function getAboStatus()
+    {
+        return $this->aboStatus;
+    }
+
+    /**
+     * Set aboToken
+     *
+     * @param string $aboToken
+     * @return Abonnement
+     */
+    public function setAboToken($aboToken)
+    {
+        $this->aboToken = $aboToken;
+
+        return $this;
+    }
+
+    /**
+     * Get aboToken
+     *
+     * @return string 
+     */
+    public function getAboToken()
+    {
+        return $this->aboToken;
+    }
+
+    /**
+     * Set aboCancelHash
+     *
+     * @param string $aboCancelHash
+     * @return Abonnement
+     */
+    public function setAboCancelHash($aboCancelHash)
+    {
+        $this->aboCancelHash = $aboCancelHash;
+
+        return $this;
+    }
+
+    /**
+     * Get aboCancelHash
+     *
+     * @return string 
+     */
+    public function getAboCancelHash()
+    {
+        return $this->aboCancelHash;
+    }
+
+    /**
+     * Set aboDesc
+     *
+     * @param string $aboDesc
+     * @return Abonnement
+     */
+    public function setAboDesc($aboDesc)
+    {
+        $this->aboDesc = $aboDesc;
+
+        return $this;
+    }
+
+    /**
+     * Get aboDesc
+     *
+     * @return string 
+     */
+    public function getAboDesc()
+    {
+        return $this->aboDesc;
+    }
+
+    /**
+     * Set aboPeriod
+     *
+     * @param string $aboPeriod
+     * @return Abonnement
+     */
+    public function setAboPeriod($aboPeriod)
+    {
+        $this->aboPeriod = $aboPeriod;
+
+        return $this;
+    }
+
+    /**
+     * Get aboPeriod
+     *
+     * @return string 
+     */
+    public function getAboPeriod()
+    {
+        return $this->aboPeriod;
+    }
+}

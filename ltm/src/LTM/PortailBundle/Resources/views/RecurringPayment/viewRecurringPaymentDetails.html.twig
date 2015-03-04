@@ -1,0 +1,64 @@
+{% extends 'PortailBundle::layout.html.twig' %}
+
+
+
+{% block title "Paypal express checkout demo - Create recurring payment" %}
+
+    {% block content %}
+        <div class="block">
+            {{ 'billing.agreement.status'|trans }}:
+            {% if billingAgreementStatus.success %}
+                {{ 'successful'|trans }}
+            {% elseif billingAgreementStatus.canceled %}
+                {{ 'canceled'|trans }}
+            {% elseif billingAgreementStatus.failed %}
+                {{ 'failed'|trans }}
+            {% elseif billingAgreementStatus.pending %}
+                {{ 'pending'|trans }}
+            {% elseif billingAgreementStatus.expired %}
+                {{ 'expired'|trans }}
+            {% elseif billingAgreementStatus.suspended %}
+                {{ 'suspended'|trans }}
+            {% else %}
+                {{ 'unknown'|trans }}
+            {% endif %}
+        </div>
+        <div class="block">
+            <ul>
+                {% for key, value in billingAgreementStatus.model %}
+                    <li>{{ key }}: {{ value|json_encode|raw }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if recurringPaymentStatus %}
+            <div class="block">
+                    {{ 'Recurring.payment.status'|trans }}:
+                {% if recurringPaymentStatus.success %}
+                    {{ 'active'|trans }}
+                {% elseif recurringPaymentStatus.canceled %}
+                    {{ 'canceled'|trans }}
+                {% elseif recurringPaymentStatus.failed %}
+                    {{ 'failed'|trans }}
+                {% elseif recurringPaymentStatus.pending %}
+                    {{ 'pending'|trans }}
+                {% elseif recurringPaymentStatus.expired %}
+                    {{ 'expired'|trans }}
+                {% elseif recurringPaymentStatus.suspended %}
+                    {{ 'suspended'|trans }}
+                {% else %}
+                    {{ 'unknown'|trans }}
+                {% endif %}
+
+                {% if cancelToken %}
+                    &nbsp;(<a href="{{ cancelToken.targetUrl }}">{{ 'cancel'|trans }}</a>)
+                {% endif %}
+            </div>
+            <div class="block">
+                <ul>
+                    {% for key, value in recurringPaymentStatus.model %}
+                        <li>{{ key }}: {{ value|json_encode|raw }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endblock %}

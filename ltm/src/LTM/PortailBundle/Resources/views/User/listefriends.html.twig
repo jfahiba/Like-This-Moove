@@ -1,0 +1,79 @@
+<div class="profile-users clearfix">
+
+    {% for friend in activeFriends %}
+    <div class="itemdiv memberdiv">
+        <div class="inline position-relative">
+            <div class="user">
+                <a href="{{ path ('ltm_usr_public', {'slug' : friend.slug}) }}">
+                    <img class="editable" alt="Avatar de {{ friend.username }}" id="avatar2" src="/{{  friend.getAbsolutePath() }}" />
+                </a>
+            </div>
+
+            <div class="body">
+                <div class="name">
+                    <a href="#">
+                        {% for status in friend.status() %}
+                        {% if status.nom == 'Connecté' %}
+                            <span class="user-status status-online"></span>
+                        {% endif %}
+                        {% if status.nom == 'Déconnecté' %}
+                            <span class="user-status status-offline"></span>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if friend.firstName == null or  friend.lastName == null %}
+                        {{ friend.username }}
+                        {% else %}
+                        {{ friend.firstName }} {{ friend.lastName }}
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+
+            <div class="popover right">
+                <div class="arrow"></div>
+
+                <div class="popover-content">
+                    <div class="bolder">
+                        {% if friend.gender == '6'%} {{ 'recruiting.agency'|trans }}
+                        {% elseif friend.gender == '5'%} {{ 'recruiter.f'|trans }}
+                        {% elseif friend.gender == '4'%} {{ 'recruiter.m'|trans }}
+                        {% elseif friend.gender == '3'%} {{ 'association'|trans }}
+                        {% elseif friend.gender == '2'%} {{ 'dancing.school'|trans }}
+                        {% elseif friend.gender == '1'%} {{ 'dancer.f'|trans }}
+                        {% else %}{{ 'dancer.m'|trans }} {%endif%}
+                        {% for s in friend.style %}
+                            <a href="{{ path('ltm_usr_styled', {'styled' : s.nom|replace( {' ' :  '_'} )}) }}">{{ s.nom }} </a>
+                        {% endfor %}</div>
+
+                    <div class="time">
+                        <i class="icon-time middle bigger-120 grey"></i>
+
+                        <span class="grey "><span class="sincedate">{{ 'connected'|trans }} {{ friend.lastLoginDate| ago }}</span></span>
+                    </div>
+
+                    <div class="hr dotted hr-8"></div>
+
+                    <div class="tools action-buttons">
+                        {%  if friend.facebook %}
+                            <a target="_blank" href="{{ ('http' in friend.facebook|lower)?  friend.facebook : ( 'facebook' in friend.facebook|lower ? 'https://' ~ friend.facebook :'https://www.facebook.com/' ~ friend.facebook|replace({' ' : '-'})) }}" data-original-title="Facebook"
+                               class="icon-facebook-sign blue bigger-150"></a>
+                        {%  endif %}
+                        {%  if friend.skype %}
+                            <a target="_blank" href="{{ friend.skype }}" data-original-title="Skype" class="social_skype"></a>
+                        {%  endif %}
+                        {%  if friend.twitter %}
+                            <a target="_blank" href="{{ ('http' in friend.twitter|lower)? friend.twitter : ( 'twitter' in friend.twitter|lower ? 'https://' ~ friend.twitter : 'https://twitter.com/' ~ friend.twitter|replace({' ' : '-'}) ) }}" data-original-title="Twitter"
+                               class="icon-twitter-sign light-blue bigger-150"></a>
+                        {%  endif %}
+                        {%  if friend.googleplus %}
+                            <a target="_blank" href="{{ ('http' in friend.googleplus|lower)? friend.googleplus : ( 'google' in friend.googleplus|lower ? 'https://' ~ friend.googleplus : 'https://plus.google.com/' ~ friend.googleplus|replace({' ' : '-'}))  }}" data-original-title="Googleplus"
+                               class="icon-google-plus-sign red bigger-150"></a>
+                        {%  endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

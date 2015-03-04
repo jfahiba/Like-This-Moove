@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!--
+ Loco xml export: XLIFF - Localisation Interchange File Format
+ Project: messages.en.yml conversion
+ Release: Working copy
+ Locales: en_CA, en_GB
+ Exported at: Sat, 04 Oct 2014 02:26:28 +0100 
+-->
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en-CA" target-language="en-GB" datatype="" original="messages.en.yml">
+        
+    </file>
+</xliff>

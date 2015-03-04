@@ -1,0 +1,25 @@
+<div class="posts">
+	<div class="headline">
+		<h3>{{ 'ad.recents'|trans}}</h3>
+	</div>
+	 {% for i in advertisements %}
+	 <dl class="dl-horizontal">
+		<dt>
+
+				<a href="{{ path('ltm_advertisement_afficher', {'slug' : i.slug}) }}" target="_blank">
+
+				<img  alt="{{ i.title }}" src="/{{  i.getAbsolutePath() }}"/>
+				 
+				</a> 
+		</dt>
+		<dd>
+			<p>
+				<a href="{{ path('ltm_advertisement_afficher', {'slug' : i.slug}) }}" target="_blank">
+
+				  <p>{{ i.description|truncate(150,true) }}</p>
+				</a> 
+		</dd>
+	</dl>
+	 {% endfor %} 
+
+</div>

@@ -1,0 +1,232 @@
+{% extends 'PortailBundle::layout.html.twig' %}
+
+{% block javascripts %}
+
+
+    <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/modernizr.custom.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/back-to-top.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/flexslider/jquery.flexslider-min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+
+
+    <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js')}}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    <!--script type="text/javascript" src=".{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js')}}"></script-->
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/fullcalendar.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/plugins/bxslider/jquery.bxslider.js')}}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/app.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/pages/index.js')}}"></script>
+
+    
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery.colorbox-min.js')}}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+            App.initSliders();
+            Index.initRevolutionSlider();
+        });
+    </script>
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/portail/js/respond.js')}}"></script>
+    <![endif]-->
+
+
+{% endblock %}
+
+{% block content %}
+
+   
+
+    <!--=== Purchase Block ===-->
+    <div class="row-fluid purchase margin-bottom-30">
+	 
+    </div><!--/row-fluid-->
+    <!-- End Purchase Block -->
+
+    <!--=== Content Part ===-->
+    <div class="container">
+
+         
+
+        <!-- //End Recent Works -->
+
+        <!-- Information Blokcs -->
+        <div class="container-fluid one-page">
+            <div class="one-page-inner one-default">
+                <div class="container">
+						<div>
+	<div>
+		<p>
+			Conditions g&#233;n&#233;rales de vente
+		</p>
+	</div>
+	<div>
+		<p>
+			S'appliquant aux commandes pass&#233;es en ligne en provenance du Canada.
+		</p>
+	</div>
+	<div>
+		<p>
+			Veuillez noter que les conditions g&#233;n&#233;rales de vente sont uniquement valables pour les paiements d'sabonnement ou les achats de
+			cr&#233;dits provenant du Canada.
+		</p>
+	</div>
+	<div>
+		<p>
+			Paiement
+		</p>
+	</div>
+	<div>
+		<p>
+			Le r&#233;seau likethismoove.com peut seulement &#234;tre utilis&#233;e par les clients payant leur cr&#233;dits ou abonnements mensuels par
+paypal. Pour en savoir plus sur les conditions de vente de paypal, consultez :			<a href="https://www.paypal.com/fr/webapps/mpp/ua/useragreement-full">https://www.paypal.com/fr/webapps/mpp/ua/useragreement-full</a>
+		</p>
+	</div>
+	<div>
+		<p>
+			Les cr&#233;dits ou abonnements mensuels d&#233;j&#224; factures sont non remboursables.
+		</p>
+	</div>
+	<div>
+	</div>
+	<div>
+		<p>
+			Taxe de vente
+		</p>
+	</div>
+	<div>
+		<p>
+			Veuillez noter que la taxe de vente s'applique dans tous les provinces.
+		</p>
+	</div>
+	<div>
+	</div>
+	<div>
+		<p>
+			Conditions de livraison
+		</p>
+	</div>
+	<div>
+		<p>
+			Les biens vendus sont num&#233;riques et ne sont pas livres physiquement.
+		</p>
+	</div>
+	<div>
+	</div>
+	<div>
+		<p>
+			Montant de la commande
+		</p>
+	</div>
+	<div>
+		<p>
+			Les abonnements mensuels sont de
+		</p>
+	</div>
+	<ul>
+		<li>
+			<p>
+				7.99$ pour les Semi Professionnels
+			</p>
+		</li>
+		<li>
+			<p>
+				12.99 pour les Professionnels
+			</p>
+		</li>
+	</ul>
+	<div>
+	</div>
+	<div>
+		<p>
+			Des cr&#233;dits peuvent &#234;tre achet&#233;s
+		</p>
+	</div>
+	<ul>
+		<li>
+			<p>
+				pour visualiser des tutoriaux de danse,
+			</p>
+		</li>
+		<li>
+			<p>
+				pour publier des annonces professionnels,
+			</p>
+		</li>
+		<li>
+			<p>
+				pour r&#233;server une salle
+			</p>
+		</li>
+		<li>
+			<p>
+				pour participer a un &#233;v&#232;nement
+			</p>
+		</li>
+		<li>
+			<p>
+				pour participer a un cours
+			</p>
+		</li>
+	</ul>
+	<div>
+	</div>
+	<div>
+		<p>
+			Le compte de cr&#233;dit peut etre recharge par groupe de 5$ CAD, 10$ CAD, 15$ CAD ou 20$ CAD. Un $ CAD &#233;quivaut a 10 cr&#233;dit.
+		</p>
+	</div>
+	<div>
+		<p>
+			Consumer Service
+		</p>
+	</div>
+	<div>
+		<p>
+			Nous sommes disponibles pour r&#233;pondre &#224; vos questions par email :
+		</p>
+	</div>
+	<div>
+		<p>
+			likethismoove@gmail.com
+		</p>
+	</div>
+	<div>
+	</div>
+	<div>
+	</div>
+	<div>
+		<p>
+			Fraude
+		</p>
+	</div>
+	<div>
+		<p>
+			En cas de fraude, de tentative d'escroquerie ou de soup&#231;on d'autres activit&#233;s ill&#233;gales en lien avec l'achat de credits ou le
+			renouvellement d'abonnement LikeThisMoove est en droit de fermer les comptes clients correspondants et/ou d'exiger un autre mode de paiement. Il
+			n'existe aucun droit &#224; l'activation ou au remboursement des credits ou des abonnements mensuels concern&#233;s.
+			<br/>
+		</p>
+	</div>
+</div>
+
+                </div>
+            </div>
+ 
+        </div><!--/row-fluid-->
+        <!-- //End Information Blokcs -->
+ 
+    </div><!--/container-->
+    <!-- End Content Part -->
+
+	<!-- Important garder cette declaration ici pour Video Tuto et les menus-->
+	<script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+{% endblock %}

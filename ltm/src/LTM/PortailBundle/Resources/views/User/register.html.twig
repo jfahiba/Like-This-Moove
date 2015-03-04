@@ -1,0 +1,143 @@
+{% extends 'PortailBundle::layout.html.twig' %}
+
+
+
+{% form_theme form _self %}
+
+{% block form_row %}
+    <div class="form_row">
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+    </div>
+{% endblock form_row %}
+
+{% block choice_widget_collapsed %}
+    {% spaceless %}
+        {% if required and empty_value is none and not empty_value_in_choices and not multiple %}
+            {% set required = false %}
+        {% endif %}
+        <select class="form-control" {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+            {% if empty_value is not none %}
+                <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ empty_value|trans({}, translation_domain) }}</option>
+            {% endif %}
+            {% if preferred_choices|length > 0 %}
+                {% set options = preferred_choices %}
+                {{ block('choice_widget_options') }}
+                {% if choices|length > 0 and separator is not none %}
+                    <option disabled="disabled">{{ separator }}</option>
+                {% endif %}
+            {% endif %}
+            {% set options = choices %}
+            {{ block('choice_widget_options') }}
+        </select>
+    {% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block datetime_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %} {{ 'Enterd' }}
+            {{ block('field_widget') }}
+        {% else %}
+            <div {{ block('widget_container_attributes') }}>
+                {{ form_errors(form.date.year) }}
+                {{ form_errors(form.date.month) }}
+                {{ form_errors(form.date.day) }}
+                {{ form_errors(form.time) }}
+                {{ form_widget(form.date.year) }}
+                {{ form_widget(form.date.month) }}
+                {{ form_widget(form.date.day) }}
+                {{ form_widget(form.time.hour, { 'attr': { 'size': '1' } }) }}:{{ form_widget(form.time.minute, { 'attr': { 'size': '1' } }) }}
+            </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock datetime_widget %}
+
+
+
+{% block form_widget_simple %}
+
+    {% set type = type|default('text') %}
+
+    <input class="form-control" type="{{ type }}"
+           {% if type == 'date' %}   {% endif %}
+            {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock form_widget_simple %}
+
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .craue_formflow_buttons{overflow:hidden}
+        .craue_formflow_steplist li{line-height:1.5em}.craue_formflow_steplist li.craue_formflow_skipped_step{text-decoration:line-through}.craue_formflow_steplist li.craue_formflow_done_step:after{content:' \2713'}.craue_formflow_steplist li.craue_formflow_current_step{font-weight:bold}.craue_formflow_buttons{margin-top:10px}.flow-steps{float:left;padding:20px 50px 250px 20px;background-color:#dbdcf4}.flow-form{float:left;width:600px;margin-top:10px;margin-left:10px}.flow-form label{display:inline-block;width:160px}.flow-form input[type="text"]{width:300px}.flow-form textarea{width:550px;height:200px}.flow-form dl dt{float:left;width:100px}.data-usage-notice{padding:10px 20px;background-color:#f4dbdc;color:#836a6b;display:inline-block}.clear{clear:both}
+        #user_birthDate select {
+            display: inline-block;
+            width: 15%;
+        }
+    </style>
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/datepicker.css')}}">
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="container">
+    <!-- Service Blocks -->
+
+        <div class="flow-steps">
+            {{ 'steps'|trans }}:
+            {% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
+        </div>
+        <div class="">
+            <form method="post" {{ form_enctype(form) }} class="reg-page form-group " style="max-width: inherit; min-width: inherit;">
+                {{ form_errors(form) }}
+                <h3>{{ 'account.creation'|trans }}</h3>
+
+
+                {{ form_rest(form) }}
+
+                {% include 'PortailBundle:User:buttons.html.twig'   %}
+            </form>
+            <div class="clear"></div>
+
+        </div>
+        <div class="">
+            {% if flow.getCurrentStepNumber() == 1 %}
+                <center>
+                    <hr>
+                    <p>{{ 'already.registered'|trans }} <a class="color-green" href="{{ path('login') }}">{{ 'click.here'|trans }}</a> {{ 'to.connect'|trans }}.</p>
+                </center>
+				{% else %}
+				<center>
+                    <hr>
+                    <p>{{ 'conditions.sell'|trans }}  
+				<a target="_blank" class="color-green" href="{{ path('conditions') }}">{{ 'click.here'|trans }}</a>
+				</center>
+				
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/date-time/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/x-editable/bootstrap-editable.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/date-time/locales/bootstrap-datepicker.fr.js')}}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+
+            //$('#user_birthDate').datepicker({ viewMode:'years', minViewMode : 'days',  dateFormat: 'yyyy-MM-dd',  language  : 'fr'});
+
+        });
+    </script>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends tuto? 'PortailBundle::layouttuto.html.twig' : 'PortailBundle::layout.html.twig' %}
+
+
+
+{% block stylesheets %}
+
+
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/portfolioSorting/css/sorting.css')}}">
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/default.css')}}" id="style_color">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/headers/default.css')}}" id="style_color-header-1">
+
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/colorbox.css')}}" type="text/css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/youtube-video-gallery.css')}}" type="text/css" rel="stylesheet">
+
+    <!--[if IE lt 9]>
+    <link href="{{ asset('bundles/portail/css/youtube-video-gallery-legacy-ie.css')}}" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+
+	{{ parent() }}
+
+{% endblock %}
+
+
+{% block title %}{{ 'image.list'|trans}}{% endblock %}
+
+{% block content %}
+    {% block content_breadcrumbs %}
+
+    {% endblock %}
+
+<div class="container">
+    <div class="row-fluid gallery">
+
+        <div id="w">
+            <div id="sort" class="sort">
+                <ul class="unstyled inline">
+                    <li><a class="all selected" href="#">{{ 'all.f'|trans}}</a></li>
+                    {% set authors = [] %}
+                    {% for i in images %}
+                        {% set author = i.author == null? "" : i.author.getUserName()  %}
+						{% set pro = (i.author != null and i.author.category !=null and  (i.author.category.nom == 'Pro' or i.author.category.nom ==  'Pro (Essai gratuit 14 jours)' )) %}
+                        {% if  pro and author not in authors  %}
+							{% set theclass = i.author == null? "" : i.author.getUserName()|replace({' ' : ''}) %}
+                            <li><a class="{{theclass}}" href="#">{{author}}</a></li>
+                            {% set authors = [author]|merge(authors) %}
+
+                        {% endif %}
+
+                    {% endfor %}
+                </ul>
+            </div>
+
+    {% include 'PortailBundle:Image:liste.html.twig' with {'images' : images}  %}
+    {% if app.user != null and (app.user.id != null or (app.user.id == 50 or app.user.id == 54) ) %}
+    <p><a class="btn" href="{{ path('ltm_image_ajouter' ) }}">{{ 'image.add'|trans}}</a><p>
+     {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/modernizr.custom.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/flexslider/jquery.flexslider-min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/parallax-slider/js/modernizr.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/parallax-slider/js/jquery.cslider.js')}}"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/gmap/gmap.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/back-to-top.js')}}"></script>
+
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/app.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/pages/index.js')}}"></script>
+
+ 
+
+{% endblock %}
+
+
+
+

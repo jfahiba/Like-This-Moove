@@ -1,0 +1,31 @@
+ltm:
+    resource: "@PortailBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ltm_tuto:
+    resource: "@PortailBundle/Resources/config/routing_tuto.yml"
+    prefix:   /
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+adesigns_calendar:
+    resource: "@ADesignsCalendarBundle/Resources/config/routing.yml"
+
+
+payum_capture:
+    resource: "@PayumBundle/Resources/config/routing/capture.xml"
+payum_notify:
+    resource: "@PayumBundle/Resources/config/routing/notify.xml"
+
+oneup_uploader:
+    resource: .
+    type: uploader
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /message
+
+fos_comment_api:
+    type: rest
+    resource: "@FOSCommentBundle/Resources/config/routing.yml"
+    prefix: /api
+    defaults: { _format: html }

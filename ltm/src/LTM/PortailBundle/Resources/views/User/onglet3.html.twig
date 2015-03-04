@@ -1,0 +1,421 @@
+
+<div class="hide">
+<div id="user-profile-2" class="user-profile row-fluid">
+<div class="offset1 span10">
+<div class="well well-small">
+    <!-- button type="button" class="close" data-dismiss="alert">&times;</button-->
+    &nbsp;
+    <div class="inline middle blue bigger-110"> {{ 'profile.completed.at'|trans ~ ' ' ~ avancement }}%</div>
+
+    &nbsp; &nbsp; &nbsp;
+    <div style="width:200px;" data-percent="{{ avancement }}%" class="inline middle no-margin progress progress-success progress-striped active">
+        <div class="bar" style="width:{{ avancement }}%"></div>
+    </div>
+</div><!--/well-->
+
+<div class="space"></div>
+
+{% if reload %}
+    <script>
+        window.location.replace("{{path('ltm_usr_afficher')}}");
+    </script>
+{% endif %}
+
+<form class="form-horizontal" name="edituser" method="post"   enctype="multipart/form-data">
+<div class="tabbable">
+<ul class="nav nav-tabs padding-16">
+    <li class="active">
+        <a data-toggle="tab" href="#edit-basic">  <i class="green icon-edit bigger-125"></i>  {{ 'general.information'|trans }}  </a>
+    </li>
+
+    <li>
+        <a data-toggle="tab" href="#edit-settings">
+            <i class="purple icon-cog bigger-125"></i>
+
+            {{ 'parameters'|trans }}
+        </a>
+    </li>
+
+    <li>
+        <a data-toggle="tab" href="#edit-password">
+            <i class="blue icon-key bigger-125"></i>
+            {{ 'password'|trans }}
+        </a>
+    </li>
+</ul>
+
+<div class="tab-content profile-edit-tab-content">
+<div id="edit-basic" class="tab-pane in active">
+    <h4 class="header blue bolder smaller"> {{ 'general'|trans }}</h4>
+
+    <div class="row-fluid">
+
+
+        <div class="span4">
+            <label class="control-label"  style="width: initial" for="form-field-file">{{ 'avatar'|trans ~ ': ' ~   user.getPath() }}</label>
+             <input type="file" name="file" id="file" >
+                <br><br>
+            <label class="control-label" style="width: initial"  for="form-field-fileCover">{{ 'cover.image'|trans ~ ': ' ~   user.getPathCover() }}</label>
+            <input type="file" name="fileCover" id="fileCover">
+        </div>
+        <div class="vspace"></div>
+
+        <div class="span8">
+            <div class="control-group">
+                <label class="control-label" for="form-field-username">{{ 'alias'|trans}}</label>
+
+                <div class="controls">
+                    <input type="text" id="form-field-username" placeholder="{{ 'alias'|trans}}" value="{{ user.username }}" name="username"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="form-field-first">{{ 'lastName'|trans}}</label>
+
+                <div class="controls">
+                    <input class="input-small" type="text" id="form-field-first" placeholder="{{ 'firstName'|trans}}" value="{{ user.firstName }}" name="firstName"/>
+                    <input class="input-small" type="text" id="form-field-last" placeholder="{{ 'lastName'|trans}}" value="{{ user.lastName }}" name="lastName"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <div class="control-group">
+        <label class="control-label" for="form-field-date">{{ 'birth.or.creation.date'|trans}}</label>
+
+        <div class="controls">
+            <div class="input-append">
+                <input class="input-small date-picker"
+                       id="form-field-date"
+                       type="text"
+                       data-date-format="dd/mm/yyyy"
+                       placeholder="{{ 'day.month.year'|trans}}"
+                       value="{{ user.birthDate|date('m/d/Y') }}" name="birthDate"/>
+                        <span class="add-on">
+                            <i class="icon-calendar"></i>
+                        </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-username">{{ 'size'|trans}}</label>
+
+        <div class="controls">
+            <input type="text" id="form-field-username" placeholder="{{ 'size'|trans}}" value="{{ user.height }}" name="height"/>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">{{ 'you.are'|trans}}</label>
+
+        <div class="controls">
+            <div class="space-2"></div>
+
+            <label class="inline">
+                <input name="gender" type="radio" value="Danseur" class="ace" {{ user.gender == '0' ? 'checked="checked"' : '' }}/>
+                <span class="lbl"> {{ 'dancer.m'|trans}}</span>
+            </label>
+
+            &nbsp; &nbsp; &nbsp;
+            <label class="inline">
+                <input name="gender" type="radio" value="Danseuse" class="ace"  {{  user.gender == '1' ? 'checked="checked"' : '' }}/>
+                <span class="lbl"> {{ 'dancer.f'|trans}}</span>
+            </label>
+			
+			&nbsp; &nbsp; &nbsp;
+            <label class="inline">
+                <input name="gender" type="radio" value="Ecole" class="ace"  {{  user.gender == '2' ? 'checked="checked"' : '' }}/>
+                <span class="lbl"> {{ 'dancing.school'|trans}}</span>
+            </label>
+			
+			&nbsp; &nbsp; &nbsp;
+            <label class="inline">
+                <input name="gender" type="radio" value="Association" class="ace"  {{  user.gender == '3' ? 'checked="checked"' : '' }}/>
+                <span class="lbl"> {{ 'association'|trans}}</span>
+            </label>
+			
+			&nbsp; &nbsp; &nbsp;
+            <label class="inline">
+                <input name="gender" type="radio" value="Recruteur" class="ace"  {{  user.gender == '4' ? 'checked="checked"' : '' }}/>
+                <span class="lbl"> {{ 'recruiter.m'|trans}}</span>
+            </label>
+			
+			&nbsp; &nbsp; &nbsp;
+            <label class="inline">
+                <input name="gender" type="radio" value="Recruteuse" class="ace"  {{  user.gender == '5' ? 'checked="checked"' : '' }}/>
+                <span class="lbl"> {{ 'recruiter.f'|trans}}</span>
+            </label>
+			&nbsp; &nbsp; &nbsp;
+            <label class="inline">
+                <input name="gender" type="radio" value="Agence de Recrutement" class="ace"  {{  user.gender == '6' ? 'checked="checked"' : '' }}/>
+                <span class="lbl"> {{ 'recruiting.agency'|trans}}</span>
+            </label>
+			&nbsp; &nbsp; &nbsp;
+            <label class="inline">
+                <input name="gender" type="radio" value="Visiteur" class="ace"  {{  user.gender == '7' ? 'checked="checked"' : '' }}/>
+                <span class="lbl"> {{ 'visitor'|trans}}</span>
+            </label>
+        </div>
+    </div>
+
+	
+	<div class="control-group">
+        <label class="control-label" for="form-field-comment">{{ 'my.current.status'|trans}}</label>
+
+        <div class="controls">
+            <textarea id="form-field-actualite"   rows="5" style="width: 100%;" name="actualite">{{ user.actualite }}</textarea>
+        </div>
+
+    </div>
+	
+	
+	<div class="control-group">
+        <label class="control-label" for="form-field-style">{{ 'style'|trans}}</label>
+			<div class="controls"> 
+			<select multiple="multiple" name="styledanse[]" class="form-control" id="user_style" class="form-control">
+				<option value=""></option>
+				{% for style in allstyles %}
+					<option {{ style in user.style? 'selected="selected"' : '' }}">{{ style.nom }}</option>
+				{% endfor %}
+			</select>
+			 </div>
+    </div>
+	
+	
+    <div class="control-group">
+        <label class="control-label" for="form-field-comment">{{ 'about.me'|trans}}</label>
+
+        <div class="controls">
+            <textarea id="form-field-aboutMe"   rows="5" style="width: 100%;" name="aboutMe">{{ user.aPropos }}</textarea>
+        </div>
+
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="form-field-comment">{{ 'biography'|trans}}</label>
+
+        <div class="controls">
+            <textarea id="form-field-biographie"   rows="5" style="width: 100%;" name="biographie">{{ user.biographie }}</textarea>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="form-field-comment">{{ 'awards'|trans}}</label>
+
+        <div class="controls">
+            <textarea id="form-field-awards"   rows="5" style="width: 100%;" name="awards">{{ user.awards }}</textarea>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="form-field-comment">{{ 'last.contracts'|trans}}</label>
+
+        <div class="controls">
+            <textarea id="form-field-contrats"    rows="5" style="width: 100%;" name="contrats">{{ user.contrats }}</textarea>
+        </div>
+
+    </div>
+
+    <div class="space"></div>
+    <h4 class="header blue bolder smaller">{{ 'contact'|trans}}</h4>
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-email">{{ 'email'|trans}}</label>
+
+        <div class="controls">
+																<span class="input-icon input-icon-right">
+																	<input type="email" id="form-field-email" value="{{ user.email }}" name="email"/>
+																	<i class="icon-envelope"></i>
+																</span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-website">{{ 'website'|trans}}</label>
+
+        <div class="controls">
+																<span class="input-icon input-icon-right">
+																	<input type="url" id="form-field-website" value="{{ user.webSite }}" name="webSite"/>
+																	<i class="icon-globe"></i>
+																</span>
+        </div>
+    </div>
+
+
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-phone">{{ 'contact.agent.my'|trans}}</label>
+
+        <div class="controls">
+																<span class="input-icon input-icon-right">
+																	<input class="input-medium input-mask-phone" type="text" id="form-field-phone" value="{{ user.agentPhone }}" name="agentPhone"/>
+																	<i class="icon-phone icon-flip-horizontal"></i>
+																</span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-phone">{{ 'phone.my'|trans}}</label>
+
+        <div class="controls">
+																<span class="input-icon input-icon-right">
+																	<input class="input-medium input-mask-phone" type="text" id="form-field-phone" value="{{ user.phone }}" name="phone"/>
+																	<i class="icon-phone icon-flip-horizontal"></i>
+																</span>
+        </div>
+    </div>
+
+
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-country">{{ 'country'|trans}}</label>
+
+        <div class="controls">
+            <span class="input-icon input-icon-right">
+                <input class="input-medium" type="text" id="form-field-country" value="{{ user.country }}" name="country"/>
+
+                <i class="icon-flag-checkered icon-flip-horizontal"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-phone">{{ 'city'|trans}}</label>
+
+        <div class="controls">
+                <span class="input-icon input-icon-right">
+                    <input class="input-medium" type="text" id="form-field-city" value="{{ user.city }}" name="city"/>
+                    <i class="icon-building icon-flip-horizontal"></i>
+                </span>
+        </div>
+    </div>
+
+
+
+    <div class="space"></div>
+    <h4 class="header blue bolder smaller">{{ 'social'|trans}}</h4>
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-facebook">Facebook</label>
+
+        <div class="controls">
+																<span class="input-icon">
+																	<input type="text" value="{{ user.facebook }}" id="form-field-facebook" name="facebook"/>
+																	<i class="icon-facebook"></i>
+																</span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-twitter">Twitter</label>
+
+        <div class="controls">
+																<span class="input-icon">
+																	<input type="text" value="{{ user.twitter }}" id="form-field-twitter" name="twitter"/>
+																	<i class="icon-twitter"></i>
+																</span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-gplus">Google+</label>
+
+        <div class="controls">
+																<span class="input-icon">
+																	<input type="text" value="{{ user.googleplus }}" id="form-field-gplus" name="googleplus"/>
+																	<i class="icon-google-plus"></i>
+																</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="form-field-gplus">Skype</label>
+
+        <div class="controls">
+																<span class="input-icon">
+																	<input type="text" value="{{ user.skype }}" id="form-field-skype" name="skype"/>
+																	<i class="social_skype"></i>
+																</span>
+        </div>
+    </div>
+</div>
+
+<div id="edit-settings" class="tab-pane">
+    <div class="space-10"></div>
+
+    <div>
+        <label class="inline">
+            <input type="checkbox" name="publishProfil" class="ace" {{ user.publishProfil? 'checked="checked"' : '' }} />
+            <span class="lbl"> {{ 'publish.my.profile'|trans}}</span>
+        </label>
+    </div>
+
+    <div>
+        <label class="inline">
+            <input type="checkbox" name="showPersonalInformation" class="ace" {{ user.showPersonalInformation? 'checked="checked"' : '' }} />
+            <span class="lbl"> {{ 'showPersonalInformation'|trans}}</span>
+        </label>
+    </div>
+
+    <div class="space-8"></div>
+
+    <div>
+        <label class="inline">
+            <input type="checkbox" name="receiveMailDigests" class="ace" {{  user.receiveMailDigests? 'checked="checked"' : '' }}/>
+            <span class="lbl"> {{ 'receiveMailDigests'|trans}}</span>
+        </label>
+    </div>
+
+    <div class="space-8"></div>
+
+    <div>
+        <label class="inline">
+            <input type="checkbox" name="keepHistoric" class="ace" {{ user.keepHistoric ? 'checked="checked"' : ''}}  />
+            <span class="lbl"> {{ 'keepHistoric'|trans}} </span>
+        </label>
+
+        <label class="inline">
+            <span class="space-2 block"></span>
+
+            {{ 'during'|trans}}
+            <input type="text" class="input-mini" maxlength="3" name="historicDays" value="{{ user.historicDays }}"/>
+            {{ 'days'|trans}}
+        </label>
+    </div>
+</div>
+
+<div id="edit-password" class="tab-pane">
+    <div class="space-10"></div>
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-pass1"> {{ 'password.new'|trans}}</label>
+
+        <div class="controls">
+            <input type="password" id="form-field-pass1" name="password"/>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="form-field-pass2">{{ 'password.confirm'|trans}}</label>
+
+        <div class="controls">
+            <input type="password" id="form-field-pass2" name="confirm"/>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="form-actions">
+    <input class="btn btn-info" type="submit" name="submit" value="{{ 'save'|trans}}">
+
+
+    &nbsp; &nbsp; &nbsp;
+    <button class="btn" type="reset">
+        <i class="icon-undo bigger-110"></i>
+        {{ 'delete.all.fields'|trans}}
+    </button>
+</div>
+</form>
+</div><!--/span-->
+</div><!--/user-profile-->
+</div>
+

@@ -1,0 +1,147 @@
+{% extends tuto? 'PortailBundle::layouttuto.html.twig' : 'PortailBundle::layout.html.twig' %}
+
+
+
+{% block stylesheets %}
+
+
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/portfolioSorting/css/sorting.css')}}">
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/default.css')}}" id="style_color">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/headers/default.css')}}" id="style_color-header-1">
+
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/colorbox.css')}}" type="text/css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/youtube-video-gallery.css')}}" type="text/css" rel="stylesheet">
+
+    <!--[if IE lt 9]>
+    <link href="{{ asset('bundles/portail/css/youtube-video-gallery-legacy-ie.css')}}" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+
+
+    {{ parent() }}
+{% endblock %}
+
+
+{% block title %}{{ 'ad.list'|trans}}{% endblock %}
+{% block meta_d %}{{ 'ad.list'|trans}}{% endblock %}
+{% block meta_k %}{{ 'ad.list'|trans|replace({' ' : ', ' }) }}{% endblock %}
+
+
+
+{% block content %}
+    {% block content_breadcrumbs %}
+
+    {% endblock %}
+
+<div class="container">
+    <div class="row-fluid gallery">
+	<div class="headline">
+                <h3>{{ 'ad.list'|trans}}
+                </h3>
+            </div>
+		<form id="user-form" class="form-horizontal" name="filterusers" method="post"  enctype="multipart/form-data">
+
+            <div class="row">
+			
+			<div class="control-group span4">
+                            <label class="control-label" for="form-field-username">{{ 'keyword'|trans}}</label>
+
+                            <div class="controls">
+                                <input type="text" class="form-control" id="form-field-username" placeholder="{{ 'title.or.description'|trans}}" value="{{ title }}" name="title"/>
+                            </div>
+                        </div>
+						
+            <div class="control-group span4">
+                <label class="control-label" for="form-field-username">{{ 'author'|trans}}</label>
+
+                <div class="controls">
+                    <input type="text" {{ slug != null? 'readonly' : '' }} class="form-control" id="form-field-username" placeholder="{{ 'first.last.alias'|trans}}" value="{{ username }}" name="username"/>
+                </div>
+            </div>
+			
+			 <div class="control-group span4">
+                    <label class="control-label" for="form-field-username">{{ 'localisation'|trans}}</label>
+
+                    <div class="controls">
+                        <input type="text" class="form-control" id="form-field-username" placeholder="{{ 'town.or.country'|trans}}" value="{{ place }}" name="place"/>
+                    </div>
+                </div> 
+            </div>
+
+            <!--div class="row">
+               <div class="control-group span8">
+					<label class="control-label" for="form-field-tri">Montrer</label>
+					<div class="controls">				
+						<input type="radio"  id="form-field-recents" name="tri" value="0" {{ tri == '0' ? 'checked' : ''}}/>&nbsp;{{ 'most.recents.f'|trans}}&nbsp;
+						<input type="radio"  id="form-field-views" name="tri" value="1" {{ tri == '1' ? 'checked' : ''}}/>&nbsp;{{ 'most.views.f'|trans}}&nbsp;
+						<input type="radio"  id="form-field-votes" name="tri" value="2" {{ tri == '2' ? 'checked' : ''}}/>&nbsp;{{ 'most.votes.f'|trans}}&nbsp;
+					</div>
+				</div> 
+            </div-->
+			
+			
+                <center>
+                      <input class="btn {{ tuto? 'btn-success' : 'btn-danger' }}" type="submit" name="submit" value="{{ 'search'|trans}}">
+
+
+                        &nbsp; &nbsp; &nbsp;
+                        <a class="btn" href="{{ path( 'ltm_advertisement_lister_toutes') }}" onclick="#">
+                            <i class="icon-undo bigger-110"></i>
+                            {{ 'delete.all.fields'|trans}}
+                        </a>
+						
+						 {% if app.user == null or app.user.id == null %}
+						&nbsp; &nbsp; &nbsp;
+                        <a class="btn btn-primary" style="margin:5px" href="{{ path('login') }}" onclick="#">
+                            <i class="icon-rocket bigger-110"></i>
+                            {{ 'connect.see.all.ads'|trans}}
+                        </a>
+						{% endif%}
+
+                </center>
+            </form>
+        <div id="w">
+            
+
+			<center>
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination, null, {
+                        'title' : title ,
+                        'username' : username ,
+						'tri' : tri,
+						'place' : place}
+                        ) }}
+                    </div>
+                </center>
+				
+    {% include 'PortailBundle:Advertisement:liste.html.twig' with {'advertisements' : advertisements, 'alladvertisements' : pagination, 'countAnnonces' : countAnnonces}  %}
+	
+			<center>
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination, null, {
+                        'title' : title ,
+                        'username' : username ,
+						'tri' : tri,
+						'place' : place}
+                        ) }}
+                    </div>
+                </center>				
+    {% if app.user != null and app.user.id != null %}
+
+    <p><a class="btn" href="{{ path('ltm_advertisement_ajouter') }}">{{ 'ad.add'|trans}}</a><p>
+     {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+

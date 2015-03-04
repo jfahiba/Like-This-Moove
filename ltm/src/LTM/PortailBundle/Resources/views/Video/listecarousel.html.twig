@@ -1,0 +1,217 @@
+
+<link rel="stylesheet" href="{{ asset('bundles/portail/css/datepicker.css')}}">
+<link rel="stylesheet" href="{{ asset('bundles/portail/css/daterangepicker.css')}}">
+<style>
+
+@media (min-width: 768px) { 
+.thumbnails {
+    margin-left: 0;
+}
+.thumbnails li.span2{
+width: 16% ;
+height: 250px;
+margin-left: 0.6%;
+}
+.thumbnails .image {
+width: 150px ;
+height: 140px
+}
+.thumbnails  p.description{
+min-height: 80px
+}
+}
+@media (max-width: 767px) {
+.thumbnails li.span2{
+width: 100% ;
+}
+.thumbnails .image {
+width: 100%;
+height: 50vw;
+}
+}
+</style>
+<div style="display: none;" class="bb-alert alert alert-info pull-right">
+    <span>Callback</span>
+</div>
+
+
+<ul class="thumbnails" >
+    <li style="display: none"> s</li>
+    {% for v in pagination %}
+
+    <li class="span2">
+        <div class="thumbnail-style thumbnail-kenburn">
+            <div class="thumbnail-img">
+                <div class="overflow-hidden">
+				{% set imagePath = v.getAbsolutePathImage() %}
+                {% if v.url != null %}
+                    <img class="image replace_me" src="{{ v.url }}"  alt=""></div>
+                {% elseif imagePath != null %}
+                    <img class="image" src="/{{ imagePath }}"  alt=""></div>
+                {% else %}
+				<img class="image"  src="http://placehold.it/700x700&text={{ 'published.by'|trans ~ ' ' ~ v.author.username}}"  alt=""></div>
+				{% endif %}
+
+                    <a class="hover-effect" style="position: absolute;left: 50%;bottom: 50%;" href="{{ path('ltm_video_afficher',
+                    {'slug' : v.slug, 'id': v.id | urlencrypt} ) }}">
+                        <img class="youtube-videogallery-play"
+                             src='/bundles/portail/img/youtube-video-gallery/play-button-green@40.png'/>
+                    </a> 
+            </div>
+			<center>
+            <p class="description"> 
+ 
+				{% set styles = (v.author == null) ? (v.creationDate|ago) : (v.author.getUserName() ~ ' - ' ~ v.creationDate|ago) %}
+				{% for s in v.style %} {% set styles = styles ~ ', ' ~ s.nom %}{% endfor %} 
+							 
+                {{styles|truncate(45,true)}}<br><i class="color-red">
+
+                    {{v.vues ~ ' ' ~ (v.vues > 1? 'views'|trans  : 'view'|trans )}}
+                </i>
+                <br><strong>{{ v.title|truncate(30, false, '...') }}</strong>
+                {% if (app != null and app.user != null and (app.user.id == v.author.id or (app.user.id == 50 or app.user.id == 54) ))%}
+                    <a class="pull-right" href="{{ path('ltm_video_modifier', {'slug': v.slug} ) }}"><i class="icon-edit"></i></a>
+                {% endif %}
+            </p>
+			</center>
+        </div>
+    </li>
+    {% else %}
+        <li>{{ 'video.notfound'|trans }}</li>
+    {%  endfor %}
+
+</ul>
+ 
+
+
+
+<script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+
+<script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('bundles/portail/js/bootbox.min.js')}}"></script>
+
+
+<script>
+
+    var LTMAlert = (function() {
+        "use strict";
+        var elem,
+                hideHandler,
+                that = {};
+        that.init = function(options) {
+            elem = $(options.selector);
+        };
+        that.show = function(text) {
+            clearTimeout(hideHandler);
+            elem.find("span").html(text);
+            elem.fadeIn();
+            hideHandler = setTimeout(function() {
+                that.hide();
+            }, 4000);
+        };
+        that.hide = function() {
+            elem.fadeOut();
+        };
+        return that;
+    }());
+
+    LTMAlert.init({
+        "selector": ".bb-alert"
+    });
+
+
+    function connectLTM()
+    {
+        bootbox.dialog("Veuillez vous connecter pour accéder aux Videos Tutos", [{
+            label: "Oui aller vers le formulaire de connexion",
+            className: "btn-primary btn-success",
+            callback: function() {
+                window.location.href = $loginUrl;
+
+            }
+        }, {
+            "label" : "Non!",
+            "class" : "btn-danger",
+            "callback": function() {
+                LTMAlert.show("Retour à la gallerie de Tutos!");
+            }
+        }]);
+    }
+
+
+</script>
+
+
+
+<script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.10.2.min.js')}}"></script>
+
+
+<script>
+    $(document).ready(function(){
+
+        $("img.replace_me").each(function() {
+			
+			$src = $(this).attr('src');
+			var img = $(this);
+			if (!!$src && $src.indexOf('vimeo.com/') > 0){
+				video_id = getBefore($src.split('vimeo.com/')[1], '?');
+				$.ajax({
+				type:'GET',
+				url: 'http://vimeo.com/api/v2/video/' + video_id + '.json',
+				jsonp: 'callback',
+				dataType: 'jsonp',
+				success: function(data){
+					var thumbnail_src = data[0].thumbnail_large;
+					img.attr('src', thumbnail_src);
+					
+				}
+			});
+			} else { 
+				
+				$id = getId($src);
+				$(this).attr('src', 'http://img.youtube.com/vi/' + $id + '/0.jpg');
+			}
+        });
+		
+		
+        $("a.replace_me").each(function() {
+            $href = $(this).attr('href');
+            $id = getId($href);
+            $(this).attr('href', 'http://www.youtube.com/embed/' + $id);
+        });
+
+        $("iframe.replace_me").each(function() {
+            $src = $(this).attr('src');
+            $id = getId($src);
+            $(this).attr('src', '//www.youtube.com/embed/' + $id);
+
+        });
+
+        function getId(href){
+            var id = '';
+            if (!!href && href.indexOf('www.youtube.com/v/') > 0) {
+                id = getBefore(href.split('www.youtube.com/v/')[1], '?')
+            }else if (!!href && href.indexOf('youtu.be/') > 0){
+				id = getBefore(href.split('youtu.be/')[1], '?');
+			} 
+			else if (!!href && href.indexOf('/embed/') > 0){
+                id = getBefore(href.split('/embed/')[1], '?');
+            } else if (!!href && href.indexOf('?v=') > 0){// this could be version if API call!!
+                id = getBefore(href.split('?v=')[1],'&');
+            } else if (!!href && href.indexOf('video:') > 0){
+                id = getBefore(href.split('video:')[1], ':');
+            } else if (!!href){
+                id = href;
+            }
+            return id;
+        }
+
+        function getBefore(str, before){
+            if (!!str && str.indexOf(before)){
+                str = str.split(before)[0];
+            }
+            return str;
+        }
+    });
+
+</script>

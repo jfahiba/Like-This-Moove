@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2014-10-02T03:00:19Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="f04358005bd6b73b5c3ca978c37573bef0854bce" resname="Le pseudo est déjà utilisé">
+        <source>Le pseudo est déjà utilisé</source>
+        <target state="new">Le pseudo est déjà utilisé</target>
+      </trans-unit>
+      <trans-unit id="d2b8f68e05729b9c08bcf2ffd0430fb5e8009c4c" resname="Please enter a message">
+        <source>Please enter a message</source>
+        <target state="new">Please enter a message</target>
+      </trans-unit>
+      <trans-unit id="8d566c55ace8e546e085afcc112eb61b8d04d5ce" resname="Please enter a permalink">
+        <source>Please enter a permalink</source>
+        <target state="new">Please enter a permalink</target>
+      </trans-unit>
+      <trans-unit id="47f5d4a681fc0a196a59ab2cb50cf8fd554695df" resname="Please enter an id">
+        <source>Please enter an id</source>
+        <target state="new">Please enter an id</target>
+      </trans-unit>
+      <trans-unit id="42d7b4337e8d96dcad9054e351d34b6d88642727" resname="Please provide a valid url">
+        <source>Please provide a valid url</source>
+        <target state="new">Please provide a valid url</target>
+      </trans-unit>
+      <trans-unit id="eadc36170b04879e1cdee1fded958f529b281459" resname="The message is too short|The message is too short">
+        <source>The message is too short|The message is too short</source>
+        <target state="new">The message is too short|The message is too short</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

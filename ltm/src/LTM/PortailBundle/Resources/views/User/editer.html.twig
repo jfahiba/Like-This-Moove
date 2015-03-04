@@ -1,0 +1,35 @@
+
+{% extends 'PortailBundle::layout.html.twig' %}
+
+{% block content %}
+<h1>{{ 'profile.edit.my'|trans }}</h1>
+
+{% if message %}
+    <p>{{ message }}</p>
+{% endif %}
+
+<form action="" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input id="soumettre" type="submit" class="btn btn-info" value="{{ 'submit'|trans }}"/>
+</form>
+<p><a href="{{ path('ltm_usr_lister') }}">{{ 'profile.see.all'|trans }}</a></p>
+{% endblock %}
+
+{% block footer %}
+    <script src="{{ asset('bundles/portail/js/date-time/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/x-editable/bootstrap-editable.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/date-time/locales/bootstrap-datepicker.fr.js')}}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+
+
+            $('.date-picker-2').datepicker({ language  : 'fr', viewMode: 'years', minViewMode: 'months'});
+            $('.date-picker-3').datepicker({ language  : 'fr', viewMode: 'years', minViewMode: 'months'});
+
+
+
+        });
+
+    </script>
+{% endblock %}
+

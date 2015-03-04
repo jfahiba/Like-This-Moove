@@ -1,0 +1,385 @@
+_ltm_secured:
+    resource: "@PortailBundle/Controller/SecuredController.php"
+    type:     annotation
+
+private:
+    pattern: /private
+    defaults: {_controller: PortailBundle:Security:dumpString }
+
+
+login:
+    path:     /login
+    defaults: { _controller: PortailBundle:Security:login }
+forgotpassword:
+    path:     /forgotpassword
+    defaults: { _controller: PortailBundle:Security:forgotpassword }
+login_check:
+    path: /login_check
+logout:
+    path:     /logout
+    options: { i18n: false }
+
+
+home:
+    pattern: /
+    defaults: { _controller: PortailBundle:Default:index }
+
+createslugs:
+    pattern: /private/slugs
+    defaults: { _controller: PortailBundle:Default:createslugs }
+
+apropos:
+    pattern: /apropos
+    defaults: { _controller: PortailBundle:Default:apropos }
+conditions:
+    pattern: /conditions
+    defaults: { _controller: PortailBundle:Default:conditions }
+recrutement:
+    pattern: /recrutement
+    defaults: { _controller: PortailBundle:Default:recrutement }
+contact:
+    pattern: /contact
+    defaults: { _controller: PortailBundle:Default:contact }
+
+ltm_usr_lister:
+  pattern: /private/profil/
+  defaults: { _controller: PortailBundle:User:lister }
+ltm_usr_lister_ecoles:
+  pattern: /private/schools/
+  defaults: { _controller: PortailBundle:User:listerschool }  
+ltm_usr_styled:
+  pattern: /private/profil/styled/{styled}
+  defaults: { _controller: PortailBundle:User:lister }
+ltm_usr_ajouter:
+  pattern: /profil/ajouter
+  defaults: { _controller: PortailBundle:User:editer }
+
+
+ltm_usr_forfaits_type:
+  pattern: /forfait/select/{moovertype}
+  defaults: { _controller: PortailBundle:Default:forfaitType }
+ltm_usr_forfaits_duration:
+  pattern: /forfait/duration/{moovertype}/{accounttype}
+  defaults: { _controller: PortailBundle:Default:forfaitDuration }  
+ltm_usr_forfaits_frequency:
+  pattern: /forfait/frequency/{moovertype}/{accounttype}/{duration}
+  defaults: { _controller: PortailBundle:Default:forfaitFrequency }
+
+ltm_usr_ajouter_by_choice:
+  pattern: /profil/register/{moovertype}/{accounttype}/{duration}/{frequency}
+  defaults: { _controller: PortailBundle:User:editerbychoice }
+
+ltm_usr_afficher:
+  pattern: /private/admin
+  defaults: { _controller: PortailBundle:User:afficher }
+ltm_usr_public:
+  pattern: /profil/{slug}
+  defaults: { _controller: PortailBundle:User:afficherpublic }
+ltm_usr_modifier:
+  pattern: /private/profil/modifier
+  defaults: { _controller: PortailBundle:User:editer }
+ltm_usr_supprimer:
+  pattern: /private/profil/supprimer
+  defaults: { _controller: PortailBundle:User:supprimer }
+ltm_usr_top:
+  pattern: /private/profil/top/
+  defaults: { _controller: PortailBundle:User:top }
+listerdanseursltm:
+  pattern: /profil/recommandation/
+  defaults: { _controller: PortailBundle:User:listerdanseursltm }
+
+ltm_usr_credit_historique:
+ pattern: /private/profil/credit/
+ defaults: { _controller: PortailBundle:User:historiquecredit }
+
+ltm_usr_en_attente:
+  pattern: /private/profil/attente
+  defaults: { _controller: PortailBundle:User:attente }
+
+
+ltm_payment_ajouter:
+ pattern: /private/paypal/express-checkout
+ defaults: { _controller: PortailBundle:Payment:preparePaypalExpressCheckoutPayment}
+
+ltm_payment_details_voir:
+ pattern: /private/paypal/express-checkout/done
+ defaults: { _controller: PortailBundle:Payment:captureDone}
+
+
+ltm_payment_credit_pricing:
+ pattern: /private/payment/pricing/
+ defaults: { _controller: PortailBundle:Payment:pricing}
+
+
+ltm_payment_notifications_list:
+    pattern:  /private/payment/notifications/list
+    defaults: { _controller: PortailBundle:Notifications:list }
+
+ltm_paypal_express_checkout_prepare_recurring_payment_agreement:
+ pattern: /private/prepare_recurring_payment_agreement/{moovertype}/{accounttype}/{frequency}/{duration}
+ defaults: { _controller: PortailBundle:RecurringPayment:createAgreement}
+
+ltm_paypal_express_checkout_create_recurring_payment:
+ pattern: /private/create_recurring_payment/{payum_token}/{moovertype}/{accounttype}/{frequency}/{duration}
+ defaults: { _controller: PortailBundle:RecurringPayment:createRecurringPayment}
+
+ltm_paypal_express_checkout_view_recurring_payment:
+ pattern: /private/payment/{paymentName}/details/{billingAgreementId}/{recurringPaymentId}
+ defaults: { _controller: PortailBundle:RecurringPayment:viewRecurringPaymentDetails}
+
+ltm_paypal_express_checkout_cancel_recurring_payment:
+ pattern: /private/payment/cancel/{payum_token}
+ defaults: { _controller: PortailBundle:RecurringPayment:cancelRecurringPayment}
+
+ltm_activity_supprimer:
+  pattern: /private/action/supprimer/{slug}/{idAction}
+  defaults: { _controller: PortailBundle:Activity:supprimer}
+
+
+ltm_calendarevent_lister:
+  pattern: /private/events
+  defaults: { _controller: PortailBundle:CalendarEvent:lister }
+ltm_calendarevent_filtrer:
+  pattern: /private/eventsby/{slug}
+  defaults: { _controller: PortailBundle:CalendarEvent:lister }
+ltm_calendarevent_categoryev:
+  pattern: /private/events/{categoryev}
+  defaults: { _controller: PortailBundle:CalendarEvent:lister }
+ltm_calendarevent_styled:
+  pattern: /private/events/style/{styled}
+  defaults: { _controller: PortailBundle:CalendarEvent:lister }
+ltm_calendarevent_calendar:
+  pattern: /private/event/calendar
+  defaults: { _controller: PortailBundle:CalendarEvent:calendar }
+ltm_calendarevent_ajouter:
+  pattern: /private/event/ajouter
+  defaults: { _controller: PortailBundle:CalendarEvent:editer }
+ltm_calendarevent_ajouter_participant:
+  pattern: /private/event/participer/{slug}
+  defaults: { _controller: PortailBundle:CalendarEvent:participer}
+ltm_calendarevent_lister_participant:
+  pattern: /private/event/participant/{slug}
+  defaults: { _controller: PortailBundle:CalendarEvent:listerparticipant}
+ltm_calendarevent_afficher:
+  pattern: /event/{slug}
+  defaults: { _controller: PortailBundle:CalendarEvent:afficher }
+ltm_calendarevent_modifier:
+  pattern: /private/event/modifier/{slug}
+  defaults: { _controller: PortailBundle:CalendarEvent:editer }
+ltm_calendarevent_supprimer:
+  pattern: /private/event/supprimer/{slug}
+  defaults: { _controller: PortailBundle:CalendarEvent:supprimer }
+ltm_calendarevent_top:
+  pattern: /event/top/
+  defaults: { _controller: PortailBundle:CalendarEvent:top }
+
+
+ltm_news_lister:
+  pattern: /news/
+  defaults: { _controller: PortailBundle:News:lister }
+ltm_news_ajouter:
+  pattern: /private/news/ajouter
+  defaults: { _controller: PortailBundle:News:editer }
+ltm_news_afficher:
+  pattern: /news/{slug}
+  defaults: { _controller: PortailBundle:News:afficher }
+ltm_news_modifier:
+  pattern: /private/news/modifier/{slug}
+  defaults: { _controller: PortailBundle:News:editer }
+ltm_news_supprimer:
+  pattern: /private/news/supprimer/{slug}
+  defaults: { _controller: PortailBundle:News:supprimer }
+ltm_news_top:
+  pattern: /news/top/
+  defaults: { _controller: PortailBundle:News:top }
+
+
+ltm_relation_follower:
+  pattern: /relation/follower/{slug}
+  defaults: { _controller: PortailBundle:Relation:listerfollower }
+ltm_relation_following:
+  pattern: /relation/following/{slug}
+  defaults: { _controller: PortailBundle:Relation:listerfollowing }
+ltm_relation_friend:
+  pattern: /relation/friend/{slug}
+  defaults: { _controller: PortailBundle:Relation:listerfriend}
+ltm_relation_friend_accept:
+  pattern: /relation/friend/accept/
+  defaults: { _controller: PortailBundle:Relation:listerfriendaccept}
+ltm_relation_recommandation:
+  pattern: /relation/recommandation/{slug}
+  defaults: { _controller: PortailBundle:Relation:listerrecommandation }
+ltm_relation_recommanding:
+  pattern: /relation/recommanding/{slug}
+  defaults: { _controller: PortailBundle:Relation:listerrecommandationsend }
+ltm_relation_recommandation_accept:
+  pattern: /relation/recommandation/accept/
+  defaults: { _controller: PortailBundle:Relation:listerrecommandationaccept }
+
+
+ltm_relation_ajouter_follow:
+  pattern: /private/relation/fan/{slug}
+  defaults: { _controller: PortailBundle:Relation:editerfan}
+ltm_relation_supprimer_follow:
+  pattern: /private/relation/supprimer/fan/{slug}
+  defaults: { _controller: PortailBundle:Relation:editerfanrefuse}
+ltm_relation_ajouter_friend_ask:
+  pattern: /private/relation/friend/send/{slug}
+  defaults: { _controller: PortailBundle:Relation:editerfriendsend }
+ltm_relation_editer_friend_accept:
+  pattern: /private/relation/friend/accept/{slug}
+  defaults: { _controller: PortailBundle:Relation:editerfriendaccept }
+ltm_relation_editer_friend_refuse:
+  pattern: /private/relation/friend/refuse/{slug}
+  defaults: { _controller: PortailBundle:Relation:editerfriendrefuse }
+ltm_relation_ajouter_recommandation_send:
+  pattern: /private/relation/recommandation/send/{slug}
+  defaults: { _controller: PortailBundle:Relation:editerrecommandsend }
+ltm_relation_editer_recommandation_accept:
+  pattern: /private/relation/recommandation/accept/{slug}
+  defaults: { _controller: PortailBundle:Relation:editerrecommandaccept }
+ltm_relation_editer_recommandation_refuse:
+  pattern: /private/relation/recommandation/refuse/{slug}
+  defaults: { _controller: PortailBundle:Relation:editerrecommandrefuse }
+ltm_relation_supprimer:
+  pattern: /private/relation/supprimer/{id}
+  defaults: { _controller: PortailBundle:Relation:supprimer }
+ltm_relation_top:
+  pattern: /private/relation/top/{idRelation}
+  defaults: { _controller: PortailBundle:Relation:top }
+
+
+# Video
+ltm_video_lister:
+  pattern: /video/
+  defaults: { _controller: PortailBundle:Video:lister }
+ltm_video_filtrer:
+  pattern: /video/filtrer/{slug}
+  defaults: { _controller: PortailBundle:Video:lister }
+ltm_video_styled:
+  pattern: /video/styled/{styled}
+  defaults: { _controller: PortailBundle:Video:lister }
+ltm_video_ajouter:
+  pattern: /private/video/ajouter
+  defaults: { _controller: PortailBundle:Video:editer }
+ltm_video_modifier:
+  pattern: /private/video/modifier/{slug}
+  defaults: { _controller: PortailBundle:Video:editer }
+ltm_video_supprimer:
+  pattern: /private/video/supprimer/{slug}
+  defaults: { _controller: PortailBundle:Video:supprimer }
+ltm_video_top:
+  pattern: /video/top/{slug}
+  defaults: { _controller: PortailBundle:Video:top }
+ltm_video_afficher:
+  pattern: /video/{slug}/{id}
+  defaults: { _controller: PortailBundle:Video:afficher }
+
+ltm_video_dropzone:
+  pattern: /private/video/dropzone
+  defaults: { _controller: PortailBundle:Video:dropzone }
+
+ltm_video_gallery:
+  pattern: /private/video/gallery
+  defaults: { _controller: PortailBundle:Video:gallery }
+
+
+#Image
+ltm_image_lister:
+ pattern: /image/
+ defaults: { _controller: PortailBundle:Image:lister}
+ltm_image_filtrer:
+ pattern: /image/filtrer/{slug}
+ defaults: { _controller: PortailBundle:Image:lister}
+ltm_image_ajouter:
+  pattern: /private/image/ajouter
+  defaults: { _controller: PortailBundle:Image:editer }
+ltm_image_modifier:
+  pattern: /private/image/modifier/{slug}
+  defaults: { _controller: PortailBundle:Image:editer }
+ltm_image_supprimer:
+  pattern: /private/image/supprimer/{slug}
+  defaults: { _controller: PortailBundle:Image:supprimer }
+ltm_image_top:
+ pattern: /image/top/{slug}
+ defaults: { _controller: PortailBundle:Image:top }
+
+
+ltm_image_dropzone:
+  pattern: /private/image/dropzone
+  defaults: { _controller: PortailBundle:Image:dropzone }
+
+ltm_image_gallery:
+  pattern: /private/image/gallery
+  defaults: { _controller: PortailBundle:Image:gallery }
+
+  
+#Pub
+ltm_advertisement_lister:
+ pattern: /annoncepro/
+ defaults: { _controller: PortailBundle:Advertisement:listerPro}
+ltm_advertisement_lister_toutes:
+ pattern: /annonce/
+ defaults: { _controller: PortailBundle:Advertisement:listerToutes}
+ltm_advertisement_filtrer:
+ pattern: /annonce/filtrer/{slug}
+ defaults: { _controller: PortailBundle:Advertisement:listerToutes}
+ltm_advertisement_ajouter:
+  pattern: /private/annonce/ajouter
+  defaults: { _controller: PortailBundle:Advertisement:editer }
+ltm_advertisement_modifier:
+  pattern: /private/annonce/modifier/{slug}
+  defaults: { _controller: PortailBundle:Advertisement:editer }
+ltm_advertisement_supprimer:
+  pattern: /private/annonce/supprimer/{slug}
+  defaults: { _controller: PortailBundle:Advertisement:supprimer }
+ltm_advertisement_top:
+ pattern: /annonce/top/{slug}
+ defaults: { _controller: PortailBundle:Advertisement:top }
+ltm_advertisement_afficher:
+  pattern: /annonce/{slug}
+  defaults: { _controller: PortailBundle:Advertisement:afficher }
+
+ltm_advertisement_pro_ajouter:
+  pattern: /private/annoncepro/ajouter
+  defaults: { _controller: PortailBundle:Advertisement:editerpro }
+ltm_advertisement_pro_modifier:
+  pattern: /private/annoncepro/modifier/{slug}
+  defaults: { _controller: PortailBundle:Advertisement:editerpro }
+
+ltm_advertisement_dropzone:
+  pattern: /private/annonce/dropzone
+  defaults: { _controller: PortailBundle:Advertisement:dropzone }
+
+ltm_advertisement_gallery:
+  pattern: /private/annonce/gallery
+  defaults: { _controller: PortailBundle:Advertisement:gallery }
+  
+#Message
+ltm_message_inbox:
+  pattern: /private/message/
+  defaults: { _controller: PortailBundle:Message:inbox }
+ltm_message_sent:
+  pattern: /private/message/sent
+  defaults: { _controller: PortailBundle:Message:sent }
+ltm_message_deleted:
+  pattern : /private/message/deleted
+  defaults: { _controller: PortailBundle:Message:deleted }
+ltm_message_search:
+  pattern: /private/message/search
+  defaults: { _controller: PortailBundle:Message:search }
+ltm_message_thread_new:
+  pattern: /private/message/new
+  defaults: { _controller: PortailBundle:Message:newThread }
+ltm_message_thread_delete:
+  pattern : /private/message/{threadId}/{slug}/delete
+  defaults: { _controller: PortailBundle:Message:delete }
+  methods: [POST, DELETE]
+ltm_message_thread_undelete:
+  pattern: /private/message/{threadId}/{slug}/undelete
+  defaults: { _controller: PortailBundle:Message:undelete }
+  methods : [POST]
+ltm_message_thread_view:
+  pattern: /private/message/{threadId}/{slug}
+  defaults: { _controller: PortailBundle:Message:thread }
+    

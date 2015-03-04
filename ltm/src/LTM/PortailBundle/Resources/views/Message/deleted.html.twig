@@ -1,0 +1,9 @@
+{% extends 'PortailBundle:Message:afficher.html.twig' %}
+
+{% block fos_message_content %}
+
+<h2>{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</h2>
+
+{% include 'PortailBundle:Message:threads_list.html.twig' with {'threads': threads} %}
+
+{% endblock %}

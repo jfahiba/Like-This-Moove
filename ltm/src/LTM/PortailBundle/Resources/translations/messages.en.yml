@@ -1,0 +1,612 @@
+Symfony2 is great : J'aime Symfony2
+video.see.all.my: See all my videos
+video.see.all: All the videos
+delete : Delete
+save : Save
+video.add : Add a new video
+video.edit : Edit this video
+video.see : See the video
+delete.are.you.sure  : Are you sure you want to delete this item
+delete.sure : Yes, absolutely certain!
+delete.cancel : No, do not delete!
+delete.not.performed : Item not deleted!
+home : Home
+ads.all : All ads
+ad : Ad
+views : views
+view : view
+share.page : I would like to share this page with you
+team.ltm : LTM Team
+published.by : published by
+see.more : See more
+see.less : Show less
+ad.title : Viewing Ads
+ad.dropzone.title : Dropzone Announcements
+back.to.ltm : Back to LTM
+profile.see.all : See all profiles
+profile.admin : Manage my profile
+ad.drop : Drag your ads
+to.upload.them : for download
+or.click.here : (or click here)
+ad.add : Add a free ad
+ad.modify : Edit Ad
+ad.see : View the ad
+ad.create : Create Ad
+ad.see.all.my : View all my listings
+ad.will.cost : This announcement will cost you
+of.your : of your
+ad.create.confirm : credits. Click on confirm 'Create Ad' to confirm the expense
+ad.create.free : 0 credit. It will be published as What's up (free).
+ad.pro.until : Ad Pro to
+ad.pro.create.pay : (You pay 3.5 CAD (35 credits) by the number of days the ad will appear on Pro home page)
+year : year
+month : month
+day : day
+hour : hour
+minute : minute
+second : second
+ad.check.price : quotation
+ad.recents : Recent ads
+ad.gallery : Gallery Ads
+ad.found : ad found
+ads.found : ads found
+ad.notfound : No announcement has been found.
+ad.pro.notfound : No pro announcement has been found.
+ad.pro.list : Listing of Pros
+ad.pro.add : Add and Pay for a pro ad
+ad.list : List of ads
+keyword : Keywords
+title.or.description : Title or Description
+author : Author
+first.last.alias : Name, Lastname or Alias
+localisation : Localisation
+town.or.country : City or Country
+delete.all.fields : Clear all fields
+connect.see.all.ads : Sign in and see all listings
+search : Search
+most.recents.f : Most Recent
+most.views.f : Most viewed
+most.votes.f : The highest rated
+events.all : All events
+event : Event
+external.link : External link
+moovers.taking.part : Moovers participate
+moover.taking.part : Moover participate
+until : until
+i.take.part : I PARTICIPATE
+events.same.type : Other Events of the type
+events.same.moover : Other Events of Moover
+event.visualisation : Viewing an event
+calendar : Calendar
+event.add : Add an event
+close : Close
+event.see : See the event
+back.to.my.calendar : Back to my calendar
+back.to.my.events :  Back to my list of things to do
+read.more : Read more
+event.notfound : No results were found.
+events.list : List
+style : Style
+starts.after : Starts after
+day.month.year : day/month/year
+ends.before : End before
+category : Category
+address.city.country : Adress, City or Country
+daslide1.h2.i1 : PROFILE DANCERS
+daslide1.h2.i2 : SEMI-PRO AND PROFESSIONAL
+daslide1.p.i1  : Connect with many dancers
+daslide1.p.i2 : International
+daslide1.p.i3 : from all continents
+daslide1.div.img : bundles/portail/plugins/parallax-slider/img/1.png
+daslide2.h21 : A LOT OF VIDEOS
+daslide2.h22 : EVERY DAY
+daslide2.h23 : OF EXCELLENT QUALITY
+daslide2.p.i1 : search them
+daslide2.p.i2 : and enjoy
+daslide2.div.youtube :  www.youtube.com/embed/l6V5I5_nzms
+daslide3.h2.i1 : USE THE BEST TOOLS
+daslide3.h2.i2 : SHARE YOUR PROFILE AND
+daslide3.h2.i3 : PUBLISH YOUR TUTOS & BE VISIBLE
+daslide3.p.i1 : Upload your course
+daslide3.p.i2 : and Earn money
+daslide3.p.i3 : at any time 
+daslide3.div.img : bundles/portail/plugins/parallax-slider/img/html5andcss3.png
+purchase.container.span12.span : Likethismoove is the reference of all dancers in the World.
+purchase.container.span12.p : The greatest dance community inn the World. Professionnal dancer or agencies have on an unique platform all the relevant tools to make more profit through your art. Or you are just an amateur passionated by dance, come and see millions of videos posted on our site.
+
+purchase.container.span4.1.h4 : Pro Dancers, Amateur, Guest
+purchase.container.span4.1.p : You are a professionnal dancer, amateur, or guest, Contact recruiting agencies and other dancers. Create your account, Share your account and reach casting agencies looking for dancers like you.
+purchase.container.span4.1.icon : icon-user
+purchase.container.span4.2.h4 : Dancing schools, associations...
+purchase.container.span4.2.p : You are a dance school and want to offer your courses for dancers ? Create your school account , and have access to the publication and management of your courses.
+purchase.container.span4.2.icon : icon-group
+purchase.container.span4.3.h4 : Recruters, Casting Agencies
+purchase.container.span4.3.p : You are a casting agency and want to recruit talented dancers for your projects? Create your Casting account and access to the profiles of a pool of dancers from around the world.
+purchase.container.span4.3.icon : icon-star
+
+
+
+forfaits.container.span12.p : Next steps : select your subscription frequency, enter your personnal information and pay
+
+forfaits.recruiter.container.span12.span : Choose your recruiter account type
+forfaits.recruiter.container.span4.1.h4 : Be referenced as a Recruiter
+forfaits.recruiter.container.span4.1.p :  Be referenced as a recruiting or casting agency, appear on LikeThimoove home page.
+forfaits.recruiter.container.span4.1.icon : icon-suitcase 
+forfaits.recruiter.container.span4.2.h4 : Publish events and advertisements
+forfaits.recruiter.container.span4.2.p : Publish castings and any other events anonymously or not. Access to the popularity console of your events and ads.
+forfaits.recruiter.container.span4.2.icon : icon-microphone 
+forfaits.recruiter.container.span4.3.h4 : Super account
+forfaits.recruiter.container.span4.3.p : Be referenced, Publish events and advertisements, access the advanced moover search (by age, height, gender, style, location, experience), send a message to specific moover lists
+forfaits.recruiter.container.span4.3.icon : icon-dashboard 
+
+forfaits.school.container.span12.span : Choose your school or association account
+forfaits.school.container.span4.1.h4 : Be referenced as a Dancing School
+forfaits.school.container.span4.1.p : Be referenced as a dancing school or association, appear on LikeThimoove home page.
+forfaits.school.container.span4.1.icon : icon-home 
+forfaits.school.container.span4.2.h4 : Rent your rooms
+forfaits.school.container.span4.2.p : Use our application to advertise and opimize the rent of your rooms and earn a lot of cash
+forfaits.school.container.span4.2.icon : icon-money 
+forfaits.school.container.span4.3.h4 : Super account
+forfaits.school.container.span4.3.p : Have your logo on our home page, Rent your rooms, access the advanced moover search, send a message to specific moover lists
+forfaits.school.container.span4.3.icon : icon-dashboard 
+
+forfaits.dancer.container.span12.span : Choose your dancer account
+forfaits.dancer.container.span4.1.h4 : Be referenced as a Dancer
+forfaits.dancer.container.span4.1.p : Contact other professionnals, schools, recruitment and casting agencies, appear on LikeThimoove home page.
+forfaits.dancer.container.span4.1.icon : icon-thumbs-up 
+forfaits.dancer.container.span4.2.h4 : Sell your tutorials and tickets
+forfaits.dancer.container.span4.2.p : Be referenced as a Teacher, publish your tutorial and events, earn a lot of cash through our credit management system.
+forfaits.dancer.container.span4.2.icon : icon-money
+forfaits.dancer.container.span4.3.h4 : Super account
+forfaits.dancer.container.span4.3.p : Be referenced as a Dancer and a Teacher, pubish events, tutorial, access the advanced moover search, send a message to specific moover lists.
+forfaits.dancer.container.span4.3.icon : icon-trophy
+ 
+
+forfaits.price.recruiter.min : 5.99
+forfaits.price.recruiter.avg : 3.99
+forfaits.price.recruiter.avg.casting.week : 9.99
+forfaits.price.recruiter.max : 14.99
+forfaits.price.school.min : 7.99
+forfaits.price.school.avg : 7.99
+forfaits.price.school.max : 7.99
+forfaits.price.dancer.min : 7.99
+forfaits.price.dancer.avg : 7.99
+forfaits.price.dancer.max : 12.99
+forfaits.price.annonce.pro.day : 3.99
+
+forfaits.recruiter.choose.to.pay : Choose how long you will be registered as recruiter or agency at
+forfaits.school.choose.to.pay : Choose how long you will be registered as a school or association at
+forfaits.dancer.choose.to.pay : Choose how long you will be registered as a professional dancer at
+
+forfaits.recruiter.choose.frequency.pay : Choose how often you will pay as a recruiter or agency
+forfaits.school.choose.frequency.pay : Choose how often you will pay as a school or association
+forfaits.dancer.choose.frequency.pay : Choose how often you will pay as a dancer
+
+
+per : per
+Per : Per
+Free : Free
+account : account
+order.now : Order Now
+casting.week : casting/week
+forfaits.freq1 : 1 month
+forfaits.freq3 : 3 months
+forfaits.freq6 : 6 months
+forfaits.freq12 : 12 months
+
+forfaits.duration1 : 1 month
+forfaits.duration3 : 3 months
+forfaits.duration6 : 6 months
+forfaits.duration12 : 12 months
+
+Trimester : Trimester
+Semester : Semester
+Year : Year
+Month : Month
+ltm.will.receive : LikeThisMoove will perceive
+abo.ltm : LTM Subscription
+cad.month : CAD/month
+all.the : every
+Mot_de_Passe : Password
+Confirm : Confirm
+
+
+join.us : Join us
+last.videos : Latest Videos
+more.videos : See more videos
+who.we.are.headline.h3 : What'up
+who.we.are.p1.img : bundles/portail/img/carousel/6.jpg
+who.we.are.p1 : Welcome to LikeThisMoove
+who.we.are.p2 : You are the first social network of dancers in the world.
+who.we.are.ul.li1 : Stay connected
+who.we.are.ul.li2 : free of charge
+who.we.are.ul.li3 : Update your profile
+my.wall : My wall of actuality
+ltm.wall : Wall of actuality
+ltm : Like This Moove
+ads.pro : Ads Pro
+more.ads.pro : More Ads Pro
+tuto.purchase.container.span12.span : Want to learn with the greatest dancers
+tuto.purchase.container.span12.p : Facile et professionnel vous souhaitez tester la fonctionnalité de cours video inscription rapide et simple.
+free.try : Try LikeThisMoove 
+last.tutos : This week tutorials
+more.tutos : See more tutos
+information.container1.h1 : Learn your favorite dance style with the beast performers
+information.container1.div.span61.p : Venez proposer votre expertise sur likethismoove. Nous mettons à votre disposition gratuitement une plateforme avec tous les outils nécessaires pour prendre soin de vos clients. Gagnez jusqu’à 95% de commissions sur chacune de vos ventes.
+information.container1.div.span61.a : Read more
+information.container1.div.span62.img : bundles/portail/img/new/img5.jpg
+
+information.container2.h1 : Learn at anytime, anywhere
+information.container2.div.span61.img : bundles/portail/img/new/img1.jpg
+information.container2.div.span62.p : Flexibility and Freedom: 2 slogans likethismoove. Stay in control of your reading online learning; on a computer, tablet or smartphone. During your follow you wherever you go.
+information.container2.div.span62.a :  Read more
+information.container3.h1 : Upload your own course
+information.container3.div.span61.img : bundles/portail/img/carousel/8.jpg
+information.container3.div.span62.p1 : Come offer your expertise on likethismoove. We provide you with a free platform with all the tools necessary to take care of your customers. Earn up to 95% commission on all your sales.
+information.container3.div.span62.p2 : Already a large number of tutorials sold
+information.container3.div.span62.a : See more images
+they.trust.us : They trust us
+subscribe : Subscribe
+email : Email
+slide1.thumb : bundles/portail/img/sliders/revolution/thumbs/thumb1.jpg
+slide1.img : bundles/portail/img/sliders/revolution/bg1.jpg
+slide1.div.span.t1 : 500
+slide1.div.span.t2 : DANCE COURSES
+slide1.div.span.t3 : VIDEOS
+slide2.thumb : bundles/portail/img/sliders/revolution/thumbs/thumb2.jpg
+slide2.img : bundles/portail/img/sliders/revolution/bg2.jpg
+slide2.div1 : TOUS LES STYLES DE DANSES SUR UNE PLATEFORME
+slide2.div2 : TOUS NIVEAUX
+slide2.div5 : Free
+slide2.div7 : Tous les styles
+slide3.thumb : bundles/portail/img/sliders/revolution/thumbs/thumb3.jpg
+slide3.img : bundles/portail/img/sliders/revolution/bg3.jpg
+slide3.div1 : PRATIQUEZ
+slide3.div2 : AVEC
+slide3.div3.span : LES MEILLEURS
+slide3.div4.img : bundles/portail/img/sliders/revolution/html5andcss3.png
+slide4.thumb : bundles/portail/img/sliders/revolution/thumbs/thumb4.jpg
+image.dropzone : Dropzone Images
+drop.image : Drag your images
+image.add : Add an image
+image.see.all.my : See all my pictures
+image.gallery : Images Gallery
+image.notfound : No image was found.
+image.list : Images list
+all.f : All
+inbox.my : My inbox
+welcome : Welcome
+inbox : Inbox
+inbox.received : Transmission Reception
+inbox.sent : messages sent
+inbox.deleted : Basket
+hello : Hello
+message.from : You have received a new message
+subject : Post subject
+connect.to : You can connect to
+your.account : your account
+to.answer.this : to reply to this message.
+message.footer.small : Still more news about
+message.footer.img : http://likethismoove.com/bundles/portail/img/logo1-default.png
+send.temporary.pass : We send you a temporary identification code to log a LikeThisMoove.
+temporary.pass : Temporary password
+change.your.pass : to change your password.
+newsletter.message : You have received a new application for newsletters LTM from
+relation.message : You have received a new request for relationship
+to.accept.this : to accept this
+message.recipients : Recipients
+message : Message
+messages : Messages
+back : Back
+send : Send
+restore : Restore
+reply : Reply
+status : Status
+new : New
+successful : Successful
+canceled : Canceled
+failed : Failed
+pending : Pending
+expired  : Expired
+suspended : Suspended
+unknown : Unknown
+active : Active
+payment.title : Payment - Paypal Express Checkout
+for.your.info : For information
+credits : credits
+pay : Pay off
+credit.historic.my : See my credit history
+pricing.title : Pay my subscription
+your.account.caracteristics : Which patterns your account
+start.date : Start date
+end.date : End date
+name : Name
+price : Price
+payment.frequency : Payment Frequency
+frequency : Frequency
+description : Description
+monthly.during : monthly during
+change.abo.click.here : To change your subscription, start by clicking here
+cancel.previous.abo : Link to unsubscribe
+choose.new.abo : Then choose a new subscription
+you.can.choose.new.abo : You can choose a new subscription	
+choose.new.abo.and.pay : Choose a new subscription and click on pay
+advantages : Advantages
+advantages.li1 : Add credit
+advantages.li2 : Rent a room
+advantages.li3 : Access to schedule dancers Pro
+advantages.li4 : Statistics of my page (view / friends)
+advantages.li5 : Access the contact details of dancers 
+advantages.li6 : Add videos Pay
+advantages.li7 : Apply to castings
+advantages.li8 : Manage my calendar
+advantages.li9 : Create an ad pro
+advantages.li10 : Recommend dancers 
+advantages.li11 : Manage my classes, rooms, students
+advantages.li12 : Carrier delays
+advantages.li13 : Request features
+amateur : Amateur
+valid : Valid
+semi_pro : Semi Pro
+profesional : Professional
+unlimited : Unlimited
+details.view : Detailed view
+accept : Accept 
+refuse : Refuse
+billing.agreement.status : Status agreement billing
+Recurring.payment.status : Payment Status recurrent
+cancel : Cancel
+forgot.password : Forgot your password?
+reset : Reset
+login.to.ltm : Logger Me Like This Moove?
+click.here : click here
+login.to.your.account : Login to your account
+alias : Pseudo
+password : Password
+stay.connected : Keep me logged in
+login : Login
+no.worry : No worries
+to.reset.password : reinitialiser for your password
+to.register : to register
+new.moover : New on Like This Moove?
+user.profile : User Profile
+profile.see.my : View Profile
+profile.edit.my : Edit My Profile
+my.tutos : My tutorials
+my.videos : My Videos
+my.images : My Pictures
+my.ads : My ads
+my.calendar : My Calendar
+tuto.add : Add a Tuto
+profile.visualisation : Viewing Profile
+all.the : All
+teachers : teachers
+moovers : moovers
+Moover : Moover
+Moovers : Moovers
+my.profile : My Profile
+recruiting.agency : Recruitment Agency
+recruiter.f : Recruiter
+recruiter.m : Recruiter
+association : Association
+dancing.school : Dance School
+dancing.schools : Dance Schools
+schools : Ecoles
+dancer.f : Dancer
+dancer.m : Dancer
+live.in : lives in
+send.message.me : Send me a message
+already.friend : We are friend
+add : Add
+as.friend : as a friend
+friend.ask.sent.to : Your friend request has been sent to
+pending.friend.pair : Request friendship already sent
+pending.friend.me : Waiting for your friendship acceptance
+recommand : Recommend
+recommandation.sent.to : Your proposed recommendation has been sent to
+already.recommandation : You recommend
+pending.recommandation.pair : Proposed recommendation already sent
+follow : Follow
+youfollow : You follow the activities...
+already.follower : You follow my activities
+about.me : About me
+manage.abo : Manage my account
+contact : Contact
+contact.agency : Contact the head of the agency 
+phone : phone
+contact.association : Contact the head of the association
+contact.dancing.school : Contact the head of the school
+contact.agent : Contact the agent
+contact.director : Contact the manager
+contact.agent.my : Contact my agent
+contact.user : Contact
+phone.my : My Phone
+last.activities.my : My latest news
+welcome.at : Welcome to the zone of
+tutos.recents : Recent video tutorials
+videos.recents : Recent videos
+images.last : Latest pictures
+no : No
+yes : Yes
+ok : Ok
+action.not.performed : Action not taken!
+information.viewed : Information accessed!
+information.not.viewed : Information not found!
+only.pro.can.view : This information is only available to pro profiles.
+no.thanks.keep.status : No Thanks, I keep my current status
+want.to.become.pro : I want to become Pro!
+pending.relations : Relationship awaiting approval
+pending.relations.friends : Friendship Requests awaiting approval
+pending.relations.recommandation : Recommendation awaiting approval
+submit : Submit
+moovers.profile : Profiles Moover
+firstName : Firstname
+lastName : Lastname
+gender : Type
+avatar : Profile image
+city : City
+country : Country
+moover.since : Moover since
+last.login : Last login
+actions : Actions
+display : Display
+modify : Modify
+connected : Connected
+you : You
+have : have
+last.action.done : last action done
+date: Date
+amount: Amount
+reason : Reason
+credit.historic.notfound : No history was found
+credit.add : Add credit
+user.notfound : No users have been found.
+school.notfound : No school have been found.
+add.my.school : Add my Dancing School
+kind.of : Kind of 
+since : since
+birth.creation.after : Born/Founded since
+birth.creation.before : Born/Founded before
+connect.see.all :  Sign in and see all the
+connect.see.all.f : Sign in and see all the
+details.view.profile : Detailed View profile
+to.valid : Validate application
+to.valid.p : Applications has validated
+notifications : Notifications
+notification : Notification
+messages.see.all : View All Posts
+edit : Edit
+public.view : Public view
+logout : Logout
+fans : Fans 
+supports : Supports
+tutos : Tutos
+friends : Friends 
+where.i.live : Or find me?
+birth.or.creation.date : Date of Birth / Creation
+website : Website
+find.me.facebook : Find me on Facebook
+find.me.twitter : Find me on Twitter
+find.me.googleplus : Trouvez moi sur google plus
+find.me.skype : Find me on Skype
+profile.completed.at : Your profile is complete
+general.information : General information
+parameters : Setting
+general : General
+cover.image : Cover image
+size : Size
+you.are : You are a
+my.current.status : My current status
+biography : Biography
+awards : awards
+last.contracts : Last contracts
+social : Social
+publish.my.profile : Make my public profile
+showPersonalInformation : Show my information (Birth / Date of Creation / Size)
+receiveMailDigests : Send me email notifications
+keepHistoric : Keep a history of my conversations
+during : during
+days : days
+password.new : New Password
+password.confirm : Confirm password
+not.member.top500 : Not member of the top 500
+dancer.m.birth : Born
+dancer.f.birth : Born
+recruiting.agency.creation : founded
+dancing.school.creation : founded
+recruiter.creation : active
+association.creation : Incorporated
+of : of
+steps : Steps
+account.creation : Create Account
+already.registered : Are you already registered?
+to.connect : to connect
+my.abo : My Subscription
+credit.historic : Credit History
+dropzones : DropZones
+video.dropzone : Dropzone Videos
+tuto.dropzone : Dropzone tutorials
+video.gallery : Videos Gallery
+tuto.gallery : Tutorials Gallery
+admin.section : Administration
+lang : Language
+french : French
+english : English
+my.account : My account
+video : Video
+videos.same.moover : Videos of the same Moover
+video.visualisation : Viewing a video
+drop.video : Slide your videos
+video.notfound : No video was found.
+video.will.cost : This video will cost you
+yes.spend : Yes I want to spend!
+credits.not.spent : Credits unspent!
+do.not.spend : No, do not spend it!
+video.list : List of videos
+show : show
+ltm.credo : All styles All Likethismoove Dances Dance Social Network
+monthly.newsletter : Monthly newsletter
+monthly.newsletter.p : Subscribe to our newsletter to receive the best news and best tips!
+stay.connected.you : Stay CONNECTED
+tuto.see.all : All tutorials
+tuto : Tuto
+tutos.same.teacher : Tutorials of the same teacher
+tuto.visualisation : Viewing a Tuto
+drop.tuto : Slide your tutorials
+tuto.edit : Edit this Tuto
+tuto.see : View the tutorial
+tuto.see.all.my : See all tutorials
+tuto.notfound : No Tuto was found.
+excerpt : extract
+see.an.excerpt : Watch a clip
+tuto.list : List of tutorials
+most.recents.m : Newest first
+most.views.m : Most Viewed
+most.votes.m : Best rated
+Recommandation : Recommendation
+accepted.recommandation.of : accepted the recommendation of
+sent.recommandation.to : proposed to recommend
+accepted.friendask.of : accepted a friend request from
+sent.friendask.to : sent a friend request to
+is.following : is following the activities of
+added.new.image : added a new image
+added.new.ad : added a new announcement
+added.new.tuto : added a new video pay
+click.pay.see : Click to view and pay.
+added.new.video : added a new video
+bought.new.tuto : bought a video
+created.event : created an event
+take.part.event : participated in an event
+my.references : My references
+i.recommand : I recommand
+reco.to.accept : Recommandations to accept
+friends.to.accept : Friends asking to connect
+followers : Followers
+following : Following
+
+whats.up : What's Up
+Events : Events
+Others : Others
+videos : Videos
+classes : Tutorials
+
+Teachers : Professors
+Teacher : Professor
+AboutMenu : About
+Shop : Shop
+About : About
+Recrutment : Recrutment
+Contact : Contact
+
+visitor : Guest
+conditions.sell : Selling conditions
+pro.dancers : Pro Dancers
+
+Send.Message : Send Message
+Message : Message
+Name : Name
+why.contact : Why should you contact us?
+why.contact.detail : Contact us if you need more information or have special queries.
+Contact.Email : likethismoove@gmail.com
+Contacts : Contacts
+Our.Contacts : Our Contacts

@@ -1,0 +1,22 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: '3306'
+    database_name: _db_likethismoove_
+    database_user: bog33
+    database_password: xyzxyz
+    mailer_transport: smtp
+    mailer_host: smtp.gmail.com
+    mailer_user: do.not.answer.ltm@gmail.com
+    mailer_password: xyzxyz
+    locale: en
+    secret: 19fd825ae454a78c6b92c5263a7dc62b
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true
+    paypal.express_checkout.username : caissier_api1.likethismoove.com
+    paypal.express_checkout.password : 1406633448
+    paypal.express_checkout.signature : AFcWxV21C7fd0v3bYYYRCpSSRl31AIYdxAuS2ZMqOVWbLdNazj68zh8d
+    paypal.express_checkout.usd_testuser_login: buyer1buyer1@likethismoove.com
+    paypal.express_checkout.usd_testuser_password: buyer1buyer1

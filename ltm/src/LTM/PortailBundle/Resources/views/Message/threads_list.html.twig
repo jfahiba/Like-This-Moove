@@ -1,0 +1,85 @@
+<div class="message-list-container">
+    <div class="message-list" id="message-list">
+        {% if threads %}
+        <div class="message-item">
+                <span class="summary" style="width: 20%">{% trans from 'FOSMessageBundle' %}subject{% endtrans %}</span>
+                <span class="sender" style="width: 10%">{% trans from 'FOSMessageBundle' %}starter{% endtrans %}</span>
+                <span class="sender" style="width: 20%">{% trans from 'FOSMessageBundle' %}startdate{% endtrans %}</span>
+
+                <span class="summary" style="width: 10%">{% trans from 'FOSMessageBundle' %}last_message{% endtrans %}</span>
+                <span class="summary" style="width: 10%">{% trans from 'FOSMessageBundle' %}actions{% endtrans %}</span>
+        </div>
+            {% for thread in  threads %}
+                <div class="message-item {{ thread.isReadByParticipant (app.user) ?  '' : 'message-unread'}}">
+                    <a href="{{ url('ltm_message_thread_view', {'threadId':thread.id, 'slug': thread.slug}) }}">
+                     <span class="summary" style="width: 20%">
+
+                        <span class="text">
+
+                              {{ thread.subject }}
+
+
+                            {% if not fos_message_is_read(thread) %}
+                                ({% trans from 'FOSMessageBundle' %}new{% endtrans %})
+                            {% endif %}
+                        </span>
+                    </span>
+                    </a>
+					<a href="{{ url('ltm_message_thread_view', {'threadId':thread.id, 'slug': thread.slug}) }}">
+                    <span class="sender" style="width: 10%" title="{{ thread.createdBy.firstName ~ ' ' ~ thread.createdBy.lastName }}">   {{ thread.createdBy.username }}
+                        {%  if thread.messages|length > 1 %}
+                        <span class="light-grey">( {{ thread.messages|length }})</span>
+                        {% endif %}
+                    </span>
+
+                    <span class="sender" title="{{thread.createdAt|ago }}" style="width: 20%" >{{ thread.createdAt|date }}</span>
+					</a>
+                     <span class="summary" style="width: 10%">
+                         {% if thread.lastMessage %}
+                             <a href="{{ url('ltm_message_thread_view', {'threadId':thread.id,'slug': thread.slug}) }}#message_{{ thread.lastMessage.id }}" title="{% trans from 'FOSMessageBundle' %}goto_last{% endtrans %}">
+                                 →
+                             </a>
+                        {{ thread.lastMessage.createdAt|ago}}
+                        <br />
+                             {% trans with {'%sender%': thread.lastMessage.sender|e } from 'FOSMessageBundle' %}by{% endtrans %}
+                         {% else %}
+                             ----
+                         {% endif %}
+                     </span>
+
+                    <span class="summary" style="width: 10%">
+                         {% if fos_message_deleted_by_participant(thread) %}
+                             {% set formAction %}{{ url('ltm_message_thread_undelete', {'threadId':thread.id,'slug': thread.slug}) }}{% endset %}
+                             {% set submitValue %}{% trans from 'FOSMessageBundle' %}undelete{% endtrans %}{% endset %}
+
+                             <form action="{{ formAction }}" method="post">
+                                 <button type="submit"  style="background: none; border: none;" >
+                                     <span> {{ 'restore'|trans}}</span>
+                                     <i class="icon-reply green icon-only bigger-130"></i>
+                                 </button>
+                             </form>
+                    {% else %}
+                             {% set formAction %}{{ url('ltm_message_thread_delete', {'threadId':thread.id,'slug': thread.slug}) }}{% endset %}
+                             {% set submitValue %}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}{% endset %}
+
+                             <form action="{{ formAction }}" method="post">
+                                 <button type="submit"  style="background: none; border: none;" >
+                                     <i class="icon-trash red icon-only bigger-130"></i>
+                                 </button>
+                             </form>
+                         {% endif %}
+                    </span>
+					
+                </div>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6">
+                    {% trans from 'FOSMessageBundle' %}no_thread{% endtrans %}.
+                </td>
+            </tr>
+        {% endif %}
+
+</div>
+</div>
+

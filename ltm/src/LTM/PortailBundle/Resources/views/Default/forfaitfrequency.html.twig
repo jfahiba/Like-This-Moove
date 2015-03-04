@@ -1,0 +1,74 @@
+
+{% extends 'PortailBundle:Default:index.html.twig' %}
+
+
+{% block title %}{{ 'profile.admin'|trans }}{% endblock %}
+
+{% block content %}
+
+
+    <!--=== Content Part ===-->
+    <div class="container">
+
+
+            <div class="row-fluid purchase margin-bottom-30">
+                <div class="row-fluid servive-block margin-bottom-60">
+                </div>
+                <div class="container">
+                    <div class="span12">
+                        <center>
+                            <span>{{ ('forfaits.' ~ moovertype ~ '.choose.frequency.pay')|trans}}</span> 
+                        </center>
+                    </div>
+                </div>
+            </div>
+        <div class="row-fluid servive-block margin-bottom-60">
+        </div>
+            <div class="row-fluid servive-block margin-bottom-30">
+				
+                {% if moovertype != 'school' and moovertype != 'recruiter'%}
+				<a class="span3" style="text-decoration: none; border-radius: 10px; background: #FFFFB6;padding: 20px 30px;  text-align: center; margin-bottom: 20px;"
+                   href="{{ path('ltm_usr_ajouter_by_choice', {'accounttype' : accounttype, 'moovertype' : moovertype, 'duration' : duration, 'frequency' : 'freq1'}) }}" >
+                    <h4 style="min-height: 0px">{{ ('forfaits.freq1')|trans}}</h4>
+                </a>
+				{% else %}
+				<a class="span3" style="visibility:hidden"></a>
+				{% endif %}
+				
+				{% if duration != 'duration1' %}
+					<a class="span3" style="text-decoration: none;background: #FFF24D;padding: 20px 30px;  text-align: center; margin-bottom: 20px;"
+					   href="{{ path('ltm_usr_ajouter_by_choice', {'accounttype' : accounttype, 'moovertype' : moovertype, 'duration' : duration, 'frequency' : 'freq3'}) }}" >
+
+						<h4 style="min-height: 0px">{{ ('forfaits.freq3')|trans}}</h4>
+					</a>
+					{% if duration != 'duration3' %}
+						<a class="span3" style="text-decoration: none;background: #FFA24D;padding: 20px 30px;  text-align: center; margin-bottom: 20px;"
+						   href="{{ path('ltm_usr_ajouter_by_choice', {'accounttype' : accounttype, 'moovertype' : moovertype, 'duration' : duration, 'frequency' : 'freq6'}) }}">
+							<h4 style="min-height: 0px">{{ ('forfaits.freq6')|trans}}</h4>
+						</a>
+						{% if duration != 'duration6' %}
+							<a class="span3" style="text-decoration: none;background: #ff892a;padding: 20px 30px;  text-align: center; margin-bottom: 20px;"
+							   href="{{ path('ltm_usr_ajouter_by_choice', {'accounttype' : accounttype, 'moovertype' : moovertype, 'duration' : duration, 'frequency' : 'freq12'}) }}">
+								<h4 style="min-height: 0px">{{ ('forfaits.freq12')|trans}}</h4>
+							</a> 
+						{% else %}
+							<a class="span3" style="visibility:hidden"></a>
+						{% endif %}
+					{% else %}
+						<a class="span3" style="visibility:hidden"></a>
+					{% endif %}
+				{% endif %} 
+            </div>
+
+    <div class="row-fluid servive-block margin-bottom-60">
+        </div>
+        <!--/row-fluid-->
+
+
+
+    </div><!--/container-->
+    <!-- End Content Part -->
+
+
+
+{% endblock %}

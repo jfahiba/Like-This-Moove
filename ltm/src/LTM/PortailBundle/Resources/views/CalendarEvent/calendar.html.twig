@@ -1,0 +1,147 @@
+
+{% extends 'PortailBundle:User:afficher.html.twig' %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/fullcalendar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/fullcalendar_gebo.css') }}" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+{% endblock %}
+
+{% block title %}{{ 'calendar'|trans}}{% endblock %}
+
+
+
+{% block body %}
+    <div class="main-container container-fluid">
+    {% block sidebar %}
+
+        {% include 'PortailBundle:User:sidebar.html.twig' %}
+
+    {% endblock %}
+
+
+    {% block content %}
+
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                </script>
+
+                <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home home-icon"></i>
+                            <a href="{{ path('home') }}">{{ 'back.to.ltm'|trans}}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('ltm_usr_lister') }}">{{ 'profile.see.all'|trans}}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+						<li>
+                            <a href="{{ path('ltm_usr_afficher') }}">{{ 'profile.admin'|trans}}</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                        </li>
+                        <li class="active">{{ 'calendar'|trans}}</li>
+                    </ul><!--.breadcrumb-->
+
+                    <!--div class="nav-search" id="nav-search">
+                        <form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="icon-search nav-search-icon"></i>
+							</span>
+                        </form>
+                    </div--><!--#nav-search-->
+            </div>
+
+            <div class="page-content">
+
+                <div class="row">
+                    <div id ="external-event" class="span12">
+                        <div class="row">
+							
+                            <div class="span10">
+                                <div class="space"></div>
+								
+								<button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal">
+                                    {{ 'event.add'|trans}}
+								</button>
+                                <br/><br/>
+							
+                                {% include 'ADesignsCalendarBundle::calendar.html.twig'   %}
+
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if app.user != null and app.user.id != null%}
+                <center>
+                    
+                    <div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" style="display: none;">
+
+
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="w">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ 'close'|trans}}</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">{{ 'event.add'|trans}}</h4>
+                                </div>
+
+                                <iframe src="{{ path('ltm_calendarevent_ajouter') }}" style="overflow-x: hidden;" width="570" height="680" marginwidth="5" marginheight="5" ></iframe>
+
+                            </div>
+                        </div>
+                    </div>
+                    </center>
+            {% endif %}
+
+        </div><!--/.page-content-->
+        </div><!--/.main-content-->
+
+    {% endblock %}
+
+    </div>
+{% endblock %}
+
+
+
+{% block javascripts %}
+
+    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-1.8.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+
+
+
+    <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js')}}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/calendar-settings.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/fullcalendar.min.js')}}"></script>
+
+    <script src="{{ asset('bundles/portail/js/ace-elements.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/js/ace.min.js')}}"></script>
+
+
+    <script>
+        function modal() {
+            $('#myModal').modal('show')
+        }
+    </script>
+{% endblock %}

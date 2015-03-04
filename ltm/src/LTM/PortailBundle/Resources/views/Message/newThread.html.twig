@@ -1,0 +1,87 @@
+{% extends 'PortailBundle:Message:afficher.html.twig' %}
+
+{% block fos_message_content %}
+
+<!--h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2-->
+
+
+
+    <form action="{{ url('ltm_message_thread_new') }}" method="post" class="form-horizontal message-form" >
+
+
+        <div class="control-group">
+            <label class="control-label required" for="message_recipients"  >{{ 'message.recipients'|trans}}:</label>
+
+            <div class="controls">
+                            <span class="input-icon">
+                                 <select  style=" padding-left: 24px;padding-right: 6px;"  id="message_recipients"
+                                         name="message[recipients]"  required="required" class="form-control"
+                                         placeholder="{{ 'message.recipients'|trans}}">
+                                     <option value=""></option>
+                                     {% for u in allusers %}
+                                         <option>{{ u.username }}</option>
+                                     {% endfor %}
+                                 </select>
+                                <i class="icon-user" ></i>
+                            </span>
+            </div>
+        </div>
+
+        <div class="hr hr-16 dotted"></div>
+
+        <div class="control-group">
+            <label class="control-label" for="message_subject">{{ 'subject'|trans}}:</label>
+
+            <div class="controls">
+                        <span class="input-icon span8">
+                            <input maxlength="100" type="text" class="span12"  id="message_subject" name="message[subject]" required="required" placeholder="{{ 'subject'|trans}}" />
+                            <i class="icon-comment-alt"></i>
+                        </span>
+            </div>
+        </div>
+
+        <div class="hr hr-16 dotted"></div>
+
+        <div class="control-group">
+            <label class="control-label required" for="message_body" >
+                <span class="inline space-16 hidden-480"></span>
+                {{ 'message'|trans}}:
+            </label>
+
+            <div class="controls">
+                <textarea id="message_body" name="message[body]" required="required"  rows="5" style="width: 100%;"> </textarea>
+
+            </div>
+        </div>
+
+        <div id="id-message-new-navbar" class="message-navbar align-center clearfix">
+            <div class="message-bar">
+                <div class="message-toolbar">
+                    {{ form_widget(form._token) }}
+                </div>
+            </div>
+
+            <div class="message-item-bar">
+                <div class="messagebar-item-left">
+                    <a onclick="window.history.back()" class=" no-hover-underline">
+                        <i class="icon-arrow-left blue bigger-110 middle"></i>
+                        <b class="middle bigger-110">{{ 'back'|trans}}</b>
+                    </a>
+                </div>
+
+                <div class="messagebar-item-right">
+                <span class="inline btn-send-message">
+
+                    <button type="submit" class="btn btn-small btn-primary no-border">
+                        <span class="bigger-110">{{ 'send'|trans}}</span>
+
+                        <i class="icon-arrow-right icon-on-right"></i>
+                    </button>
+                </span>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}

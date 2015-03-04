@@ -1,0 +1,40 @@
+<form class="inline-block" id="chatForm" action="{{ path('cunningsoft_chat_post') }}" method="post">
+    <label for="chatMessage">Message</label>
+    <textarea class="form-control" type="text" name="message" id="chatMessage" ></textarea>
+    <input class="pull-right btn  btn-danger" type="submit" value="submit" />
+    <span class="space-30"></span>
+</form>
+<div class="clearfix">
+
+{% render(controller('CunningsoftChatBundle:Chat:list', {'channel' : channel})) %}
+</div>
+<script type="text/javascript">
+$("#chatForm").submit(function() {
+    postMessage();
+    return false;
+});
+function postMessage()
+{
+    $.post('{{ path('cunningsoft_chat_post', {'channel': channel}) }}',
+           { 'message': $("#chatMessage").val() },
+           function(data) {
+             // Check that the post function completed
+             if (data === 'Successful') {
+               updateChat();
+             }
+           }
+          );
+    $("#chatMessage").val('');
+}
+function updateChat()
+{
+    if (this.timer)
+        clearTimeout(this.timer);
+
+    $.post('{{ path('cunningsoft_chat_list', {'channel' : channel}) }}', function(data) {
+        $('#chat').html(data);
+    });
+    this.timer = setTimeout('updateChat()', {{ updateInterval }});
+}
+updateChat();
+</script>

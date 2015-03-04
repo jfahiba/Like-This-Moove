@@ -1,0 +1,894 @@
+
+{% extends tuto? 'PortailBundle::layouttuto.html.twig' : 'PortailBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+
+
+    <!-- CSS Global Compulsory-->
+    <link href="{{ asset('bundles/portail/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/portail/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/portail/css/headers/header1.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/portail/plugins/bootstrap/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/portail/css/style_responsive.css')}}" rel="stylesheet">
+    <link href="favicon.ico" rel="shortcut icon">
+    <!-- CSS Implementing Plugins -->
+    <link href="{{ asset('bundles/portail/plugins/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/portail/plugins/fancybox/source/jquery.fancybox.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/portfolioSorting/css/sorting.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/colorbox.css')}}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/youtube-video-gallery.css')}}" type="text/css" rel="stylesheet">
+
+    <link href="{{ asset('bundles/portail/plugins/bxslider/jquery.bxslider.css')}}" rel="stylesheet">
+    <link media="screen" type="text/css" href="{{ asset('bundles/portail/plugins/flexslider/flexslider.css')}}" rel="stylesheet">
+    <!-- CSS Theme -->
+    <link id="style_color" href="{{ asset('bundles/portail/css/themes/default.css')}}" rel="stylesheet">
+    <link id="style_color-header-1" href="{{ asset('bundles/portail/css/themes/headers/default.css')}}" rel="stylesheet">
+    {{ parent() }}
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.8.2.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/modernizr.custom.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/back-to-top.js')}}"></script>
+
+
+    <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js')}}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    <!--script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js')}}"></script-->
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/fullcalendar.min.js')}}"></script>
+    <script src="{{ asset('bundles/portail/plugins/bxslider/jquery.bxslider.js')}}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/app.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/pages/index.js')}}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery.colorbox-min.js')}}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            /*
+             * jQuery FlexSlider v2.1
+             * Copyright 2012 WooThemes
+             * Contributing Author: Tyler Smith
+             */
+            ;(function(d){d.flexslider=function(i,k){var a=d(i),c=d.extend({},d.flexslider.defaults,k),e=c.namespace,p="ontouchstart"in window||window.DocumentTouch&&document instanceof DocumentTouch,t=p?"touchend":"click",l="vertical"===c.direction,m=c.reverse,h=0<c.itemWidth,r="fade"===c.animation,s=""!==c.asNavFor,f={};d.data(i,"flexslider",a);f={init:function(){a.animating=!1;a.currentSlide=c.startAt;a.animatingTo=a.currentSlide;a.atEnd=0===a.currentSlide||a.currentSlide===a.last;a.containerSelector=c.selector.substr(0,
+                    c.selector.search(" "));a.slides=d(c.selector,a);a.container=d(a.containerSelector,a);a.count=a.slides.length;a.syncExists=0<d(c.sync).length;"slide"===c.animation&&(c.animation="swing");a.prop=l?"top":"marginLeft";a.args={};a.manualPause=!1;var b=a,g;if(g=!c.video)if(g=!r)if(g=c.useCSS)a:{g=document.createElement("div");var n=["perspectiveProperty","WebkitPerspective","MozPerspective","OPerspective","msPerspective"],e;for(e in n)if(void 0!==g.style[n[e]]){a.pfx=n[e].replace("Perspective","").toLowerCase();
+                a.prop="-"+a.pfx+"-transform";g=!0;break a}g=!1}b.transitions=g;""!==c.controlsContainer&&(a.controlsContainer=0<d(c.controlsContainer).length&&d(c.controlsContainer));""!==c.manualControls&&(a.manualControls=0<d(c.manualControls).length&&d(c.manualControls));c.randomize&&(a.slides.sort(function(){return Math.round(Math.random())-0.5}),a.container.empty().append(a.slides));a.doMath();s&&f.asNav.setup();a.setup("init");c.controlNav&&f.controlNav.setup();c.directionNav&&f.directionNav.setup();c.keyboard&&
+                    (1===d(a.containerSelector).length||c.multipleKeyboard)&&d(document).bind("keyup",function(b){b=b.keyCode;if(!a.animating&&(39===b||37===b))b=39===b?a.getTarget("next"):37===b?a.getTarget("prev"):!1,a.flexAnimate(b,c.pauseOnAction)});c.mousewheel&&a.bind("mousewheel",function(b,g){b.preventDefault();var d=0>g?a.getTarget("next"):a.getTarget("prev");a.flexAnimate(d,c.pauseOnAction)});c.pausePlay&&f.pausePlay.setup();c.slideshow&&(c.pauseOnHover&&a.hover(function(){!a.manualPlay&&!a.manualPause&&a.pause()},
+                    function(){!a.manualPause&&!a.manualPlay&&a.play()}),0<c.initDelay?setTimeout(a.play,c.initDelay):a.play());p&&c.touch&&f.touch();(!r||r&&c.smoothHeight)&&d(window).bind("resize focus",f.resize);setTimeout(function(){c.start(a)},200)},asNav:{setup:function(){a.asNav=!0;a.animatingTo=Math.floor(a.currentSlide/a.move);a.currentItem=a.currentSlide;a.slides.removeClass(e+"active-slide").eq(a.currentItem).addClass(e+"active-slide");a.slides.click(function(b){b.preventDefault();var b=d(this),g=b.index();
+                !d(c.asNavFor).data("flexslider").animating&&!b.hasClass("active")&&(a.direction=a.currentItem<g?"next":"prev",a.flexAnimate(g,c.pauseOnAction,!1,!0,!0))})}},controlNav:{setup:function(){a.manualControls?f.controlNav.setupManual():f.controlNav.setupPaging()},setupPaging:function(){var b=1,g;a.controlNavScaffold=d('<ol class="'+e+"control-nav "+e+("thumbnails"===c.controlNav?"control-thumbs":"control-paging")+'"></ol>');if(1<a.pagingCount)for(var n=0;n<a.pagingCount;n++)g="thumbnails"===c.controlNav?
+                    '<img src="'+a.slides.eq(n).attr("data-thumb")+'"/>':"<a>"+b+"</a>",a.controlNavScaffold.append("<li>"+g+"</li>"),b++;a.controlsContainer?d(a.controlsContainer).append(a.controlNavScaffold):a.append(a.controlNavScaffold);f.controlNav.set();f.controlNav.active();a.controlNavScaffold.delegate("a, img",t,function(b){b.preventDefault();var b=d(this),g=a.controlNav.index(b);b.hasClass(e+"active")||(a.direction=g>a.currentSlide?"next":"prev",a.flexAnimate(g,c.pauseOnAction))});p&&a.controlNavScaffold.delegate("a",
+                    "click touchstart",function(a){a.preventDefault()})},setupManual:function(){a.controlNav=a.manualControls;f.controlNav.active();a.controlNav.live(t,function(b){b.preventDefault();var b=d(this),g=a.controlNav.index(b);b.hasClass(e+"active")||(g>a.currentSlide?a.direction="next":a.direction="prev",a.flexAnimate(g,c.pauseOnAction))});p&&a.controlNav.live("click touchstart",function(a){a.preventDefault()})},set:function(){a.controlNav=d("."+e+"control-nav li "+("thumbnails"===c.controlNav?"img":"a"),
+                    a.controlsContainer?a.controlsContainer:a)},active:function(){a.controlNav.removeClass(e+"active").eq(a.animatingTo).addClass(e+"active")},update:function(b,c){1<a.pagingCount&&"add"===b?a.controlNavScaffold.append(d("<li><a>"+a.count+"</a></li>")):1===a.pagingCount?a.controlNavScaffold.find("li").remove():a.controlNav.eq(c).closest("li").remove();f.controlNav.set();1<a.pagingCount&&a.pagingCount!==a.controlNav.length?a.update(c,b):f.controlNav.active()}},directionNav:{setup:function(){var b=d('<ul class="'+
+                    e+'direction-nav"><li><a class="'+e+'prev" href="#">'+c.prevText+'</a></li><li><a class="'+e+'next" href="#">'+c.nextText+"</a></li></ul>");a.controlsContainer?(d(a.controlsContainer).append(b),a.directionNav=d("."+e+"direction-nav li a",a.controlsContainer)):(a.append(b),a.directionNav=d("."+e+"direction-nav li a",a));f.directionNav.update();a.directionNav.bind(t,function(b){b.preventDefault();b=d(this).hasClass(e+"next")?a.getTarget("next"):a.getTarget("prev");a.flexAnimate(b,c.pauseOnAction)});
+                p&&a.directionNav.bind("click touchstart",function(a){a.preventDefault()})},update:function(){var b=e+"disabled";1===a.pagingCount?a.directionNav.addClass(b):c.animationLoop?a.directionNav.removeClass(b):0===a.animatingTo?a.directionNav.removeClass(b).filter("."+e+"prev").addClass(b):a.animatingTo===a.last?a.directionNav.removeClass(b).filter("."+e+"next").addClass(b):a.directionNav.removeClass(b)}},pausePlay:{setup:function(){var b=d('<div class="'+e+'pauseplay"><a></a></div>');a.controlsContainer?
+                    (a.controlsContainer.append(b),a.pausePlay=d("."+e+"pauseplay a",a.controlsContainer)):(a.append(b),a.pausePlay=d("."+e+"pauseplay a",a));f.pausePlay.update(c.slideshow?e+"pause":e+"play");a.pausePlay.bind(t,function(b){b.preventDefault();d(this).hasClass(e+"pause")?(a.manualPause=!0,a.manualPlay=!1,a.pause()):(a.manualPause=!1,a.manualPlay=!0,a.play())});p&&a.pausePlay.bind("click touchstart",function(a){a.preventDefault()})},update:function(b){"play"===b?a.pausePlay.removeClass(e+"pause").addClass(e+
+                    "play").text(c.playText):a.pausePlay.removeClass(e+"play").addClass(e+"pause").text(c.pauseText)}},touch:function(){function b(b){j=l?d-b.touches[0].pageY:d-b.touches[0].pageX;p=l?Math.abs(j)<Math.abs(b.touches[0].pageX-e):Math.abs(j)<Math.abs(b.touches[0].pageY-e);if(!p||500<Number(new Date)-k)b.preventDefault(),!r&&a.transitions&&(c.animationLoop||(j/=0===a.currentSlide&&0>j||a.currentSlide===a.last&&0<j?Math.abs(j)/q+2:1),a.setProps(f+j,"setTouch"))}function g(){i.removeEventListener("touchmove",
+                    b,!1);if(a.animatingTo===a.currentSlide&&!p&&null!==j){var h=m?-j:j,l=0<h?a.getTarget("next"):a.getTarget("prev");a.canAdvance(l)&&(550>Number(new Date)-k&&50<Math.abs(h)||Math.abs(h)>q/2)?a.flexAnimate(l,c.pauseOnAction):r||a.flexAnimate(a.currentSlide,c.pauseOnAction,!0)}i.removeEventListener("touchend",g,!1);f=j=e=d=null}var d,e,f,q,j,k,p=!1;i.addEventListener("touchstart",function(j){a.animating?j.preventDefault():1===j.touches.length&&(a.pause(),q=l?a.h:a.w,k=Number(new Date),f=h&&m&&a.animatingTo===
+                    a.last?0:h&&m?a.limit-(a.itemW+c.itemMargin)*a.move*a.animatingTo:h&&a.currentSlide===a.last?a.limit:h?(a.itemW+c.itemMargin)*a.move*a.currentSlide:m?(a.last-a.currentSlide+a.cloneOffset)*q:(a.currentSlide+a.cloneOffset)*q,d=l?j.touches[0].pageY:j.touches[0].pageX,e=l?j.touches[0].pageX:j.touches[0].pageY,i.addEventListener("touchmove",b,!1),i.addEventListener("touchend",g,!1))},!1)},resize:function(){!a.animating&&a.is(":visible")&&(h||a.doMath(),r?f.smoothHeight():h?(a.slides.width(a.computedW),
+                    a.update(a.pagingCount),a.setProps()):l?(a.viewport.height(a.h),a.setProps(a.h,"setTotal")):(c.smoothHeight&&f.smoothHeight(),a.newSlides.width(a.computedW),a.setProps(a.computedW,"setTotal")))},smoothHeight:function(b){if(!l||r){var c=r?a:a.viewport;b?c.animate({height:a.slides.eq(a.animatingTo).height()},b):c.height(a.slides.eq(a.animatingTo).height())}},sync:function(b){var g=d(c.sync).data("flexslider"),e=a.animatingTo;switch(b){case "animate":g.flexAnimate(e,c.pauseOnAction,!1,!0);break;case "play":!g.playing&&
+                    !g.asNav&&g.play();break;case "pause":g.pause()}}};a.flexAnimate=function(b,g,n,i,k){s&&1===a.pagingCount&&(a.direction=a.currentItem<b?"next":"prev");if(!a.animating&&(a.canAdvance(b,k)||n)&&a.is(":visible")){if(s&&i)if(n=d(c.asNavFor).data("flexslider"),a.atEnd=0===b||b===a.count-1,n.flexAnimate(b,!0,!1,!0,k),a.direction=a.currentItem<b?"next":"prev",n.direction=a.direction,Math.ceil((b+1)/a.visible)-1!==a.currentSlide&&0!==b)a.currentItem=b,a.slides.removeClass(e+"active-slide").eq(b).addClass(e+
+                    "active-slide"),b=Math.floor(b/a.visible);else return a.currentItem=b,a.slides.removeClass(e+"active-slide").eq(b).addClass(e+"active-slide"),!1;a.animating=!0;a.animatingTo=b;c.before(a);g&&a.pause();a.syncExists&&!k&&f.sync("animate");c.controlNav&&f.controlNav.active();h||a.slides.removeClass(e+"active-slide").eq(b).addClass(e+"active-slide");a.atEnd=0===b||b===a.last;c.directionNav&&f.directionNav.update();b===a.last&&(c.end(a),c.animationLoop||a.pause());if(r)p?(a.slides.eq(a.currentSlide).css({opacity:0,
+                zIndex:1}),a.slides.eq(b).css({opacity:1,zIndex:2}),a.slides.unbind("webkitTransitionEnd transitionend"),a.slides.eq(a.currentSlide).bind("webkitTransitionEnd transitionend",function(){c.after(a)}),a.animating=!1,a.currentSlide=a.animatingTo):(a.slides.eq(a.currentSlide).fadeOut(c.animationSpeed,c.easing),a.slides.eq(b).fadeIn(c.animationSpeed,c.easing,a.wrapup));else{var q=l?a.slides.filter(":first").height():a.computedW;h?(b=c.itemWidth>a.w?2*c.itemMargin:c.itemMargin,b=(a.itemW+b)*a.move*a.animatingTo,
+                    b=b>a.limit&&1!==a.visible?a.limit:b):b=0===a.currentSlide&&b===a.count-1&&c.animationLoop&&"next"!==a.direction?m?(a.count+a.cloneOffset)*q:0:a.currentSlide===a.last&&0===b&&c.animationLoop&&"prev"!==a.direction?m?0:(a.count+1)*q:m?(a.count-1-b+a.cloneOffset)*q:(b+a.cloneOffset)*q;a.setProps(b,"",c.animationSpeed);if(a.transitions){if(!c.animationLoop||!a.atEnd)a.animating=!1,a.currentSlide=a.animatingTo;a.container.unbind("webkitTransitionEnd transitionend");a.container.bind("webkitTransitionEnd transitionend",
+                    function(){a.wrapup(q)})}else a.container.animate(a.args,c.animationSpeed,c.easing,function(){a.wrapup(q)})}c.smoothHeight&&f.smoothHeight(c.animationSpeed)}};a.wrapup=function(b){!r&&!h&&(0===a.currentSlide&&a.animatingTo===a.last&&c.animationLoop?a.setProps(b,"jumpEnd"):a.currentSlide===a.last&&(0===a.animatingTo&&c.animationLoop)&&a.setProps(b,"jumpStart"));a.animating=!1;a.currentSlide=a.animatingTo;c.after(a)};a.animateSlides=function(){a.animating||a.flexAnimate(a.getTarget("next"))};a.pause=
+                    function(){clearInterval(a.animatedSlides);a.playing=!1;c.pausePlay&&f.pausePlay.update("play");a.syncExists&&f.sync("pause")};a.play=function(){a.animatedSlides=setInterval(a.animateSlides,c.slideshowSpeed);a.playing=!0;c.pausePlay&&f.pausePlay.update("pause");a.syncExists&&f.sync("play")};a.canAdvance=function(b,g){var d=s?a.pagingCount-1:a.last;return g?!0:s&&a.currentItem===a.count-1&&0===b&&"prev"===a.direction?!0:s&&0===a.currentItem&&b===a.pagingCount-1&&"next"!==a.direction?!1:b===a.currentSlide&&
+                    !s?!1:c.animationLoop?!0:a.atEnd&&0===a.currentSlide&&b===d&&"next"!==a.direction?!1:a.atEnd&&a.currentSlide===d&&0===b&&"next"===a.direction?!1:!0};a.getTarget=function(b){a.direction=b;return"next"===b?a.currentSlide===a.last?0:a.currentSlide+1:0===a.currentSlide?a.last:a.currentSlide-1};a.setProps=function(b,g,d){var e,f=b?b:(a.itemW+c.itemMargin)*a.move*a.animatingTo;e=-1*function(){if(h)return"setTouch"===g?b:m&&a.animatingTo===a.last?0:m?a.limit-(a.itemW+c.itemMargin)*a.move*a.animatingTo:a.animatingTo===
+                    a.last?a.limit:f;switch(g){case "setTotal":return m?(a.count-1-a.currentSlide+a.cloneOffset)*b:(a.currentSlide+a.cloneOffset)*b;case "setTouch":return b;case "jumpEnd":return m?b:a.count*b;case "jumpStart":return m?a.count*b:b;default:return b}}()+"px";a.transitions&&(e=l?"translate3d(0,"+e+",0)":"translate3d("+e+",0,0)",d=void 0!==d?d/1E3+"s":"0s",a.container.css("-"+a.pfx+"-transition-duration",d));a.args[a.prop]=e;(a.transitions||void 0===d)&&a.container.css(a.args)};a.setup=function(b){if(r)a.slides.css({width:"100%",
+                "float":"left",marginRight:"-100%",position:"relative"}),"init"===b&&(p?a.slides.css({opacity:0,display:"block",webkitTransition:"opacity "+c.animationSpeed/1E3+"s ease",zIndex:1}).eq(a.currentSlide).css({opacity:1,zIndex:2}):a.slides.eq(a.currentSlide).fadeIn(c.animationSpeed,c.easing)),c.smoothHeight&&f.smoothHeight();else{var g,n;"init"===b&&(a.viewport=d('<div class="'+e+'viewport"></div>').css({overflow:"hidden",position:"relative"}).appendTo(a).append(a.container),a.cloneCount=0,a.cloneOffset=
+                    0,m&&(n=d.makeArray(a.slides).reverse(),a.slides=d(n),a.container.empty().append(a.slides)));c.animationLoop&&!h&&(a.cloneCount=2,a.cloneOffset=1,"init"!==b&&a.container.find(".clone").remove(),a.container.append(a.slides.first().clone().addClass("clone")).prepend(a.slides.last().clone().addClass("clone")));a.newSlides=d(c.selector,a);g=m?a.count-1-a.currentSlide+a.cloneOffset:a.currentSlide+a.cloneOffset;l&&!h?(a.container.height(200*(a.count+a.cloneCount)+"%").css("position","absolute").width("100%"),
+                    setTimeout(function(){a.newSlides.css({display:"block"});a.doMath();a.viewport.height(a.h);a.setProps(g*a.h,"init")},"init"===b?100:0)):(a.container.width(200*(a.count+a.cloneCount)+"%"),a.setProps(g*a.computedW,"init"),setTimeout(function(){a.doMath();a.newSlides.css({width:a.computedW,"float":"left",display:"block"});c.smoothHeight&&f.smoothHeight()},"init"===b?100:0))}h||a.slides.removeClass(e+"active-slide").eq(a.currentSlide).addClass(e+"active-slide")};a.doMath=function(){var b=a.slides.first(),
+                    d=c.itemMargin,e=c.minItems,f=c.maxItems;a.w=a.width();a.h=b.height();a.boxPadding=b.outerWidth()-b.width();h?(a.itemT=c.itemWidth+d,a.minW=e?e*a.itemT:a.w,a.maxW=f?f*a.itemT:a.w,a.itemW=a.minW>a.w?(a.w-d*e)/e:a.maxW<a.w?(a.w-d*f)/f:c.itemWidth>a.w?a.w:c.itemWidth,a.visible=Math.floor(a.w/(a.itemW+d)),a.move=0<c.move&&c.move<a.visible?c.move:a.visible,a.pagingCount=Math.ceil((a.count-a.visible)/a.move+1),a.last=a.pagingCount-1,a.limit=1===a.pagingCount?0:c.itemWidth>a.w?(a.itemW+2*d)*a.count-a.w-
+                    d:(a.itemW+d)*a.count-a.w-d):(a.itemW=a.w,a.pagingCount=a.count,a.last=a.count-1);a.computedW=a.itemW-a.boxPadding};a.update=function(b,d){a.doMath();h||(b<a.currentSlide?a.currentSlide+=1:b<=a.currentSlide&&0!==b&&(a.currentSlide-=1),a.animatingTo=a.currentSlide);if(c.controlNav&&!a.manualControls)if("add"===d&&!h||a.pagingCount>a.controlNav.length)f.controlNav.update("add");else if("remove"===d&&!h||a.pagingCount<a.controlNav.length)h&&a.currentSlide>a.last&&(a.currentSlide-=1,a.animatingTo-=1),
+                    f.controlNav.update("remove",a.last);c.directionNav&&f.directionNav.update()};a.addSlide=function(b,e){var f=d(b);a.count+=1;a.last=a.count-1;l&&m?void 0!==e?a.slides.eq(a.count-e).after(f):a.container.prepend(f):void 0!==e?a.slides.eq(e).before(f):a.container.append(f);a.update(e,"add");a.slides=d(c.selector+":not(.clone)",a);a.setup();c.added(a)};a.removeSlide=function(b){var e=isNaN(b)?a.slides.index(d(b)):b;a.count-=1;a.last=a.count-1;isNaN(b)?d(b,a.slides).remove():l&&m?a.slides.eq(a.last).remove():
+                    a.slides.eq(b).remove();a.doMath();a.update(e,"remove");a.slides=d(c.selector+":not(.clone)",a);a.setup();c.removed(a)};f.init()};d.flexslider.defaults={namespace:"flex-",selector:".slides > li",animation:"fade",easing:"swing",direction:"horizontal",reverse:!1,animationLoop:!0,smoothHeight:!1,startAt:0,slideshow:!0,slideshowSpeed:7E3,animationSpeed:600,initDelay:0,randomize:!1,pauseOnAction:!0,pauseOnHover:!1,useCSS:!0,touch:!0,video:!1,controlNav:!0,directionNav:!0,prevText:"Previous",nextText:"Next",
+                keyboard:!0,multipleKeyboard:!1,mousewheel:!1,pausePlay:!1,pauseText:"Pause",playText:"Play",controlsContainer:"",manualControls:"",sync:"",asNavFor:"",itemWidth:0,itemMargin:0,minItems:0,maxItems:0,move:0,start:function(){},before:function(){},after:function(){},end:function(){},added:function(){},removed:function(){}};d.fn.flexslider=function(i){void 0===i&&(i={});if("object"===typeof i)return this.each(function(){var a=d(this),c=a.find(i.selector?i.selector:".slides > li");1===c.length?(c.fadeIn(400),
+                    i.start&&i.start(a)):void 0==a.data("flexslider")&&new d.flexslider(this,i)});var k=d(this).data("flexslider");switch(i){case "play":k.play();break;case "pause":k.pause();break;case "next":k.flexAnimate(k.getTarget("next"),!0);break;case "prev":case "previous":k.flexAnimate(k.getTarget("prev"),!0);break;default:"number"===typeof i&&k.flexAnimate(i,!0)}}})(jQuery);
+
+            (function( $, undefined ) {
+
+                /*
+                 * Slider object.
+                 */
+                $.Slider 				= function( options, element ) {
+
+                    this.$el	= $( element );
+
+                    this._init( options );
+
+                };
+
+                $.Slider.defaults 		= {
+                    current		: 0, 	// index of current slide
+                    bgincrement	: 50,	// increment the bg position (parallax effect) when sliding
+                    autoplay	: true, // slideshow on / off
+                    interval	: 8000  // time between transitions
+                };
+
+                $.Slider.prototype 	= {
+                    _init 				: function( options ) {
+
+                        this.options 		= $.extend( true, {}, $.Slider.defaults, options );
+
+                        this.$slides		= this.$el.children('div.da-slide');
+                        this.slidesCount	= this.$slides.length;
+
+                        this.current		= this.options.current;
+
+                        if( this.current < 0 || this.current >= this.slidesCount ) {
+
+                            this.current	= 0;
+
+                        }
+
+                        this.$slides.eq( this.current ).addClass( 'da-slide-current' );
+
+                        var $navigation		= $( '<nav class="da-dots"/>' );
+                        for( var i = 0; i < this.slidesCount; ++i ) {
+
+                            $navigation.append( '<span/>' );
+
+                        }
+                        $navigation.appendTo( this.$el );
+
+                        this.$pages			= this.$el.find('nav.da-dots > span');
+                        this.$navNext		= this.$el.find('span.da-arrows-next');
+                        this.$navPrev		= this.$el.find('span.da-arrows-prev');
+
+                        this.isAnimating	= false;
+
+                        this.bgpositer		= 0;
+
+                        this.cssAnimations	= Modernizr.cssanimations;
+                        this.cssTransitions	= Modernizr.csstransitions;
+
+                        if( !this.cssAnimations || !this.cssAnimations ) {
+
+                            this.$el.addClass( 'da-slider-fb' );
+
+                        }
+
+                        this._updatePage();
+
+                        // load the events
+                        this._loadEvents();
+
+                        // slideshow
+                        if( this.options.autoplay ) {
+
+                            this._startSlideshow();
+
+                        }
+
+                    },
+                    _navigate			: function( page, dir ) {
+
+                        var $current	= this.$slides.eq( this.current ), $next, _self = this;
+
+                        if( this.current === page || this.isAnimating ) return false;
+
+                        this.isAnimating	= true;
+
+                        // check dir
+                        var classTo, classFrom, d;
+
+                        if( !dir ) {
+
+                            ( page > this.current ) ? d = 'next' : d = 'prev';
+
+                        }
+                        else {
+
+                            d = dir;
+
+                        }
+
+                        if( this.cssAnimations && this.cssAnimations ) {
+
+                            if( d === 'next' ) {
+
+                                classTo		= 'da-slide-toleft';
+                                classFrom	= 'da-slide-fromright';
+                                ++this.bgpositer;
+
+                            }
+                            else {
+
+                                classTo		= 'da-slide-toright';
+                                classFrom	= 'da-slide-fromleft';
+                                --this.bgpositer;
+
+                            }
+
+                            this.$el.css( 'background-position' , this.bgpositer * this.options.bgincrement + '% 0%' );
+
+                        }
+
+                        this.current	= page;
+
+                        $next			= this.$slides.eq( this.current );
+
+                        if( this.cssAnimations && this.cssAnimations ) {
+
+                            var rmClasses	= 'da-slide-toleft da-slide-toright da-slide-fromleft da-slide-fromright';
+                            $current.removeClass( rmClasses );
+                            $next.removeClass( rmClasses );
+
+                            $current.addClass( classTo );
+                            $next.addClass( classFrom );
+
+                            $current.removeClass( 'da-slide-current' );
+                            $next.addClass( 'da-slide-current' );
+
+                        }
+
+                        // fallback
+                        if( !this.cssAnimations || !this.cssAnimations ) {
+
+                            $next.css( 'left', ( d === 'next' ) ? '100%' : '-100%' ).stop().animate( {
+                                left : '0%'
+                            }, 1000, function() {
+                                _self.isAnimating = false;
+                            });
+
+                            $current.stop().animate( {
+                                left : ( d === 'next' ) ? '-100%' : '100%'
+                            }, 1000, function() {
+                                $current.removeClass( 'da-slide-current' );
+                            });
+
+                        }
+
+                        this._updatePage();
+
+                    },
+                    _updatePage			: function() {
+
+                        this.$pages.removeClass( 'da-dots-current' );
+                        this.$pages.eq( this.current ).addClass( 'da-dots-current' );
+
+                    },
+                    _startSlideshow		: function() {
+
+                        var _self	= this;
+
+                        this.slideshow	= setTimeout( function() {
+
+                            var page = ( _self.current < _self.slidesCount - 1 ) ? page = _self.current + 1 : page = 0;
+                            _self._navigate( page, 'next' );
+
+                            if( _self.options.autoplay ) {
+
+                                _self._startSlideshow();
+
+                            }
+
+                        }, this.options.interval );
+
+                    },
+                    page				: function( idx ) {
+
+                        if( idx >= this.slidesCount || idx < 0 ) {
+
+                            return false;
+
+                        }
+
+                        if( this.options.autoplay ) {
+
+                            clearTimeout( this.slideshow );
+                            this.options.autoplay	= false;
+
+                        }
+
+                        this._navigate( idx );
+
+                    },
+                    _loadEvents			: function() {
+
+                        var _self = this;
+
+                        this.$pages.on( 'click.cslider', function( event ) {
+
+                            _self.page( $(this).index() );
+                            return false;
+
+                        });
+
+                        this.$navNext.on( 'click.cslider', function( event ) {
+
+                            if( _self.options.autoplay ) {
+
+                                clearTimeout( _self.slideshow );
+                                _self.options.autoplay	= false;
+
+                            }
+
+                            var page = ( _self.current < _self.slidesCount - 1 ) ? page = _self.current + 1 : page = 0;
+                            _self._navigate( page, 'next' );
+                            return false;
+
+                        });
+
+                        this.$navPrev.on( 'click.cslider', function( event ) {
+
+                            if( _self.options.autoplay ) {
+
+                                clearTimeout( _self.slideshow );
+                                _self.options.autoplay	= false;
+
+                            }
+
+                            var page = ( _self.current > 0 ) ? page = _self.current - 1 : page = _self.slidesCount - 1;
+                            _self._navigate( page, 'prev' );
+                            return false;
+
+                        });
+
+                        if( this.cssTransitions ) {
+
+                            if( !this.options.bgincrement ) {
+
+                                this.$el.on( 'webkitAnimationEnd.cslider animationend.cslider OAnimationEnd.cslider', function( event ) {
+
+                                    if( event.originalEvent.animationName === 'toRightAnim4' || event.originalEvent.animationName === 'toLeftAnim4' ) {
+
+                                        _self.isAnimating	= false;
+
+                                    }
+
+                                });
+
+                            }
+                            else {
+
+                                this.$el.on( 'webkitTransitionEnd.cslider transitionend.cslider OTransitionEnd.cslider', function( event ) {
+
+                                    if( event.target.id === _self.$el.attr( 'id' ) )
+                                        _self.isAnimating	= false;
+
+                                });
+
+                            }
+
+                        }
+
+                    }
+                };
+
+                var logError 			= function( message ) {
+                    if ( this.console ) {
+                        console.error( message );
+                    }
+                };
+
+                $.fn.cslider			= function( options ) {
+
+                    if ( typeof options === 'string' ) {
+
+                        var args = Array.prototype.slice.call( arguments, 1 );
+
+                        this.each(function() {
+
+                            var instance = $.data( this, 'cslider' );
+
+                            if ( !instance ) {
+                                logError( "cannot call methods on cslider prior to initialization; " +
+                                        "attempted to call method '" + options + "'" );
+                                return;
+                            }
+
+                            if ( !$.isFunction( instance[options] ) || options.charAt(0) === "_" ) {
+                                logError( "no such method '" + options + "' for cslider instance" );
+                                return;
+                            }
+
+                            instance[ options ].apply( instance, args );
+
+                        });
+
+                    }
+                    else {
+
+                        this.each(function() {
+
+                            var instance = $.data( this, 'cslider' );
+                            if ( !instance ) {
+                                $.data( this, 'cslider', new $.Slider( options, this ) );
+                            }
+                        });
+
+                    }
+
+                    return this;
+
+                };
+
+            })( jQuery );
+
+            /* Modernizr 2.5.3 (Custom Build) | MIT & BSD
+             * Build: http://www.modernizr.com/download/#-cssanimations-csstransitions-shiv-cssclasses-testprop-testallprops-domprefixes-load
+             */
+            ;window.Mod
+
+            App.init();
+            App.initBxSlider();
+            $('#clients-flexslider').flexslider({
+                animation: "slide",
+                easing: "swing",
+                animationLoop: true,
+                itemWidth: 1,
+                itemMargin: 1,
+                minItems: 2,
+                maxItems: 9,
+                controlNav: false,
+                directionNav: false,
+                move: 2
+            });
+            $('#clients-flexslider-my').flexslider({
+                animation: "slide",
+                easing: "swing",
+                animationLoop: true,
+                itemWidth: 1,
+                itemMargin: 1,
+                minItems: 2,
+                maxItems: 9,
+                controlNav: false,
+                directionNav: false,
+                move: 2
+            });
+
+            //Contact.initMap();
+        });
+
+
+    </script>
+    <script type="application/javascript">
+
+        $(document).ready(function() {
+
+            $('.aProposMax').hide();
+            $('.aProposMin a').click(function(){
+                $(".aProposMax").show();
+                $(".aProposMin").hide();
+            });
+            $('.aProposMax a').click(function(){
+                $(".aProposMin").show();
+                $(".aProposMax").hide();
+            });
+
+			 $('.actualiteMax').hide();
+            $('.actualiteMin a').click(function(){
+                $(".actualiteMax").show();
+                $(".actualiteMin").hide();
+            });
+            $('.actualiteMax a').click(function(){
+                $(".actualiteMin").show();
+                $(".actualiteMax").hide();
+            });
+        });
+    </script>
+{% endblock %} 
+
+{% block title %}{{ user.username ~ ' '~ user.firstName ~ ' ' ~ user.lastName  }}{% endblock %}
+{% block meta_d%}{{ user.aPropos ~ ', '~ user.biographie}} {% endblock %}
+
+{% block meta_k%} 
+	{% if user.gender == '7'%} {{ 'visitor'|trans }}
+	{% elseif user.gender == '6'%} {{ 'recruiting.agency'|trans }}
+	{% elseif user.gender == '5'%} {{ 'recruiter.f'|trans }}
+	{% elseif user.gender == '4'%} {{ 'recruiter.m'|trans }}
+	{% elseif user.gender == '3'%} {{ 'association'|trans }}
+	{% elseif user.gender == '2'%} {{ 'dancing.school'|trans }}
+	{% elseif user.gender == '1'%} {{ 'dancer.f'|trans }}
+	{% else %}{{ 'dancer.m'|trans }} {%endif%}, 
+    {% for s in user.style %}{{  s.nom|replace( {' ' :  ', '} ) }}, {% endfor %}
+	{{ (user.slug )|replace({'-' : ', ' }) }} 
+{% endblock %}
+
+{% block content %}
+    {% block content_breadcrumbs %}
+        <div class="breadcrumbs margin-bottom-20">
+            <div class="container">
+                <h1 class="color-green pull-left"><a href="{{ path(tuto? 'ltm_professeur_public' : 'ltm_usr_public', {'slug': user.slug}) }}">{{ user.username }}</a></h1><br>
+
+                <ul class="pull-right breadcrumb">
+                    <li><a href="{{ path(tuto? 'ltm_professeur_lister' : 'home') }}">{{ 'home'|trans }}</a> <span class="divider">/</span></li>
+					{% if user.gender == '2' %} 
+                    <li><a href="{{ path('ltm_usr_lister_ecoles') }}"> {{ 'dancing.schools'|trans }} </a> <span class="divider">/</span></li>
+                    <li class="active">{{ user.lastName == null and user.firstName == null ?  user.username : user.lastName ~ ' ' ~ user.firstName}}</li>
+					{% else %}
+					<li><a href="{{ path(tuto? 'ltm_professeur_lister' : 'ltm_usr_lister') }}"> {{ 'all.the'|trans }} {{ tuto? 'teachers'|trans : 'moovers'|trans }}</a> <span class="divider">/</span></li>
+                    <li class="active">{{ 'my.profile'|trans }}</li>
+					{% endif %}
+                </ul>
+            </div><!--/container-->
+        </div>
+    {% endblock %}
+
+    <div class="container">
+    <div class="row-fluid">
+        {% block content_left %}
+
+    <div class="span3">
+        <!--div style="display: none;" class="bb-alert alert alert-info pull-right">
+            <span>Callback</span>
+        </div-->
+        <!-- Our Mission -->
+        <div class="margin-bottom-20">
+            <div class="margin-bottom-10">
+
+                    <a href="{{ path('ltm_usr_public', {'slug': user.slug}) }}">
+                    <img width="182" height="277" src='/{{  user.getAbsolutePath() }}' />
+                    </a>
+
+            </div>
+            <div>
+                <ul class="social-icons">
+                    {%  if user.facebook %}
+                    <li><a target="_blank" href="{{ ('http' in user.facebook|lower)?  user.facebook : ( 'facebook' in user.facebook|lower ? 'https://' ~ user.facebook :'https://www.facebook.com/' ~ user.facebook|replace({' ' : '-'})) }}" data-original-title="Facebook" class="social_facebook"></a></li>
+                    {%  endif %}
+                    {%  if user.skype %}
+                    <li><a target="_blank" href="{{ user.skype }}" data-original-title="Skype" class="social_skype"></a></li>
+                    {%  endif %}
+                    {%  if user.twitter %}
+                    <li><a target="_blank" href="{{ ('http' in user.twitter|lower)? user.twitter : ( 'twitter' in user.twitter|lower ? 'https://' ~ user.twitter : 'https://twitter.com/' ~ user.twitter|replace({' ' : '-'}) ) }}" data-original-title="Twitter" class="social_twitter"></a></li>
+                    {%  endif %}
+                    {%  if user.googleplus %}
+                    <li><a target="_blank" href="{{ ('http' in user.googleplus|lower)? user.googleplus : ( 'google' in user.googleplus|lower ? 'https://' ~ user.googleplus : 'https://plus.google.com/' ~ user.googleplus|replace({' ' : '-'}))  }}" data-original-title="Googleplus" class="social_googleplus"></a></li>
+                    {%  endif %}
+
+                </ul>
+
+            </div>
+            <div class="margin-bottom-20">
+            <ul class="unstyled">
+                {% for status in user.status() %}
+                    {% if status.nom == 'Connecté' %}
+                        <li class="label label-success arrowed arrowed-in-right"> {{ status.nom }}</li>
+                    {% endif %}
+                    {% if status.nom == 'Déconnecté' %}
+                        <li class="label label-purple arrowed  arrowed-in-right"> {{ status.nom }}</li>
+                    {% endif %}
+                {% endfor %}
+                <li><i class="icon-user"></i> {% if user.gender == '7'%} {{ 'visitor'|trans }}
+					{% elseif user.gender == '6'%} {{ 'recruiting.agency'|trans }}
+                    {% elseif user.gender == '5'%} {{ 'recruiter.f'|trans }}
+                    {% elseif user.gender == '4'%} {{ 'recruiter.m'|trans }}
+                    {% elseif user.gender == '3'%} {{ 'association'|trans }}
+                    {% elseif user.gender == '2'%} {{ 'dancing.school'|trans }}
+                    {% elseif user.gender == '1'%} {{ 'dancer.f'|trans }}
+                    {% else %}{{ 'dancer.m'|trans }} {%endif%}
+                    {% for s in user.style %}
+                        <a href="{{ path('ltm_usr_styled', {'styled' : s.nom|replace( {' ' :  '_'} )}) }}">{{ s.nom }} </a>
+                    {% endfor %}
+                </li>
+                {%  if user.city  != null or  user.city  != ""  %}
+                    <li><a href="#"><i class="icon-map-marker"></i> {{ 'live.in'|trans }} {{ user.city }} ({{ user.country}})</a></li>
+                {% endif %}
+
+                {% if (app != null and app.user != null  and app.user.id != user.id )%}
+
+					{%set amiUrl = path('ltm_relation_ajouter_friend_ask', {'slug' : user.slug}) %}
+					{%set recoUrl = path('ltm_relation_ajouter_recommandation_send', {'slug' : user.slug}) %}
+					{%set followUrl = path('ltm_relation_ajouter_follow', {'slug' : user.slug})  %}
+                    {% set alreadyFriendAsk = alreadyRelation( {'slug':user.slug, 'category': 'Amitie'}) %}
+                    {% set alreadyRecommandation = alreadyRelation( {'slug':user.slug, 'category': 'Recommandation'}) %}
+                    {% set alreadyFan = alreadyRelation( {'slug':user.slug, 'category': 'Fan'}) %}
+
+					{% if (app.user.category.nom == 'Semi Pro' or app.user.category.nom == 'Pro' or app.user.category.nom ==  'Pro (Essai gratuit 14 jours)' ) and app.user.gender != '7' %}
+						{% if alreadyFriendAsk == 'no' %}
+							{% set addAsFriend = 'add'|trans ~ ' ' ~ user.username ~ ' ' ~ 'as.friend'|trans %}
+							{% set sentTo = 'friend.ask.sent.to'|trans ~ ' ' ~  user.username %}
+							<li><a style="cursor:pointer" onclick="doSocial( '{{ addAsFriend }} ?' ,'{{amiUrl}}','{{ sentTo }}.')"   ><i class="icon-plus-sign "></i> {{ addAsFriend }}</a></li>
+						{% elseif alreadyFriendAsk == 'yes' %}
+							<li><i class="icon-plus-sign "></i> {{ 'already.friend'|trans }}  </li>
+							<li><a href="{{ path("ltm_message_inbox") }}"><i class="icon-envelope-alt"></i> {{ 'send.message.me'|trans }}  </a></li>
+						{% elseif alreadyFriendAsk == 'pending-pair' %}
+							<li>{{ 'pending.friend.pair'|trans }}  </li>
+						{% elseif alreadyFriendAsk == 'pending-me' %}
+							<li><a href="{{ path('ltm_usr_en_attente', {'slug': app.user.slug}) }}"> {{ 'pending.friend.me'|trans }}  </a> </li>
+						{% endif %}
+
+						{% if  alreadyRecommandation == 'no' %}
+							{% set   recommand = 'recommand'|trans ~ ' ' ~ user.username %}
+							{% set  sentTo = 'recommandation.sent.to'|trans ~ ' ' ~ user.username  %}
+						<li><a style="cursor:pointer" onclick="doSocial( '{{recommand}}?' ,'{{recoUrl}}',' {{ sentTo }}.')" ><i class="icon-thumbs-up"></i> {{ recommand }}</a></li>
+						{% elseif alreadyRecommandation == 'yes' %}
+							<li><i class="icon-thumbs-up"></i> {{ 'already.recommandation'|trans }}  </li>
+						{% elseif alreadyRecommandation == 'pending-pair' %}
+							<li><i class="icon-thumbs-up"></i> {{ 'pending.recommandation.pair'|trans }}  </li>
+						{% endif %}
+					{% endif %}
+                    {% if alreadyFan == 'no' %}
+                        {% set follow = 'follow'|trans ~ ' ' ~ user.username %}
+                        {% set  youfollow = 'youfollow'|trans ~ ' '~ user.username %}
+                         <li><a style="cursor:pointer" onclick="doSocial( ' {{ follow }}?' ,'{{followUrl}}',' {{ user.username }}.')"><i class="icon-rss"></i> {{ follow }}</a></li>
+                     {% elseif alreadyFan == 'yes' %}
+                         <li><i class="icon-rss"></i> {{ 'already.follower'|trans }}  </li>
+                     {% endif %}
+                {% endif %}
+            </ul>
+            </div>
+            <div class="headline">
+                <h3>{{ 'about.me'|trans }}</h3>
+
+            </div>
+
+            <p class="aProposMin">{{ user.aPropos|truncate(100,true)|nl2br }}
+                {% if user.aPropos|length > 100 %}
+                <a class="btn-danger btn-u" style="cursor: pointer">{{ 'see.more'|trans }}</a>
+                {% endif %}
+            </p>
+            <p class="aProposMax" style="display: none">{{ user.aPropos|nl2br }} <a class="btn-danger btn-u" style="cursor: pointer">{{ 'see.less'|trans }}</a></p>
+
+        </div>
+
+        <!-- Followers -->
+        {%  render(controller('PortailBundle:Relation:listerfollower', {'slug': user.slug, 'tuto' : tuto})) %}
+        <!-- Followers -->
+
+        <a class="invisible become_pro" href="{{ path("ltm_payment_credit_pricing") }}">
+            <i class="icon-double-angle-right"></i>
+            {{ 'manage.abo'|trans }}
+        </a>
+
+        {% if (app.user != null and app.user.category.nom != 'Gratuit' and app.user.category.nom !=  'Semi Pro')%}
+         {% set imPro = 'true' %}
+        {% else %}
+         {% set imPro = 'false' %}
+        {% endif %}
+
+        {%  if (user.category.nom == 'Pro' or user.category.nom ==  'Pro (Essai gratuit 14 jours)' ) and user.gender != '7' %}
+
+            {% include 'PortailBundle:User:professionnelGauche.html.twig' with {'user' : user, 'tuto' : tuto, 'imPro' : imPro}  %}
+
+		{%  if user.agentPhone != null or user.phone != null or user.webSite != null  %}
+        <div class="who margin-bottom-30">
+            <div class="headline">
+                <h3>{{ 'contact'|trans }}</h3>
+            </div>
+			
+            <ul class="unstyled">
+				{%  if user.agentPhone != null and user.gender != '7'%}
+					
+					{% if user.gender == '6'%}
+                        {% set contact =  'contact.agency'| trans ~ ' ' ~ user.username %}
+                        <li><a style="cursor: pointer" onclick="openInfo( '{{ contact }}' ,'{{ 'phone'|trans ~ ': ' ~ user.agentPhone|url_encode  }}', {{ imPro }})"><i class="icon-chevron-sign-right"></i>{{ 'contact.director'|trans }}</a></li>
+					{% elseif user.gender == '3'%}
+                        {% set contact =  'contact.association'| trans ~ ' ' ~ user.username %}
+					    <li><a style="cursor: pointer" onclick="openInfo( '{{ contact }}' ,'{{ 'phone'|trans ~ ': ' ~ user.agentPhone|url_encode   }}', {{ imPro }})"><i class="icon-chevron-sign-right"></i>{{ 'contact.director'|trans }}</a></li>
+					{% elseif user.gender == '2'%}
+                        {% set contact =  'contact.dancing.school'| trans ~ ' ' ~ user.username %}
+					    <li><a style="cursor: pointer" onclick="openInfo( '{{ contact }}' ,'{{ 'phone'|trans ~ ': ' ~ user.agentPhone|url_encode   }}', {{ imPro }})"><i class="icon-chevron-sign-right"></i>{{ 'contact.director'|trans }}</a></li>
+					{% else %}
+                        {% set contact =  'contact.agent'| trans ~ ' ' ~ user.username %}
+					    <li><a style="cursor: pointer" onclick="openInfo( ' {{ contact}}' ,'{{ 'phone'|trans ~ ': ' ~ user.agentPhone|url_encode   }}', {{ imPro }})"><i class="icon-chevron-sign-right"></i>{{ 'contact.agent.my'|trans }}</a></li>
+					{% endif %}
+				{% endif %}
+				{%  if user.phone != null %}
+                    {% set contact =  'contact.user'| trans ~ ' ' ~ user.username %}
+                <li><a style="cursor: pointer" onclick="openInfo( '{{contact}}' ,'{{ 'phone'|trans ~ ': ' ~ user.phone|url_encode   }}', {{ imPro }})"><i class="icon-chevron-sign-right"></i>{{ 'phone.my'|trans }}</a></li>
+                {% endif %}
+                {%  if user.webSite != null %}
+                <li><a href="{{ user.webSite }}" target="_blank"><i class="icon-globe"></i>{{ user.webSite }}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+		{% endif %}
+
+        {% else %}
+
+        <!-- Following -->
+        {%  render(controller('PortailBundle:Relation:listerfollowing', {'slug': user.slug, 'tuto' : tuto})) %}
+        <!-- Following -->
+        {% endif %}
+		
+		{% if (app != null and app.user != null )%}
+			<div class="headline">
+				<h3>{{ 'last.activities.my'| trans }}</h3>
+			</div>
+			
+		<div class="span12">
+			
+			
+			 <blockquote class="hero-Likethismoove">
+				<small>{{user.username}}</small>					
+				{%  render(controller('PortailBundle:Activity:activity', {'slug' : user.slug})) %}
+			</blockquote>
+			
+			 
+		</div><!--/span8-->
+		{% endif%}
+
+
+
+    </div>
+    <!--/span3-->
+        {% endblock %}
+    {% block content_center %}
+    <div class="span9">
+        <div class="headline">
+            <h3>{{ user.username }},
+				
+                {% if user.gender == '7'%} {{ 'visitor'|trans }}
+				{% elseif user.gender == '6'%} {{ 'recruiting.agency'|trans }}
+                {% elseif user.gender == '5'%} {{ 'recruiter.f'|trans }}
+                {% elseif user.gender == '4'%} {{ 'recruiter.m'|trans }}
+                {% elseif user.gender == '3'%} {{ 'association'|trans }}
+                {% elseif user.gender == '2'%} {{ 'dancing.school'|trans }}
+                {% elseif user.gender == '1'%} {{ 'dancer.f'|trans }}
+                {% else %}{{ 'dancer.m'|trans }} {%endif%}
+                <small> - {{user.vues ~ ' ' ~ (user.vues > 1? 'views'|trans  : 'view'|trans )}}</small>
+                 </h3>
+        </div>
+        <div class="row-fluid">
+            <span class="profile-picture"  style="">
+				{% set cover = user.getAbsolutePathCover() %}				
+                <img class="editable " style="overflow: hidden;
+                max-width:100%;
+                max-height:300px;
+                width: 100%;
+                height: auto;" alt="Cover de {{ user.username }}" id="avatar3" 
+				{% if cover != null %}
+				src="/{{ cover}}"
+				{% else %}
+            src="http://placehold.it/1000x300&text={{ 'welcome.at'|trans ~ ' ' ~ user.username }}"
+				{% endif %}
+				/>
+            </span>
+        </div>
+		
+		<div class="headline">
+            <h3>{{ 'status'|trans }}</h3>
+        </div>
+		<p class="actualiteMin">{{ user.actualite|truncate(100,true) }}
+                {% if user.actualite|length > 100 %}
+                <a class="btn-danger btn-u" style="cursor: pointer">{{ 'see.more'|trans }}</a>
+                {% endif %}
+            </p>
+        <p class="actualiteMax" style="display: none">{{ user.actualite }} <a class="btn-danger btn-u" style="cursor: pointer">{{ 'see.less'|trans }}</a></p>
+			
+			
+
+
+        <!-- Recent Works -->
+        <div class="headline">
+            <h3>{{ tuto? 'tutos.recents'|trans : 'videos.recents'|trans }}</h3>
+        </div>
+
+        <div id="videos" class="tab-pane">
+
+            {%  render(controller(tuto? 'PortailBundle:VideoTuto:top' : 'PortailBundle:Video:top' ,{ 'max': 5, 'slug': user.slug, 'style': 'carousel' })) %}
+            <p><a class="btn btn-more  {{ tuto? 'btn-success' : 'btn-danger' }}" href="{{ path(tuto? 'ltm_video_tuto_filtrer' : 'ltm_video_filtrer', {'slug' : user.slug }) }}">{{ 'video.see.all.my'|trans }}</a></p>
+        </div>
+           
+
+        <!--/row-->
+        <!-- //End Recent Works -->
+
+
+        <div class="headline">
+            <h3>{{ 'images.last'|trans }}</h3>
+        </div>
+        <p>
+            <div style="max-width: 50%">
+            {%  render(controller('PortailBundle:Image:listecarousel', { 'max': 10, 'slug': user.slug, 'tuto' : tuto })) %}
+            </div>
+			
+            <p><a class="btn btn-more  {{ tuto? 'btn-success' : 'btn-danger' }}" href="{{ path('ltm_image_filtrer', {'slug' : user.slug, 'tuto' : tuto }) }}">{{ 'image.see.all.my'|trans }}</a></p>
+
+
+        </p>
+		
+			
+    </div><!--/span9-->
+    {% endblock %}
+    </div><!--/row-fluid-->
+
+    <!-- Our Clients -->
+        {% block content_recommand %}
+    {%  render(controller('PortailBundle:Relation:listerrecommandation', {'slug': user.slug , 'tuto' : tuto })) %}
+
+
+    {%  render(controller('PortailBundle:Relation:listerrecommandationsend', {'slug': user.slug , 'tuto' : tuto })) %}
+
+        {% endblock %}
+    </div>
+    <script type="text/javascript" src="{{ asset('bundles/portail/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/portail/js/bootbox.min.js')}}"></script>
+
+
+    <script>
+
+        var LTMAlert = (function() {
+            "use strict";
+            var elem,
+                    hideHandler,
+                    that = {};
+            that.init = function(options) {
+                elem = $(options.selector);
+            };
+            that.show = function(text) {
+                clearTimeout(hideHandler);
+                elem.find("span").html(text);
+                elem.fadeIn();
+                hideHandler = setTimeout(function() {
+                    that.hide();
+                }, 4000);
+            };
+            that.hide = function() {
+                elem.fadeOut();
+            };
+            return that;
+        }());
+
+        LTMAlert.init({
+            "selector": ".bb-alert"
+        });
+		function doSocial($title, $url, $statusAfter) {
+			bootbox.dialog($title, [{
+                    "label" : "{{ 'no'|trans }}",
+                    "class" : "btn",
+                    "callback": function() {
+                        LTMAlert.show("{{ 'action.not.performed'|trans }}");
+                    }
+                },
+				{
+                    label: "{{ 'yes'|trans }}",
+                    className: "btn-success",
+                    callback: function() {
+                        
+						LTMAlert.show($statusAfter);
+						
+						window.location.href = $url;
+                    }
+                }
+                ]);
+		}
+      
+		
+        function openInfo($title, $info, $pro)
+        {
+
+            if ($pro) {
+                bootbox.dialog( '<h2>' + $title +'</h2>'+'<p>'  + decodeURIComponent($info)+'</p>', [{
+                    label: "{{ 'ok'|trans }}",
+                    className: "btn-primary btn-success",
+                    callback: function() {
+                        LTMAlert.show("{{ 'information.viewed'|trans }}");
+                    }
+                }
+                ]);
+            }else {
+
+                bootbox.dialog("{{ 'only.pro.can.view'|trans }}", [{
+                    "label" : "{{ 'no.thanks.keep.status'|trans }}",
+                    "class" : "btn",
+                    "callback": function() {
+                        LTMAlert.show("{{ 'information.not.viewed'|trans }}");
+                    }
+                },
+				{
+                    label: "{{ 'want.to.become.pro'|trans }}",
+                    className: "btn-success",
+                    callback: function() {
+                        window.location.href = $("a.become_pro").attr('href');
+                    }
+                }
+                ]);
+            }
+
+        }
+
+    </script>
+
+
+{% endblock %}

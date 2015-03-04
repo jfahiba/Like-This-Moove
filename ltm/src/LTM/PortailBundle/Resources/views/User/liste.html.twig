@@ -1,0 +1,360 @@
+<script type="text/css">
+
+.label-transparent, .badge-transparent {
+    background-color: transparent !important;
+}
+.label-grey, .badge-grey {
+    background-color: #a0a0a0 !important;
+}
+.label-info, .badge-info {
+    background-color: #3a87ad !important;
+}
+.label-primary, .badge-primary {
+    background-color: #2283c5 !important;
+}
+.label-success, .badge-success {
+    background-color: #82af6f !important;
+}
+.label-important, .badge-important {
+    background-color: #d15b47 !important;
+}
+.label-inverse, .badge-inverse {
+    background-color: #333 !important;
+}
+.label-warning, .badge-warning {
+    background-color: #f89406 !important;
+}
+.label-pink, .badge-pink {
+    background-color: #d6487e !important;
+}
+.label-purple, .badge-purple {
+    background-color: #9585bf !important;
+}
+.label-yellow, .badge-yellow {
+    background-color: #fee188 !important;
+}
+.label-light, .badge-light {
+    background-color: #e7e7e7 !important;
+}
+.badge-yellow, .label-yellow {
+    border-color: #fee188;
+    color: #963 !important;
+}
+.badge-light, .label-light {
+    color: #888 !important;
+}
+.label.arrowed, .label.arrowed-in {
+    margin-left: 9px;
+    position: relative;
+}
+.label.arrowed:before, .label.arrowed-in:before {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: transparent #abbac3 transparent transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 9px 7px;
+    content: "";
+    display: inline-block;
+    left: -14px;
+    position: absolute;
+    top: 0;
+}
+.label.arrowed-in:before {
+    border-bottom-color: #abbac3;
+    border-left-color: transparent !important;
+    border-right-color: #abbac3;
+    border-top-color: #abbac3;
+    left: -9px;
+}
+.label.arrowed-right, .label.arrowed-in-right {
+    margin-right: 9px;
+    position: relative;
+}
+.label.arrowed-right:after, .label.arrowed-in-right:after {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: transparent transparent transparent #abbac3;
+    border-image: none;
+    border-style: solid;
+    border-width: 9px 7px;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: -14px;
+    top: 0;
+}
+.label.arrowed-in-right:after {
+    border-bottom-color: #abbac3;
+    border-left-color: #abbac3;
+    border-right-color: transparent !important;
+    border-top-color: #abbac3;
+    right: -9px;
+}
+.label-info.arrowed:before {
+    border-right-color: #3a87ad;
+}
+.label-info.arrowed-in:before {
+    border-color: #3a87ad;
+}
+.label-info.arrowed-right:after {
+    border-left-color: #3a87ad;
+}
+.label-info.arrowed-in-right:after {
+    border-color: #3a87ad;
+}
+.label-primary.arrowed:before {
+    border-right-color: #2283c5;
+}
+.label-primary.arrowed-in:before {
+    border-color: #2283c5;
+}
+.label-primary.arrowed-right:after {
+    border-left-color: #2283c5;
+}
+.label-primary.arrowed-in-right:after {
+    border-color: #2283c5;
+}
+.label-success.arrowed:before {
+    border-right-color: #82af6f;
+}
+.label-success.arrowed-in:before {
+    border-color: #82af6f;
+}
+.label-success.arrowed-right:after {
+    border-left-color: #82af6f;
+}
+.label-success.arrowed-in-right:after {
+    border-color: #82af6f;
+}
+.label-warning.arrowed:before {
+    border-right-color: #f89406;
+}
+.label-warning.arrowed-in:before {
+    border-color: #f89406;
+}
+.label-warning.arrowed-right:after {
+    border-left-color: #f89406;
+}
+.label-warning.arrowed-in-right:after {
+    border-color: #f89406;
+}
+.label-important.arrowed:before {
+    border-right-color: #d15b47;
+}
+.label-important.arrowed-in:before {
+    border-color: #d15b47;
+}
+.label-important.arrowed-right:after {
+    border-left-color: #d15b47;
+}
+.label-important.arrowed-in-right:after {
+    border-color: #d15b47;
+}
+.label-inverse.arrowed:before {
+    border-right-color: #333;
+}
+.label-inverse.arrowed-in:before {
+    border-color: #333;
+}
+.label-inverse.arrowed-right:after {
+    border-left-color: #333;
+}
+.label-inverse.arrowed-in-right:after {
+    border-color: #333;
+}
+.label-pink.arrowed:before {
+    border-right-color: #d6487e;
+}
+.label-pink.arrowed-in:before {
+    border-color: #d6487e;
+}
+.label-pink.arrowed-right:after {
+    border-left-color: #d6487e;
+}
+.label-pink.arrowed-in-right:after {
+    border-color: #d6487e;
+}
+.label-purple.arrowed:before {
+    border-right-color: #9585bf;
+}
+.label-purple.arrowed-in:before {
+    border-color: #9585bf;
+}
+.label-purple.arrowed-right:after {
+    border-left-color: #9585bf;
+}
+.label-purple.arrowed-in-right:after {
+    border-color: #9585bf;
+}
+.label-yellow.arrowed:before {
+    border-right-color: #fee188;
+}
+.label-yellow.arrowed-in:before {
+    border-color: #fee188;
+}
+.label-yellow.arrowed-right:after {
+    border-left-color: #fee188;
+}
+.label-yellow.arrowed-in-right:after {
+    border-color: #fee188;
+}
+.label-light.arrowed:before {
+    border-right-color: #e7e7e7;
+}
+.label-light.arrowed-in:before {
+    border-color: #e7e7e7;
+}
+.label-light.arrowed-right:after {
+    border-left-color: #e7e7e7;
+}
+.label-light.arrowed-in-right:after {
+    border-color: #e7e7e7;
+}
+.label-grey.arrowed:before {
+    border-right-color: #a0a0a0;
+}
+.label-grey.arrowed-in:before {
+    border-color: #a0a0a0;
+}
+.label-grey.arrowed-right:after {
+    border-left-color: #a0a0a0;
+}
+.label-grey.arrowed-in-right:after {
+    border-color: #a0a0a0;
+}
+.label-large {
+    font-size: 13px;
+    padding: 3px 8px 5px;
+}
+.label-large.arrowed, .label-large.arrowed-in {
+    margin-left: 12px;
+}
+.label-large.arrowed:before, .label-large.arrowed-in:before {
+    border-width: 11px 8px;
+    left: -16px;
+}
+.label-large.arrowed-in:before {
+    left: -12px;
+}
+.label-large.arrowed-right, .label-large.arrowed-in-right {
+    margin-right: 11px;
+}
+.label-large.arrowed-right:after, .label-large.arrowed-in-right:after {
+    border-width: 11px 8px;
+    right: -16px;
+}
+.label-large.arrowed-in-right:after {
+    right: -12px;
+}
+</script>
+<div class="row-fluid">
+    <div class="span12">
+        <!--PAGE CONTENT BEGINS-->
+
+        <div class=" widget-container-span">
+            <div class="widget-box">
+                <div class="widget-header header-color-blue">
+                    <h5 class="bigger lighter">
+                        <i class="icon-table"></i>
+                        {{ 'moovers.profile'|trans }}
+                    </h5>
+
+                    <div class="widget-toolbar widget-toolbar-light no-border">
+
+                    </div>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main no-padding">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>{{ 'firstName'|trans }}</th>
+                                <th>{{ 'lastName'|trans }}</th>
+                                <th>{{ 'gender'|trans }}</th>
+                                <th>{{ 'alias'|trans }}</th>
+                                <th>
+                                    <i>@</i> {{ 'email'|trans }}
+                                </th>
+                                <th>{{ 'avatar'|trans }}</th>
+                                <th>{{ 'city'|trans }}</th>
+                                <th>{{ 'country'|trans }}</th>
+                                <th>{{ 'moover.since'|trans }}</th>
+                                <th>{{ 'last.login'|trans }}</th>
+                                <th>{{ 'status'|trans }}</th>
+                                <th>{{ 'actions'|trans }}</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+
+                            {% for u in users %}
+                                <tr>
+                                    <td>{{ u.firstName }}</td>
+                                    <td>{{ u.lastName }}</td>
+                                    <td>{{ u.gender }}</td>
+                                    <td>{{ u.username }}</td>
+                                    <td>
+                                        <a href="#">{{ u.email }}</a>
+                                    </td>
+
+                                    <td>
+                                        {%  if u.getAbsolutePath() != null %}
+                                            <img style="max-width: 35px" src='/{{  u.getAbsolutePath() }}' />
+                                        {% endif %}
+                                    </td>
+
+                                    <td>{{ u.city }}</td>
+                                    <td>{{ u.country }}</td>
+                                    <td>{{ u.mooverDate|date('d/m/Y') }} </td>
+                                    <td>{{ u.lastLoginDate|date('d/m/Y\\ H:i') }} </td>
+                                    <td>{% for status in u.status() %}
+                                            {% if status.nom == 'Connecté' %}
+                                                <span class="label label-success arrowed arrowed-in-right">{{ status.nom }}</span>
+                                            {% endif %}
+                                            {% if status.nom == 'Déconnecté' %}
+                                                <span class="label label-purple arrowed  arrowed-in-right">{{ status.nom }}</span>
+                                            {% endif %}
+                                            {% if status.nom == 'En tournée' %}
+                                                <span class="label label-yellow arrowed  arrowed-in-right">{{ status.nom }}</span>
+                                            {% endif %}
+                                            {% if status.nom == 'En recherche d\'opportunité' %}
+                                                <span class="label label-info arrowed arrowed-in-right">{{ status.nom }}</span>
+                                            {% endif %}
+                                            {% if status.nom == 'Ne pas déranger' %}
+                                                <span class="label label-warning arrowed arrowed-in-right">{{ status.nom }}</span>
+                                            {% endif %}
+                                            {% if status.nom == 'Nouveau' %}
+                                                <span class="label label-grey arrowed arrowed-in-right">{{ status.nom }}</span>
+                                            {% endif %}
+
+                                        {% endfor %}</td>
+                                    <td style="display:inline-flex">
+                                        <a class="btn btn-u-small" href="{{ path('ltm_usr_afficher') }}">{{ 'display'|trans }}</a>
+                                        {% if app.user != null and app.user.id != null and (app.user.id == u.id or (app.user.id == 50 or app.user.id == 54) )%}
+
+                                            <a class="btn btn-u-small btn-danger" href="{{ path('ltm_usr_modifier', { 'slug': u.slug }) }}">{{ 'modify'|trans }}</a>
+
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td>{{ 'user.notfound'|trans }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

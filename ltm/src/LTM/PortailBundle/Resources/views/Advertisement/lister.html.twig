@@ -1,0 +1,80 @@
+{% extends tuto? 'PortailBundle::layouttuto.html.twig' : 'PortailBundle::layout.html.twig' %}
+
+
+
+{% block stylesheets %}
+
+
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/plugins/portfolioSorting/css/sorting.css')}}">
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/default.css')}}" id="style_color">
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/themes/headers/default.css')}}" id="style_color-header-1">
+
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/colorbox.css')}}" type="text/css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('bundles/portail/css/youtube-video-gallery.css')}}" type="text/css" rel="stylesheet">
+
+    <!--[if IE lt 9]>
+    <link href="{{ asset('bundles/portail/css/youtube-video-gallery-legacy-ie.css')}}" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+
+
+    {{ parent() }}
+{% endblock %}
+
+
+{% block title %}{{ 'ad.pro.list'|trans}}{% endblock %}
+{% block meta_d %}{{ 'ad.pro.list'|trans}}{% endblock %}
+{% block meta_k %}{{ 'ad.pro.list'|trans|replace({' ' : ', ' }) }}{% endblock %}
+
+
+{% block content %}
+    {% block content_breadcrumbs %}
+
+    {% endblock %}
+
+<div class="container">
+    <div class="row-fluid gallery">
+	<div class="headline">
+                <h3>{{ 'ad.pro.list'|trans}}
+                </h3>
+            </div>
+
+        <div id="w">
+            <!--div id="sort" class="sort">
+                <ul class="unstyled inline">
+                    <li><a class="all selected" href="#">Toutes</a></li>
+                    {% set authors = [] %}
+                    {% for i in advertisements %}
+                        {% set author = i.author == null? "" : i.author.getUserName()  %}
+
+                        {% if  i.author != null and author not in authors  %}
+                            <li><a class="{{author}}" href="#">{{author}}</a></li>
+                            {% set authors = [author]|merge(authors) %}
+
+                        {% endif %}
+
+                    {% endfor %}
+                </ul>
+            </div-->
+
+    {% include 'PortailBundle:Advertisement:liste.html.twig' with {'advertisements' : advertisements, 'alladvertisements' : alladvertisements}  %}
+	
+    {% if app.user != null and app.user.id != null and (app.user.category.nom == 'Pro' or app.user.category.nom ==  'Pro (Essai gratuit 14 jours)')%}
+
+    <p><a class="btn" href="{{ path('ltm_advertisement_pro_ajouter') }}">{{ 'ad.pro.add'|trans}}</a><p>
+     {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+

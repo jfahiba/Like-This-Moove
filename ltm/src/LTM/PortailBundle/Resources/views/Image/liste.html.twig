@@ -1,0 +1,54 @@
+
+
+
+
+
+    <ul class="portfolio recent-work clearfix">
+        {% set index = 0 %}
+		 <li data-id="id-1000" style="margin-bottom: 20px; display:none" class="span2">
+        {% for i in images %}
+			{% set theclass = i.author == null? "" : i.author.getUserName()|replace({' ' : ''}) %}
+            <li data-id="id-{{loop.index0}}" style="margin-bottom: 20px" class="span2 {{theclass}}">
+                <a href="/{{  i.getAbsolutePath() }}" target="_blank">
+                    <em class="overflow-hidden">
+                        {% if i.getUrl() != null%}
+                        <img class="span12" alt="{{ i.title }}" src="{{  i.getUrl()}}"/>
+                        {% elseif i.getAbsolutePath() != null %}
+                        <img class="span12" style="height: 200px" alt="{{ i.title }}" src="/{{  i.getAbsolutePath() }}"/>
+                        {% else %}
+                        <img alt="{{ i.title }}"/>
+                        {% endif %}
+
+                    </em>
+                        <span>
+                            <strong style="word-wrap: normal">{{ i.title }}</strong>
+                            <i>{{ i.author == null? "" : i.author.getUserName() }} <br/> {{ i.creationDate|date ('d/m/Y') }}</i>
+                        </span>
+                </a>
+            </span>
+                        </strong>
+                    </a>
+                {% if (app != null and app.user != null and (app.user.id == i.author.id  or (app.user.id == 50 or app.user.id == 54)))%}
+                    <a href="{{ path('ltm_image_modifier', {'slug': i.slug} ) }}"><i class="pull-right icon-edit"> </i></a>
+                {% endif %}
+            </li>
+        {% else %}
+            <li>{{ 'image.notfound'|trans}}</li>
+        {%  endfor %}
+    </ul>
+
+
+
+
+        <script type="text/javascript" src="{{ asset('bundles/portail/js/jquery-1.10.2.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/portail/plugins/portfolioSorting/js/jquery.quicksand.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/portail/plugins/portfolioSorting/js/sorting.js')}}"></script>
+
+
+
+
+
+
+
+
+

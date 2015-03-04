@@ -1,0 +1,18 @@
+{{ 'status'|trans}}:
+{% if status.new %}
+    {{ 'new'|trans}}!?
+{% elseif status.success %}
+    {{ 'successful'|trans}}!
+{% elseif status.canceled %}
+    {{ 'canceled'|trans}}
+{% elseif status.failed %}
+    {{ 'failed'|trans}}
+{% elseif status.pending %}
+    {{ 'pending'|trans}}
+{% elseif status.expired %}
+    {{ 'expired'|trans}}
+{% elseif status.suspended %}
+    {{ 'suspended'|trans}}
+{% else %}
+    {{ 'unknown'|trans}}
+{% endif %}
